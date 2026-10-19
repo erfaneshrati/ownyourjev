@@ -1,0 +1,30 @@
+{
+ "task": "summeval",
+ "model_dirs": [
+  "../../data/v2/summeval/models/r2_f0"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "notes": "experiments/summeval/export_mh.py: same protocol as benchmarks.v2.latency (dev texts, batch 1, 4 threads); one shared encoder answers all 4 heads; timing includes rendering, tokenisation and lexical features",
+ "cpu_p50_ms": 42.9449729854241,
+ "cpu_p95_ms": 55.60864840517752,
+ "n_requests": 100,
+ "all_runs_p95_ms": [
+  55.60864840517752,
+  59.05027800472453,
+  50.911122967954725
+ ],
+ "all_runs_p50_ms": [
+  42.9449729854241,
+  42.12000401457772,
+  41.42395203234628
+ ],
+ "machine_load_1min": [
+  5.17,
+  4.15,
+  3.33
+ ],
+ "note": "experiments/summeval/export_mh.py: same protocol as benchmarks.v2.latency (dev texts, batch 1, 4 threads); one shared encoder answers all 4 heads; timing includes rendering, tokenisation and lexical features. Round-2 fold-0 model; reported run = median p95 of 3 consecutive runs (shared machine). Same architecture as round 1. benchmarks.v2.latency cannot load this custom multi-head model; this script reproduces its protocol.",
+ "quantisation": "dynamic int8 per-channel for all weight MatMuls except the 16 GLU down-projections (fp32)"
+}

@@ -1,0 +1,7 @@
+These are snippets (sentences or phrases) from movie reviews, rated in the Stanford Sentiment Treebank style: judge the sentiment the snippet itself expresses about the film, as a typical reader would feel it on first reading.
+- 4 (very positive) is NOT rare: use it whenever the snippet gives clear, enthusiastic praise without reservations, even if short. Strong praise words (wonderful, brilliant, gripping, very funny, beautiful, best, marvelous, inspiring, heartwarming, fiercely clever, robust entertainment, a must-see / no reason to miss) -> 4. Use 3 for mild, moderate or qualified praise ("solid", "manages to", "some good moments", "pleasant", "little moments give it a boost") and for positive-leaning descriptions of the film's subject.
+- 0 (very negative) is for scathing, emphatic condemnation (worst, disaster, unwatchable, insulting, "one of the biggest disappointments", mockery or contempt). Ordinary criticism (dull, lazy, banal, overburdened, routine, formulaic, uneven) is usually 1, even when phrased sharply.
+- 2 (neutral) is for snippets with no clear evaluative content (plot descriptions, factual statements, fragments, rhetorical setups), and for balanced mixed statements where praise and criticism roughly cancel.
+- Mixed snippets: weigh which side dominates; a complaint that follows praise with "but" usually pulls the rating to 1 or 2, praise that follows a concession pulls to 3.
+- Sarcasm and backhanded compliments count as negative.
+When giving probabilities, spread probability over the adjacent levels you are unsure between.

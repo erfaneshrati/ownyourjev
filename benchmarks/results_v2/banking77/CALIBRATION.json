@@ -1,0 +1,96 @@
+{
+ "description": "Deployed votesoft int8 ONNX (model.int8.onnx, OnnxPredictor threads=4, batches of 64, as predict_eval.py) on the 200 dev examples; dev texts are not training texts (train = pool + 20 seeds; 0 uid and 0 normalised-text overlap), so predictions are out-of-sample, though dev chose the epoch and was in the labeling prompt. Re-prediction of 128 eval inputs matches frozen test probs exactly (max diff 0.0). 5-fold CV (NLL) on dev. Candidates restricted to none/temperature because only these keep the top-1 label (the brief requires decisions to stay unchanged): vector scaling changed the argmax (OOF dev acc 0.890 -> 0.865), had worse ECE/Brier than temperature, and its NLL edge was unstable across CV seeds; isotonic OvR overfit badly (NLL 1.53). Full 4-method table in dev_cv_all_methods.",
+ "heads": {
+  "answer": {
+   "method": "temperature",
+   "params": {
+    "T": 0.7357692881285767
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.10458675526082513,
+     "ece15": 0.10988423906266694,
+     "ace": 0.1121610703319311,
+     "brier": 0.20889191409613908,
+     "nll": 0.5222992907895952,
+     "mean_conf": 0.7854132447391748,
+     "accuracy": 0.89
+    },
+    "temperature": {
+     "ece": 0.046005223749443866,
+     "ece15": 0.058967664631790484,
+     "ace": 0.048783493186555095,
+     "brier": 0.1914828099885976,
+     "nll": 0.45131447261297014,
+     "mean_conf": 0.8950130903223072,
+     "accuracy": 0.89
+    }
+   },
+   "dev_cv_all_methods": {
+    "none": {
+     "ece": 0.10458675526082513,
+     "ece15": 0.10988423906266694,
+     "ace": 0.1121610703319311,
+     "brier": 0.20889191409613908,
+     "nll": 0.5222992907895952,
+     "mean_conf": 0.7854132447391748,
+     "accuracy": 0.89
+    },
+    "temperature": {
+     "ece": 0.046005223749443866,
+     "ece15": 0.058967664631790484,
+     "ace": 0.048783493186555095,
+     "brier": 0.1914828099885976,
+     "nll": 0.45131447261297014,
+     "mean_conf": 0.8950130903223072,
+     "accuracy": 0.89
+    },
+    "vector": {
+     "ece": 0.05904025865897178,
+     "ece15": 0.05961923227088203,
+     "ace": 0.0519619440218061,
+     "brier": 0.19474880353195678,
+     "nll": 0.42028680051277917,
+     "mean_conf": 0.9009972725889813,
+     "accuracy": 0.865
+    },
+    "isotonic": {
+     "ece": 0.11197094487707641,
+     "ece15": 0.12082093712232869,
+     "ace": 0.10778923463994071,
+     "brier": 0.3218442031123949,
+     "nll": 1.5324049380024494,
+     "mean_conf": 0.8677130508101514,
+     "accuracy": 0.76
+    }
+   },
+   "dev_cv_seed_stability_nll": {
+    "1": {
+     "none": 0.5222992907895952,
+     "temperature": 0.4542385141285761,
+     "vector": 0.45289702031646834,
+     "isotonic": 1.6714188829621441
+    },
+    "2": {
+     "none": 0.5222992907895952,
+     "temperature": 0.454398872288561,
+     "vector": 0.4253711382086206,
+     "isotonic": 1.7164749300383482
+    },
+    "3": {
+     "none": 0.5222992907895952,
+     "temperature": 0.46099423586181504,
+     "vector": 0.460255578347546,
+     "isotonic": 1.935117464842942
+    },
+    "4": {
+     "none": 0.5222992907895952,
+     "temperature": 0.4541154502986718,
+     "vector": 0.45516439720426083,
+     "isotonic": 2.0456542060787903
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "task": "boolq",
+ "model_dirs": [
+  "data/v2/boolq/models/soup_all6"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 42.71657601930201,
+ "cpu_p95_ms": 69.08936309046112,
+ "n_requests": 200
+}

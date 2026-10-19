@@ -1,0 +1,38 @@
+{
+ "description": "sst5/answer at batch size 1 (serving mode): deployed partial-int8 ONNX (data/v2/sst5/models/final/model.int8.onnx), OnnxPredictor threads=8, one text per call (experiments/sst5/calibration/predict_b1.py). Calibrator refit on batch-1 dev probs (model never trained on dev), 5-fold CV NLL over none/temperature.",
+ "heads": {
+  "answer": {
+   "probs": "benchmarks/results_v2/sst5/eval_probs_b1.npy",
+   "dev_probs": "benchmarks/results_v2/sst5/dev_probs_b1.npy"
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "temperature",
+   "params": {
+    "T": 1.480699436595485
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.12703558444976806,
+     "ece15": 0.1286187207698822,
+     "ace": 0.14031471729278563,
+     "brier": 0.5545887864187391,
+     "nll": 1.0104711197788085,
+     "mean_conf": 0.7075287961959839,
+     "accuracy": 0.6
+    },
+    "temperature": {
+     "ece": 0.046915558160215386,
+     "ece15": 0.06106193129944489,
+     "ace": 0.10490116183779075,
+     "brier": 0.5373591971517756,
+     "nll": 0.9608413663060595,
+     "mean_conf": 0.606885775037411,
+     "accuracy": 0.6
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

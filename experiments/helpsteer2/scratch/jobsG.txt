@@ -1,0 +1,2 @@
+G18e4_s0 train_dual.py --layers 18 --budget 128 --epochs 4 --seed 0 --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen
+G22e5_s1 train_dual.py --layers 22 --budget 128 --epochs 5 --seed 1 --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen

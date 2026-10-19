@@ -1,0 +1,93 @@
+{
+ "description": "Fitted on dev only. Dev (200 gold, carved out of the eval set, in no fold's training data) was predicted by each of the 5 deployed int8 ONNX fold models with the same inference path as test (common.onnx_probs, length-sorted batches of 32); stored dev_probs_int8 and full-fold test re-prediction reproduce bit-exactly. Scheme: pooled, all 5 fold models' dev predictions stacked (1000 rows = 200 texts x 5 models), matching the test mixture of fold models; CV grouped by dev text. Sensitivity (deterministic 40-per-model assignment) in CALIBRATION_NOTES.md.",
+ "heads": {
+  "answer": {
+   "method": "none",
+   "params": {},
+   "dev_cv": {
+    "none": {
+     "ece": 0.009483136326074604,
+     "ece15": 0.011197142630815487,
+     "ace": 0.008521967023611066,
+     "brier": 0.007745963482220024,
+     "nll": 0.03812976012521487,
+     "mean_conf": 0.9836961281001568,
+     "accuracy": 0.992
+    },
+    "temperature": {
+     "ece": 0.0045919245143582615,
+     "ece15": 0.006407846447532416,
+     "ace": 0.0120570061123246,
+     "brier": 0.008169252257243152,
+     "nll": 0.07889549189044584,
+     "mean_conf": 0.9918797019068707,
+     "accuracy": 0.992
+    },
+    "platt": {
+     "ece": 0.005080481853175077,
+     "ece15": 0.007965496097253083,
+     "ace": 0.011004647593112737,
+     "brier": 0.010021277305152372,
+     "nll": 0.0850864725354713,
+     "mean_conf": 0.9904778017717845,
+     "accuracy": 0.989
+    },
+    "isotonic": {
+     "ece": 0.007145926487501449,
+     "ece15": 0.007145926487501433,
+     "ace": 0.009529909635067623,
+     "brier": 0.009443726513453932,
+     "nll": 0.1078333548369868,
+     "mean_conf": 0.9924688903649328,
+     "accuracy": 0.988
+    }
+   },
+   "n_fit": 1000,
+   "n_dev_examples": 200,
+   "scheme": "pooled_5_fold_models_grouped_cv",
+   "sensitivity_assigned": {
+    "method": "none",
+    "params": {},
+    "dev_cv": {
+     "none": {
+      "ece": 0.012487744837999349,
+      "ece15": 0.012487744837999347,
+      "ace": 0.0204590417444706,
+      "brier": 0.006852517135968115,
+      "nll": 0.04153415652096026,
+      "mean_conf": 0.9825122551620007,
+      "accuracy": 0.995
+     },
+     "temperature": {
+      "ece": 0.0040787502406326795,
+      "ece15": 0.005053450395329201,
+      "ace": 0.01407874993443357,
+      "brier": 0.0060332740556051,
+      "nll": 0.07877853597824033,
+      "mean_conf": 0.9909212497593671,
+      "accuracy": 0.995
+     },
+     "platt": {
+      "ece": 0.004821676196346073,
+      "ece15": 0.006378696685661911,
+      "ace": 0.014815615068788025,
+      "brier": 0.006255107200841143,
+      "nll": 0.07965708743647805,
+      "mean_conf": 0.9901783238036538,
+      "accuracy": 0.995
+     },
+     "isotonic": {
+      "ece": 0.00243463183920089,
+      "ece15": 0.00243463183920089,
+      "ace": 0.01243443183920112,
+      "brier": 0.005815636842026449,
+      "nll": 0.07701985326814692,
+      "mean_conf": 0.9925653681607991,
+      "accuracy": 0.995
+     }
+    },
+    "n_fit": 200
+   }
+  }
+ }
+}

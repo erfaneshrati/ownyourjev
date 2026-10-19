@@ -1,0 +1,2 @@
+GC20_f1 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --seed 0 --gold_w 20 --gold 1/5
+GC20_f3 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --seed 0 --gold_w 20 --gold 3/5

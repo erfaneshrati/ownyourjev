@@ -1,0 +1,97 @@
+{
+ "description": "Dev predictions: the frozen deployed artifact (soupAB_sq0.75/model.int8.onnx, eager attention + SmoothQuant 0.75 + dynamic int8, batch 1, max_len 512, 8 threads; same path as predict_eval.py) on the 200 gold dev examples. The model never trained on dev or seeds (train_student.py blocks their uids; early stopping on silver pool val). Re-predicting 60 eval inputs matched the frozen test probs exactly (max |dp| 0). Per head, 5-fold stratified CV (seed 0) over none/temperature/platt/isotonic on dev, lowest out-of-fold NLL, refit on all 200.",
+ "heads": {
+  "toxic": {
+   "method": "temperature",
+   "params": {
+    "T": 0.515344814429902
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.0754162441194057,
+     "ece15": 0.07858774229884144,
+     "ace": 0.05375285401940345,
+     "brier": 0.027346426550651733,
+     "nll": 0.12568826238842448,
+     "mean_conf": 0.9103903500735759,
+     "accuracy": 0.96
+    },
+    "temperature": {
+     "ece": 0.017959498136221684,
+     "ece15": 0.025581408925143736,
+     "ace": 0.02336033845702359,
+     "brier": 0.02469406689213592,
+     "nll": 0.08747859511853051,
+     "mean_conf": 0.9709067893061496,
+     "accuracy": 0.96
+    },
+    "platt": {
+     "ece": 0.016246013838430703,
+     "ece15": 0.022101462403886232,
+     "ace": 0.022722829709932512,
+     "brier": 0.02487822405912353,
+     "nll": 0.0882130178390161,
+     "mean_conf": 0.9703636893872162,
+     "accuracy": 0.96
+    },
+    "isotonic": {
+     "ece": 0.021510476467628672,
+     "ece15": 0.022770593912185277,
+     "ace": 0.016507598049892866,
+     "brier": 0.024771302103187943,
+     "nll": 0.18481380712093987,
+     "mean_conf": 0.9731739430825178,
+     "accuracy": 0.97
+    }
+   },
+   "n_fit": 200,
+   "n_pos": 16
+  },
+  "jailbreak": {
+   "method": "temperature",
+   "params": {
+    "T": 0.435322161570589
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.0736388885974884,
+     "ece15": 0.07797168612480164,
+     "ace": 0.064458127617836,
+     "brier": 0.019855252541581613,
+     "nll": 0.1118246450297095,
+     "mean_conf": 0.910541872382164,
+     "accuracy": 0.975
+    },
+    "temperature": {
+     "ece": 0.01580454082866912,
+     "ece15": 0.012757685450258167,
+     "ace": 0.016166980300375697,
+     "brier": 0.015357976143764268,
+     "nll": 0.0522088787603848,
+     "mean_conf": 0.9848082491225698,
+     "accuracy": 0.975
+    },
+    "platt": {
+     "ece": 0.02200888609847829,
+     "ece15": 0.022008886098478203,
+     "ace": 0.018599299990200588,
+     "brier": 0.02266613802378834,
+     "nll": 0.08042211031893019,
+     "mean_conf": 0.9880164351381977,
+     "accuracy": 0.975
+    },
+    "isotonic": {
+     "ece": 0.02687369764141148,
+     "ece15": 0.02786049769220536,
+     "ace": 0.020472315641128225,
+     "brier": 0.024609549007238794,
+     "nll": 0.23488776712407855,
+     "mean_conf": 0.9904709156411283,
+     "accuracy": 0.97
+    }
+   },
+   "n_fit": 200,
+   "n_pos": 7
+  }
+ }
+}

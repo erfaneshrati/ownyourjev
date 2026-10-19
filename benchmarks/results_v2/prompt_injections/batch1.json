@@ -1,0 +1,114 @@
+{
+ "task": "prompt_injections",
+ "heads": {
+  "answer": {
+   "metric": "accuracy",
+   "batch1": 0.9655172413793104,
+   "batch1_ci95": [
+    0.9310344827586207,
+    0.9913793103448276
+   ],
+   "frozen_batched": 0.9568965517241379,
+   "decision_flips": 0.008620689655172414,
+   "max_abs_prob_diff": 0.20251911878585815,
+   "calib_raw": {
+    "ece": 0.02277236329070452,
+    "ece15": 0.043031545291686936,
+    "ace": 0.030401774264615145,
+    "brier": 0.03187124315106919,
+    "nll": 0.12183208721134654,
+    "mean_conf": 0.9647004776473703,
+    "accuracy": 0.9655172413793104,
+    "reliability": [
+     {
+      "bin": 5,
+      "n": 1,
+      "conf": 0.5304596424102783,
+      "acc": 1.0
+     },
+     {
+      "bin": 6,
+      "n": 2,
+      "conf": 0.6570051908493042,
+      "acc": 0.5
+     },
+     {
+      "bin": 7,
+      "n": 4,
+      "conf": 0.7753427475690842,
+      "acc": 1.0
+     },
+     {
+      "bin": 8,
+      "n": 5,
+      "conf": 0.8534789025783539,
+      "acc": 0.8
+     },
+     {
+      "bin": 9,
+      "n": 104,
+      "conf": 0.9874232680751727,
+      "acc": 0.9807692307692307
+     }
+    ]
+   },
+   "calibration_method": "platt",
+   "calib_calibrated": {
+    "ece": 0.021960934796518797,
+    "ece15": 0.04478256174931736,
+    "ace": 0.03861144845827455,
+    "brier": 0.026317093704786642,
+    "nll": 0.09834887201543291,
+    "mean_conf": 0.9521769962379641,
+    "accuracy": 0.9741379310344828,
+    "reliability": [
+     {
+      "bin": 5,
+      "n": 1,
+      "conf": 0.522843888825862,
+      "acc": 1.0
+     },
+     {
+      "bin": 6,
+      "n": 3,
+      "conf": 0.651707386509178,
+      "acc": 0.6666666666666666
+     },
+     {
+      "bin": 7,
+      "n": 4,
+      "conf": 0.7513215070977277,
+      "acc": 1.0
+     },
+     {
+      "bin": 8,
+      "n": 8,
+      "conf": 0.8626378168490905,
+      "acc": 0.875
+     },
+     {
+      "bin": 9,
+      "n": 100,
+      "conf": 0.9806817695206679,
+      "acc": 0.99
+     }
+    ]
+   }
+  }
+ },
+ "description": "Batch-1 recompute (one text per OnnxPredictor.probs call, same int8 artifacts, preprocessing, threads=8). Test: deployed final_gte_e8_dup3/model.int8.onnx on protocol.eval_inputs. Dev: out-of-fold, each of the 5 CV fold int8 models (identical recipe, dev fold held out) on its held-out fold. Calibrator refit by select_calibrator (5-fold CV NLL) on the batch-1 dev OOF probs.",
+ "scored_at": "2026-10-19T13:55:13",
+ "rerun_reason": null,
+ "headline": {
+  "head": "answer",
+  "metric": "accuracy",
+  "batch1": 0.9655172413793104,
+  "batch1_ci95": [
+   0.9310344827586207,
+   0.9913793103448276
+  ],
+  "frozen_batched": 0.9568965517241379,
+  "jev": 0.7413793103448276,
+  "verdict_batch1": "win"
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "task": "paws",
+ "model_dirs": [
+  "data/v2/paws/models/ub_e3_soft__all+pseudo-ensmore__s0"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 40.055358957033604,
+ "cpu_p95_ms": 54.44196286844089,
+ "n_requests": 100,
+ "load_average_at_measurement": "12.60 (1-min) / 26.45 (5-min)",
+ "notes": "shared machine (8 agents); other runs: p95 47.8 ms at load 18.6, 77.8 ms at load ~30, 46.1 ms (earlier model, same arch) at load ~7"
+}

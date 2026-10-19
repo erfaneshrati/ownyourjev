@@ -1,0 +1,12 @@
+{
+ "task": "ag_news",
+ "model_dirs": [
+  "data/v2/ag_news/models/v1plain_5k"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 24.112123530358076,
+ "cpu_p95_ms": 36.20907588046975,
+ "n_requests": 200
+}

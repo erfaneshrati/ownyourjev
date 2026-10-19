@@ -1,0 +1,12 @@
+{
+ "model_dir": "data/v2/ag_news/models/v1plain_5k",
+ "onnx": "data/v2/ag_news/models/v1plain_5k/model.int8.onnx",
+ "dev_accuracy": 0.915,
+ "dev_macro_f1": 0.9146849114301163,
+ "dev_A": 0.91,
+ "dev_B": 0.92,
+ "eval_shape": [
+  7600,
+  4
+ ]
+}

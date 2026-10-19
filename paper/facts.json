@@ -1,0 +1,599 @@
+{
+ "tasks": {
+  "sms_spam": {
+   "mode": "noul",
+   "n": 5354,
+   "metric": "f1",
+   "ours": 0.958041958041958,
+   "ci": [
+    0.9462517680339463,
+    0.9687737328055723
+   ],
+   "jev": 0.9366197183098591,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.008986382162477496,
+   "ece_jev": 0.03105715353007088,
+   "brier_ours": 0.009218513460703242,
+   "brier_jev": 0.014647627941725812,
+   "heads": {
+    "answer": {
+     "metric": "f1",
+     "ours": 0.958041958041958,
+     "ci": [
+      0.9462517680339463,
+      0.9687737328055723
+     ],
+     "jev": 0.9366197183098591
+    }
+   },
+   "p50": 13.841797015629709,
+   "p95": 24.91518066381104,
+   "spend": 0.000703395,
+   "ledger_n": 6,
+   "ledger_success": 3,
+   "ledger_failure": 1,
+   "dedup": {
+    "n_eval": 5354,
+    "n_dup": 82,
+    "ours": 0.9573863636363636,
+    "jev": 0.9356223175965666
+   },
+   "recipe": "gte-modernbert-base full fine-tune (lr 3e-5, 3 epochs, bs 32, max_len 128, early stop on 10% held-out silver), 5-fold cross-fit over eval_inputs (protocol.eval_folds): each fold model trains on the v1 seeded LLM labels (deepseek-v4.1-flash, v1 seed examples) of the other 4 folds (+20 eval texts that v1 used as its seeds, relabeled with the v2 seeds) and scores only its held-out fold. Exported to ONNX and dynamically quantised to int8 (per-channel). Threshold 0.5: dev mean F1 over the 5 int8 fold models is flat at 0.966 for 0.40-0.55; 0.60 was 0.970 (one dev example) and rejected as noise. Labe",
+   "v1_reused_spend": 0.225702149692,
+   "build_spend": 0.226405544692,
+   "jev_tokens": 317.65097371903954,
+   "jev_usd_per_m": 13.341340896199661,
+   "ours_usd_per_m": 0.6151909784724314,
+   "breakeven_decisions": 17790.576580951823
+  },
+  "paws": {
+   "mode": "noul",
+   "n": 8000,
+   "metric": "accuracy",
+   "ours": 0.8845,
+   "ci": [
+    0.877375,
+    0.891375
+   ],
+   "jev": 0.849875,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.04806648892536766,
+   "ece_jev": 0.020257500000000133,
+   "brier_ours": 0.08969134207846997,
+   "brier_jev": 0.1086766,
+   "heads": {
+    "answer": {
+     "metric": "accuracy",
+     "ours": 0.8845,
+     "ci": [
+      0.877375,
+      0.891375
+     ],
+     "jev": 0.849875
+    }
+   },
+   "p50": 30.07810446433723,
+   "p95": 39.814759040018544,
+   "spend": 0.15414040085,
+   "ledger_n": 14,
+   "ledger_success": 7,
+   "ledger_failure": 6,
+   "dedup": {
+    "n_eval": 8000,
+    "n_dup": 0,
+    "ours": 0.8845,
+    "jev": 0.849875
+   },
+   "recipe": "UltraBERT-150M full fine-tune, distilled: soft targets = 7.7k LLM labels (4.5k reused v1 seeded deepseek-v4.1-flash labels with v1 seeds + 3.2k new flash labels with the v2 seeds; prompt chosen on dev: flash+seeds 0.875 > flash plain 0.830, flash+guidelines 0.850, deepseek-v4-pro 0.835) plus pseudo-labels for the other 41k pool pairs from the average of two UltraBERT teachers trained on the 7.7k labels (dev 0.865/0.860, ensemble 0.875). Student lr 1.15e-5, 3 epochs, bs 32, max_len 128, early stop on held-out silver; dev 0.890 for both seeds (seed 0 frozen). ONNX with partial dynamic int8 (all ",
+   "v1_reused_spend": 0.159833741,
+   "build_spend": 0.31397414185,
+   "jev_tokens": 402.87025,
+   "jev_usd_per_m": 16.9205505,
+   "ours_usd_per_m": 1.3368046428594327,
+   "breakeven_decisions": 20147.53992578332
+  },
+  "prompt_injections": {
+   "mode": "noul",
+   "n": 116,
+   "metric": "accuracy",
+   "ours": 0.9568965517241379,
+   "ci": [
+    0.9224137931034483,
+    0.9913793103448276
+   ],
+   "jev": 0.7413793103448276,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.020003224498239137,
+   "ece_jev": 0.16887931034482773,
+   "brier_ours": 0.031651392761561155,
+   "brier_jev": 0.1915508620689655,
+   "heads": {
+    "answer": {
+     "metric": "accuracy",
+     "ours": 0.9568965517241379,
+     "ci": [
+      0.9224137931034483,
+      0.9913793103448276
+     ],
+     "jev": 0.7413793103448276
+    }
+   },
+   "p50": 13.368476938921958,
+   "p95": 40.75968123506751,
+   "spend": 0.18520519595,
+   "ledger_n": 10,
+   "ledger_success": 3,
+   "ledger_failure": 2,
+   "dedup": {
+    "n_eval": 116,
+    "n_dup": 0,
+    "ours": 0.9568965517241379,
+    "jev": 0.7413793103448276
+   },
+   "recipe": "gte-modernbert-base full fine-tune (lr 3e-5, 8 epochs, bs 16, max_len 256) on: 326 pool texts labeled by deepseek-v4.1-flash with the 20 v2 seeds + seed-derived guidelines (labeler dev acc 0.965 vs plain 0.895, seeded 0.945), 1,148 seed-steered synthetic EN/DE inputs whose intended label the same labeler confirmed, the 20 seeds, and the 200 dev gold examples x3. Dev estimate by 5-fold CV over dev with the identical recipe (dev fold held out): oof acc 0.965 torch / 0.950 int8 at 0.5 (vs 0.935 without dev in training). ONNX dynamic int8 per-channel. Threshold 0.5 (int8 oof flat 0.95 for 0.3-0.5)",
+   "build_spend": 0.18520519595,
+   "jev_tokens": 324.36206896551727,
+   "jev_usd_per_m": 13.623206896551725,
+   "ours_usd_per_m": 0.5941545306187538,
+   "breakeven_decisions": 14214.786367292187
+  },
+  "toxic_chat": {
+   "mode": "noul",
+   "n": 5083,
+   "metric": "f1",
+   "ours": 0.787012987012987,
+   "ci": [
+    0.7551737206085753,
+    0.8184259201105388
+   ],
+   "jev": 0.7862068965517242,
+   "verdict": "tie",
+   "looks": 2,
+   "ece_ours": 0.05889667222027507,
+   "ece_jev": 0.0153354318315955,
+   "brier_ours": 0.025963074401062432,
+   "brier_jev": 0.019860692504426517,
+   "heads": {
+    "toxic": {
+     "metric": "f1",
+     "ours": 0.787012987012987,
+     "ci": [
+      0.7551737206085753,
+      0.8184259201105388
+     ],
+     "jev": 0.7862068965517242
+    },
+    "jailbreak": {
+     "metric": "f1",
+     "ours": 0.8484848484848485,
+     "ci": [
+      0.7874899193548387,
+      0.8973007623007624
+     ],
+     "jev": 0.7172995780590717
+    }
+   },
+   "p50": 13.293551979586482,
+   "p95": 67.7516248833853,
+   "spend": 1.7799182471,
+   "ledger_n": 44,
+   "ledger_success": 11,
+   "ledger_failure": 9,
+   "dedup": {
+    "n_eval": 5083,
+    "n_dup": 307,
+    "ours": 0.7753934191702432,
+    "jev": 0.7903469079939668
+   },
+   "recipe": "Round 2 (latency fix). Same weights as round 1 (uniform soup of 7 shared-init gte-modernbert two-head fine-tunes on ds+qwen(+haiku) soft labels + synthetic data). Changes: ONNX export with eager attention (SDPA export added per-layer IsNaN/Where masking), SmoothQuant alpha 0.75 on mlp/Wo (scale folded into the gate half of Wi), then full dynamic int8 (attention activation matmuls and head fp32). Thresholds re-chosen with the round-1 rule (bootstrap + window-smoothed F1 argmax on dev) on the new int8 dev probs. A 13-model soup was tried and was not better on dev.",
+   "v1_reused_spend": 0.48736750500000003,
+   "build_spend": 2.2672857521,
+   "jev_tokens": 372.4468713105077,
+   "jev_usd_per_m": 15.642768595041321,
+   "ours_usd_per_m": 0.5908245324260659,
+   "breakeven_decisions": 150630.75856967154
+  },
+  "banking77": {
+   "mode": "choice",
+   "n": 3076,
+   "metric": "accuracy",
+   "ours": 0.8608582574772432,
+   "ci": [
+    0.8494717165149546,
+    0.8732200910273081
+   ],
+   "jev": 0.7974642392717816,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.10436063242158207,
+   "ece_jev": 0.08622561768530557,
+   "brier_ours": 0.23486309872750435,
+   "brier_jev": 0.3090427828348505,
+   "heads": {
+    "answer": {
+     "metric": "accuracy",
+     "ours": 0.8608582574772432,
+     "ci": [
+      0.8494717165149546,
+      0.8732200910273081
+     ],
+     "jev": 0.7974642392717816
+    }
+   },
+   "p50": 11.641571472864598,
+   "p95": 19.194289296865453,
+   "spend": 0.9156034218,
+   "ledger_n": 40,
+   "ledger_success": 13,
+   "ledger_failure": 3,
+   "dedup": {
+    "n_eval": 3076,
+    "n_dup": 25,
+    "ours": 0.8597181252048509,
+    "jev": 0.7958046542117339
+   },
+   "recipe": "gte-modernbert full fine-tune (max_len 64, lr 3e-5, bs 32, <=5 epochs, best epoch by dev loss = 3), int8 dynamic ONNX. Trained on all 9,773 pool texts + 20 gold seeds with SOFT vote labels: deepseek-v4.1-flash and qwen3.7-flash label the whole pool with a batched prompt (50 queries/call) holding hand-written intent descriptions + decision rules + all 220 gold examples; where they disagree (840), gemini-3.1-flash-lite and deepseek-v4-pro also label and the soft target is the vote distribution. Dev (gold, but its 200 examples were in the labeling prompt, so optimistic): fp32 0.905, int8 0.895. C",
+   "build_spend": 0.9156034218,
+   "jev_tokens": 1031.6378413524058,
+   "jev_usd_per_m": 43.328789336801044,
+   "ours_usd_per_m": 0.5174031765717599,
+   "breakeven_decisions": 21386.913714337352
+  },
+  "clinc150": {
+   "mode": "choice",
+   "n": 5500,
+   "metric": "accuracy",
+   "ours": 0.934,
+   "ci": [
+    0.9269090909090909,
+    0.9405454545454546
+   ],
+   "jev": 0.8949090909090909,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.12061268569935454,
+   "ece_jev": 0.023980000000000085,
+   "brier_ours": 0.1885518821699084,
+   "brier_jev": 0.1627508181818182,
+   "heads": {
+    "answer": {
+     "metric": "accuracy",
+     "ours": 0.934,
+     "ci": [
+      0.9269090909090909,
+      0.9405454545454546
+     ],
+     "jev": 0.8949090909090909
+    }
+   },
+   "p50": 18.867654027417302,
+   "p95": 21.831677213776857,
+   "spend": 0.236894063,
+   "ledger_n": 19,
+   "ledger_success": 8,
+   "ledger_failure": 5,
+   "dedup": {
+    "n_eval": 5500,
+    "n_dup": 19,
+    "ours": 0.9339536580915891,
+    "jev": 0.8947272395548258
+   },
+   "recipe": "gte-modernbert full fine-tune (lr 5e-5, 4 epochs max, early stop on silver val -> epoch 3, max_len 64, bs 32, seed 0) on the whole training pool (15,030 minus an 8% stratified silver-val split = 13,818) labeled by deepseek-v4.1-flash with a batched prompt (20 utterances/request, hand-written intent descriptions + decision rules + the 20 seeds; dev agreement 0.965), plus 2,066 LLM-generated out-of-scope utterances (16 topics, kept only if the labeler also says oos). Post-hoc oos rule: predict oos when the best in-scope probability < 0.4 (chosen on dev+silver-val in-scope accuracy and oos recall",
+   "build_spend": 0.236894063,
+   "jev_tokens": 1458.1149090909091,
+   "jev_usd_per_m": 61.24082618181818,
+   "ours_usd_per_m": 0.8385624012185469,
+   "breakeven_decisions": 3921.9401421853177
+  },
+  "ag_news": {
+   "mode": "choice",
+   "n": 7600,
+   "metric": "accuracy",
+   "ours": 0.8930263157894737,
+   "ci": [
+    0.8857828947368421,
+    0.9000032894736842
+   ],
+   "jev": 0.885,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.057111359681738,
+   "ece_jev": 0.07698947368421052,
+   "brier_ours": 0.1723765041971423,
+   "brier_jev": 0.1912622763157895,
+   "heads": {
+    "answer": {
+     "metric": "accuracy",
+     "ours": 0.8930263157894737,
+     "ci": [
+      0.8857828947368421,
+      0.9000032894736842
+     ],
+     "jev": 0.885
+    }
+   },
+   "p50": 24.112123530358076,
+   "p95": 36.20907588046975,
+   "spend": 0.027354541,
+   "ledger_n": 8,
+   "ledger_success": 4,
+   "ledger_failure": 1,
+   "dedup": {
+    "n_eval": 7600,
+    "n_dup": 15,
+    "ours": 0.8930784442979565,
+    "jev": 0.8851680949241925
+   },
+   "recipe": "gte-modernbert full fine-tune (3 epochs max, lr 3e-5, bs 32, max_len 128, seed 0, early stopping on 10% held-out silver) on reused v1 deepseek-v4.1-flash labels from the plain v1 prompt (4,970 pool texts after dropping v2 seeds/dev uids). ONNX int8 (dynamic, per-channel). Chosen on dev: plain labels student 0.920 (2,500 texts: 0.925, flat learning curve, so no new labels bought), v1-seeded labels student 0.900; labeler dev agreement plain 0.905 / v2-seeded 0.905 / v2-seeded soft 0.910. int8 dev 0.915.",
+   "v1_reused_spend": 0.235494739,
+   "build_spend": 0.26284928,
+   "jev_tokens": 429.3367105263158,
+   "jev_usd_per_m": 18.032141842105265,
+   "ours_usd_per_m": 1.0716499346825812,
+   "breakeven_decisions": 15497.739183199352
+  },
+  "financial_phrasebank": {
+   "mode": "choice",
+   "n": 970,
+   "metric": "accuracy",
+   "ours": 0.7938144329896907,
+   "ci": [
+    0.7700773195876289,
+    0.8185824742268041
+   ],
+   "jev": 0.7309278350515463,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.042322232459009276,
+   "ece_jev": 0.1367938144329897,
+   "brier_ours": 0.2850198176873,
+   "brier_jev": 0.38300752577319586,
+   "heads": {
+    "answer": {
+     "metric": "accuracy",
+     "ours": 0.7938144329896907,
+     "ci": [
+      0.7700773195876289,
+      0.8185824742268041
+     ],
+     "jev": 0.7309278350515463
+    }
+   },
+   "p50": 16.414100013207644,
+   "p95": 24.87706068786792,
+   "spend": 0.022479431,
+   "ledger_n": 11,
+   "ledger_success": 3,
+   "ledger_failure": 4,
+   "dedup": {
+    "n_eval": 970,
+    "n_dup": 4,
+    "ours": 0.7950310559006211,
+    "jev": 0.7318840579710145
+   },
+   "recipe": "gte-modernbert full fine-tune (3 epochs max, lr 3e-5, bs 32, max_len 96, seed 1, early stopping on 10% held-out silver) on reused v1 deepseek-v4.1-flash labels from the v1 *seeded* prompt (20 v1 seed examples drawn from the training pool; 3,637 pool texts after dropping v2 seeds/dev uids). Served as ONNX int8 (dynamic, per-channel). Chosen on dev: label variants plain/seeded/agreement-filter x 2 seeds gave dev 0.84-0.865 (all within noise); seeded labels had the best mean (0.855). fp32 ONNX scored dev 0.86 but its CPU p95 was 57-69 ms on the shared machine, too close to the gate, so int8 (dev ",
+   "v1_reused_spend": 0.129997115,
+   "build_spend": 0.152476546,
+   "jev_tokens": 409.83092783505157,
+   "jev_usd_per_m": 17.212898969072164,
+   "ours_usd_per_m": 0.7295155561425619,
+   "breakeven_decisions": 9250.318468015314
+  },
+  "emotion": {
+   "mode": "choice",
+   "n": 2000,
+   "metric": "accuracy",
+   "ours": 0.8115,
+   "ci": [
+    0.7945,
+    0.8285125
+   ],
+   "jev": 0.585,
+   "verdict": "win",
+   "looks": 1,
+   "ece_ours": 0.10250894007086751,
+   "ece_jev": 0.279405,
+   "brier_ours": 0.3099793665653557,
+   "brier_jev": 0.672346,
+   "heads": {
+    "answer": {
+     "metric": "accuracy",
+     "ours": 0.8115,
+     "ci": [
+      0.7945,
+      0.8285125
+     ],
+     "jev": 0.585
+    }
+   },
+   "p50": 26.54880750924349,
+   "p95": 37.91846553212963,
+   "spend": 0.3792586335,
+   "ledger_n": 19,
+   "ledger_success": 9,
+   "ledger_failure": 6,
+   "dedup": {
+    "n_eval": 2000,
+    "n_dup": 11,
+    "ours": 0.8144796380090498,
+    "jev": 0.5867269984917044
+   },
+   "recipe": "New labels: deepseek-v4.1-flash with labeling guidance G1 (experiments/emotion/guidance.py: the gold label is the emotion category of the word attached to feel/feeling, ignoring negation/context, plus a word->category list) and the 20 v2 seeds as few-shot examples, on 10,000 pool texts (the 4,903 v1-labeled uids first, then random). Labeler dev agreement 0.785 (half B, never used to write the guidance: 0.73) vs 0.54 for seeds only and 0.49 plain. Student: gte-modernbert full fine-tune, lr 3e-5, bs 32, max 3 epochs (best 2), max_len 96, seed 0, early stopping on 10% held-out silver. Dev: 10k la",
+   "build_spend": 0.3792586335,
+   "jev_tokens": 347.1615,
+   "jev_usd_per_m": 14.580783,
+   "ours_usd_per_m": 1.1799470004108217,
+   "breakeven_decisions": 28301.117446077747
+  },
+  "stsb": {
+   "mode": "score",
+   "n": 1379,
+   "metric": "spearman",
+   "ours": 0.8934796549409775,
+   "ci": [
+    0.8811959970512254,
+    0.904833311781832
+   ],
+   "jev": 0.8899576628158185,
+   "verdict": "tie",
+   "looks": 2,
+   "ece_ours": null,
+   "ece_jev": null,
+   "brier_ours": null,
+   "brier_jev": null,
+   "heads": {
+    "answer": {
+     "metric": "spearman",
+     "ours": 0.8934796549409775,
+     "ci": [
+      0.8811959970512254,
+      0.904833311781832
+     ],
+     "jev": 0.8899576628158185
+    }
+   },
+   "p50": 19.737214024644345,
+   "p95": 35.2673731453251,
+   "spend": 2.5727033584,
+   "ledger_n": 61,
+   "ledger_success": 17,
+   "ledger_failure": 17,
+   "dedup": {
+    "n_eval": 1379,
+    "n_dup": 7,
+    "ours": 0.8928873574533032,
+    "jev": 0.8898200815945516
+   },
+   "recipe": "Round 2. Same labels/training recipe as round 1 (4-labeler averaged two-hot soft targets: gemini-3.1-flash-lite, claude-haiku-5.5, qwen3.7-flash, deepseek-v4.1-flash, batched 10/call with SemEval guidance; gte-modernbert full FT, sentence-swap augmentation, lr 3e-5, bs 32, max_len 128) plus 7,571 NEW training pairs scored by the same 4-labeler ensemble: 6,571 re-pairings of pool sentences (gte-modernbert nearest neighbours, stratified by the round-1 student's predicted score) and 1,000 LLM-generated partner sentences at controlled similarity levels (deepseek-flash, steered by pool sentences). ",
+   "build_spend": 2.5727033584,
+   "jev_tokens": 441.19158200290275,
+   "jev_usd_per_m": 18.530046444121915,
+   "ours_usd_per_m": 0.8772095122064153,
+   "breakeven_decisions": 145738.8049480406
+  },
+  "sst5": {
+   "mode": "score",
+   "n": 2210,
+   "metric": "argmax_accuracy",
+   "ours": 0.5828054298642534,
+   "ci": [
+    0.561527149321267,
+    0.6031787330316741
+   ],
+   "jev": 0.579185520361991,
+   "verdict": "tie",
+   "looks": 1,
+   "ece_ours": null,
+   "ece_jev": null,
+   "brier_ours": null,
+   "brier_jev": null,
+   "heads": {
+    "answer": {
+     "metric": "argmax_accuracy",
+     "ours": 0.5828054298642534,
+     "ci": [
+      0.561527149321267,
+      0.6031787330316741
+     ],
+     "jev": 0.579185520361991
+    }
+   },
+   "p50": 18.385271541774273,
+   "p95": 24.815165932523083,
+   "spend": 2.487977381,
+   "ledger_n": 50,
+   "ledger_success": 6,
+   "ledger_failure": 25,
+   "dedup": {
+    "n_eval": 2210,
+    "n_dup": 2,
+    "ours": 0.5833333333333334,
+    "jev": 0.5792572463768116
+   },
+   "recipe": "UltraBERT-150M (full FT, lr 2e-5, 3 epochs, bs 32, max_len 128, seed 1; early stopping/temperature on 400 held-out silver) trained on SOFT labels (per-level probability distributions) from deepseek/deepseek-v4.1-flash over the full SST-5 pool (7,924 train + 400 silver val). Labeling prompt: task spec + SST-convention guidance (experiments/sst5/guidance_v1.txt) + the 20 gold seeds as few-shot examples, distribution=True. Deployed as ONNX with partial dynamic int8 (all MatMuls quantised except MLP down_proj, attention-score MatMuls and the head, which stay fp32; full int8 collapses UltraBERT to ",
+   "build_spend": 2.487977381,
+   "jev_tokens": 347.24751131221717,
+   "jev_usd_per_m": 14.584395475113121,
+   "ours_usd_per_m": 0.8171231796344121,
+   "breakeven_decisions": 180716.79905808743
+  },
+  "toxigen": {
+   "mode": "score",
+   "n": 940,
+   "metric": "accuracy",
+   "ours": 0.8542553191489362,
+   "ci": [
+    0.8297872340425532,
+    0.8776595744680851
+   ],
+   "jev": 0.8776595744680851,
+   "verdict": "tie",
+   "looks": 1,
+   "ece_ours": 0.0903382549350933,
+   "ece_jev": 0.013851063829787237,
+   "brier_ours": 0.15421214239937192,
+   "brier_jev": 0.08737319148936169,
+   "heads": {
+    "toxic": {
+     "metric": "accuracy",
+     "ours": 0.8542553191489362,
+     "ci": [
+      0.8297872340425532,
+      0.8776595744680851
+     ],
+     "jev": 0.8776595744680851
+    },
+    "toxicity": {
+     "metric": "spearman",
+     "ours": 0.7899766850559441,
+     "ci": [
+      0.7612800415077821,
+      0.8144822568826812
+     ],
+     "jev": 0.8403125829655996
+    }
+   },
+   "p50": 28.575281496159732,
+   "p95": 32.1602285199333,
+   "spend": 2.1100738685,
+   "ledger_n": 36,
+   "ledger_success": 10,
+   "ledger_failure": 10,
+   "dedup": {
+    "n_eval": 940,
+    "n_dup": 177,
+    "ours": 0.8453473132372215,
+    "jev": 0.8794233289646134
+   },
+   "recipe": "Shared-encoder two-head student (gte-modernbert-base, CLS, one Linear(768,6): col0 toxic logit, cols1-5 toxicity softmax), fp32 ONNX. Trained 3 epochs (lr 3e-5, bs 32, max_len 64) on soft labels for 8,675 pool texts from deepseek-v4.1-flash with labeling guidance v1 (P(toxic)+5-level distribution in one call), mixed 2:1 with v1 silver hard labels (plain+seeded) where available; uniform weight soup of 3 seeds. toxic = E[toxicity]/4 >= 0.30 (threshold = max of 7-pt smoothed dev accuracy curve; E[toxicity] beat the toxic head on dev threshold-CV accuracy across 5 runs, 0.896 vs 0.877). int8 rejec",
+   "v1_reused_spend": 0.41981394000000005,
+   "build_spend": 2.5298878085,
+   "jev_tokens": 394.913829787234,
+   "jev_usd_per_m": 16.58638085106383,
+   "ours_usd_per_m": 1.2700125109404325,
+   "breakeven_decisions": 165175.43534602784
+  }
+ },
+ "total_spend": 21.740753343328,
+ "v1_spend": 5.7692,
+ "tally": {
+  "win": 8,
+  "tie": 4,
+  "loss": 0
+ },
+ "looks_total": 14,
+ "ledger_total": 318,
+ "future": [
+  "boolq",
+  "summeval",
+  "helpsteer2"
+ ],
+ "assumptions": {
+  "jev_usd_per_input_token": 4.2e-08,
+  "vcpu_hour_usd": 0.04,
+  "threads": 4
+ }
+}

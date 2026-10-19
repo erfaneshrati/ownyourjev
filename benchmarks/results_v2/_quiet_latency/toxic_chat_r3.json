@@ -1,0 +1,12 @@
+{
+ "task": "toxic_chat",
+ "model_dirs": [
+  "data/v2/toxic_chat/models/soupAB_sq0.75"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 13.293551979586482,
+ "cpu_p95_ms": 67.7516248833853,
+ "n_requests": 200
+}

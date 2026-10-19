@@ -1,0 +1,12 @@
+{
+ "task": "prompt_injections",
+ "model_dirs": [
+  "data/v2/prompt_injections/models/final_gte_e8_dup3"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 13.368476938921958,
+ "cpu_p95_ms": 40.75968123506751,
+ "n_requests": 200
+}

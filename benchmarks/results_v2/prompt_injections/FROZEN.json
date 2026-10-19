@@ -1,0 +1,18 @@
+{
+ "description": "gte-modernbert-base full fine-tune (lr 3e-5, 8 epochs, bs 16, max_len 256) on: 326 pool texts labeled by deepseek-v4.1-flash with the 20 v2 seeds + seed-derived guidelines (labeler dev acc 0.965 vs plain 0.895, seeded 0.945), 1,148 seed-steered synthetic EN/DE inputs whose intended label the same labeler confirmed, the 20 seeds, and the 200 dev gold examples x3. Dev estimate by 5-fold CV over dev with the identical recipe (dev fold held out): oof acc 0.965 torch / 0.950 int8 at 0.5 (vs 0.935 without dev in training). ONNX dynamic int8 per-channel. Threshold 0.5 (int8 oof flat 0.95 for 0.3-0.5).",
+ "heads": {
+  "answer": {
+   "probs": "data/v2/prompt_injections/eval_probs.npy",
+   "threshold": 0.5
+  }
+ },
+ "dev_metrics": {
+  "cv_oof_accuracy_int8": 0.95,
+  "cv_oof_accuracy_torch": 0.965,
+  "cv_oof_accuracy_no_dev_in_training": 0.935,
+  "labeler_dev_accuracy": 0.965,
+  "n": 200
+ },
+ "latency": "benchmarks/results_v2/prompt_injections/latency.json",
+ "label_spend_usd": 0.185
+}

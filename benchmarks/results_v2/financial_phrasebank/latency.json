@@ -1,0 +1,12 @@
+{
+ "task": "financial_phrasebank",
+ "model_dirs": [
+  "data/v2/financial_phrasebank/models/v1seeded_s1"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 19.041058025322855,
+ "cpu_p95_ms": 31.71518474118784,
+ "n_requests": 300
+}

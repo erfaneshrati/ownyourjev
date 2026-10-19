@@ -1,0 +1,12 @@
+{
+ "task": "helpsteer2",
+ "model_dirs": [
+  "/media/erfan/Data/ownyourjev/data/v2/helpsteer2/models/FINAL_r1_official_view"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 52.83111345488578,
+ "cpu_p95_ms": 62.17847155057825,
+ "n_requests": 100
+}

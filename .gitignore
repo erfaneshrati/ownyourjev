@@ -1,0 +1,33 @@
+# secrets
+.env
+# python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+# experiment artifacts
+data/
+runs/
+cache/
+*.db
+*.db-journal
+logs/
+benchmarks/results/**/model/
+benchmarks/results/**/*.pt
+benchmarks/results/**/*.onnx
+.ipynb_checkpoints/
+examples/*_out*
+benchmarks/results/**/best_model/
+benchmarks/results/**/*.safetensors
+benchmarks/results/**/*.npy
+runs/
+
+# profiling dumps
+**/onnxruntime_profile_*.json
+
+# prediction arrays (regenerable; referenced by FROZEN.json / BATCH1.json)
+*.npy

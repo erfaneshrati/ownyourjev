@@ -1,0 +1,12 @@
+{
+ "task": "clinc150",
+ "model_dirs": [
+  "data/v2/clinc150/models/E_lr5_q_only_Wi"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 20.443563000299037,
+ "cpu_p95_ms": 23.75303413718939,
+ "n_requests": 300
+}

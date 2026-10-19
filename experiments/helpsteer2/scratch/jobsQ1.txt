@@ -1,0 +1,2 @@
+P512_rlow_s0 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen --layers 22 --epochs 4 --fixed_epoch 4 --hc_only_override --budget 512 --bs 16 --seed 0 --hc_override hc_rlow_p0.jsonl
+P512_rlow_s1 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen --layers 22 --epochs 4 --fixed_epoch 4 --hc_only_override --budget 512 --bs 16 --seed 1 --hc_override hc_rlow_p0.jsonl

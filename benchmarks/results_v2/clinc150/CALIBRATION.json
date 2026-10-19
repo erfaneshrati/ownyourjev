@@ -1,0 +1,72 @@
+{
+ "description": "Dev predictions: the exact deployed artifact (data/v2/clinc150/models/E_lr5_q_only_Wi/model.int8.onnx, mlp.Wi-only int8) run through the predict_eval.py path (OnnxPredictor, batch 64, then apply_threshold tau=0.4) on the 200 gold dev examples; the deployed model never trained on dev, so these are out-of-sample. Verified: re-predicting the first 256 eval_inputs reproduces the frozen eval_probs.npy with max abs diff 0.0. Calibrated vector = the deployed (post-oos-rule) probability vector. Candidates restricted to none/temperature on dev (151 classes, 200 examples: per-class vector/isotonic not estimable); 5-fold CV NLL picks the method, refit on all 200 dev.",
+ "heads": {
+  "answer": {
+   "method": "none",
+   "params": {},
+   "dev_cv": {
+    "none": {
+     "ece": 0.054027757793664956,
+     "ece15": 0.05899908378720291,
+     "ace": 0.05255354180932045,
+     "brier": 0.08524189022229452,
+     "nll": 0.22301478891141777,
+     "mean_conf": 0.9321335296332837,
+     "accuracy": 0.965
+    },
+    "temperature": {
+     "ece": 0.052117476840348356,
+     "ece15": 0.052820011909879255,
+     "ace": 0.04693599561458387,
+     "brier": 0.07945984029555629,
+     "nll": 0.25673981506901616,
+     "mean_conf": 0.95117539254485,
+     "accuracy": 0.965
+    }
+   },
+   "dev_cv_all_methods_for_reference": {
+    "none": {
+     "ece": 0.054027757793664956,
+     "ece15": 0.05899908378720291,
+     "ace": 0.05255354180932045,
+     "brier": 0.08524189022229452,
+     "nll": 0.22301478891141777,
+     "mean_conf": 0.9321335296332837,
+     "accuracy": 0.965
+    },
+    "temperature": {
+     "ece": 0.052117476840348356,
+     "ece15": 0.052820011909879255,
+     "ace": 0.04693599561458387,
+     "brier": 0.07945984029555629,
+     "nll": 0.25673981506901616,
+     "mean_conf": 0.95117539254485,
+     "accuracy": 0.965
+    },
+    "vector": {
+     "ece": 0.03583676210107231,
+     "ece15": 0.05021459540075604,
+     "ace": 0.02904511791123755,
+     "brier": 0.07820714450365711,
+     "nll": 0.21551887303282535,
+     "mean_conf": 0.9591108820263737,
+     "accuracy": 0.96
+    },
+    "isotonic": {
+     "ece": 0.06867348913624059,
+     "ece15": 0.06867692732940592,
+     "ace": 0.07081031481420012,
+     "brier": 0.40275555881922054,
+     "nll": 2.09194930724861,
+     "mean_conf": 0.7219847474143861,
+     "accuracy": 0.66
+    }
+   },
+   "candidates": [
+    "none",
+    "temperature"
+   ],
+   "n_fit": 200
+  }
+ }
+}

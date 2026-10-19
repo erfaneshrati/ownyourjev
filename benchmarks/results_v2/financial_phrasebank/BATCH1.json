@@ -1,0 +1,54 @@
+{
+ "description": "Deployed model.int8.onnx via OnnxPredictor(threads=8), max_len 96, ONE text per call (batch size 1), dev and eval_inputs; otherwise identical to finalize_probs.py. Calibrator refit on batch-1 dev (out-of-sample: dev uids never trained on) by 5-fold CV NLL over argmax-preserving none/temperature; dev_cv also lists vector/isotonic for reference.",
+ "heads": {
+  "answer": {
+   "probs": "benchmarks/results_v2/financial_phrasebank/eval_probs_b1.npy",
+   "dev_probs": "benchmarks/results_v2/financial_phrasebank/dev_probs_b1.npy"
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "none",
+   "params": {},
+   "dev_cv": {
+    "none": {
+     "ece": 0.0337237204611301,
+     "ece15": 0.049427867680787996,
+     "ace": 0.03871485158801081,
+     "brier": 0.23740154030738256,
+     "nll": 0.40070233653814724,
+     "mean_conf": 0.8555889247357845,
+     "accuracy": 0.83
+    },
+    "temperature": {
+     "ece": 0.031727174068007825,
+     "ece15": 0.06070432178833161,
+     "ace": 0.04380420447198806,
+     "brier": 0.2374079551884968,
+     "nll": 0.40317601172512163,
+     "mean_conf": 0.8427547838162252,
+     "accuracy": 0.83
+    },
+    "vector": {
+     "ece": 0.04150780476543159,
+     "ece15": 0.0410758951490445,
+     "ace": 0.062250320136493856,
+     "brier": 0.23988798536814876,
+     "nll": 0.40786669348186066,
+     "mean_conf": 0.8424823865289153,
+     "accuracy": 0.84
+    },
+    "isotonic": {
+     "ece": 0.05622650090328475,
+     "ece15": 0.062002341422034514,
+     "ace": 0.06826273408998146,
+     "brier": 0.25255759694835356,
+     "nll": 0.6562810423750876,
+     "mean_conf": 0.8596300785972261,
+     "accuracy": 0.82
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

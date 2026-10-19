@@ -1,0 +1,4 @@
+R2_gen1k_s2 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --extra new_gen --seed 2
+R2_base_s4 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --seed 4 --save
+R2_gen1k_s3 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --extra new_gen --seed 3
+R2_base_s5 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --seed 5 --save

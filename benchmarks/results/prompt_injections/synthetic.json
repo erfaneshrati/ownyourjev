@@ -1,0 +1,118 @@
+{
+ "synthetic": {
+  "n_train": 829,
+  "label_balance": 0.5233441910966341,
+  "final": {
+   "accuracy": 0.5603448275862069,
+   "precision": 1.0,
+   "recall": 0.15,
+   "f1": 0.2608695652173913,
+   "auroc": 0.8910714285714287,
+   "auprc": 0.9129903991132522,
+   "ece": 0.37351627376922586,
+   "brier": 0.35670434404703205,
+   "nll": 1.46784537191902,
+   "positive_rate": 0.5172413793103449,
+   "primary": "accuracy",
+   "primary_value": 0.5603448275862069,
+   "ci95": [
+    0.47413793103448276,
+    0.646551724137931
+   ]
+  },
+  "recipe": {
+   "backbone": "ultrabert-embed",
+   "method": "full",
+   "lr": 1.3645099274084434e-05,
+   "epochs": 5,
+   "batch_size": 32,
+   "max_len": 256,
+   "warmup_frac": 0.1,
+   "weight_decay": 0.0,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.0,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 1,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "gpu_s": 15.597658395767212,
+  "overlap_with_jev": {
+   "n": 116,
+   "both_correct": 0.5517241379310345,
+   "both_wrong": 0.25,
+   "we_fix_jev_errors": 0.008620689655172414,
+   "we_break_jev_correct": 0.1896551724137931,
+   "jev_error_rate": 0.25862068965517243,
+   "share_of_jev_errors_we_fix": 0.03333333333333333
+  }
+ },
+ "synthetic_guided": {
+  "n_train": 878,
+  "label_balance": 0.5133196721311475,
+  "final": {
+   "accuracy": 0.7413793103448276,
+   "precision": 0.96875,
+   "recall": 0.5166666666666667,
+   "f1": 0.6739130434782609,
+   "auroc": 0.9519345238095238,
+   "auprc": 0.9594068600297051,
+   "ece": 0.1717902574565759,
+   "brier": 0.20602578035742194,
+   "nll": 0.7484141417310176,
+   "positive_rate": 0.5172413793103449,
+   "primary": "accuracy",
+   "primary_value": 0.7413793103448276,
+   "ci95": [
+    0.6551724137931034,
+    0.8189655172413793
+   ]
+  },
+  "recipe": {
+   "backbone": "ultrabert-embed",
+   "method": "full",
+   "lr": 1.3645099274084434e-05,
+   "epochs": 5,
+   "batch_size": 32,
+   "max_len": 256,
+   "warmup_frac": 0.1,
+   "weight_decay": 0.0,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.0,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 1,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "gpu_s": 23.760581731796265,
+  "overlap_with_jev": {
+   "n": 116,
+   "both_correct": 0.6206896551724138,
+   "both_wrong": 0.13793103448275862,
+   "we_fix_jev_errors": 0.1206896551724138,
+   "we_break_jev_correct": 0.1206896551724138,
+   "jev_error_rate": 0.25862068965517243,
+   "share_of_jev_errors_we_fix": 0.4666666666666667
+  }
+ }
+}

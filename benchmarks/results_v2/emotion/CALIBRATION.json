@@ -1,0 +1,70 @@
+{
+ "description": "Dev predictions: benchmarks/results_v2/emotion/dev_probs_deployed.npy, produced by the exact deployed artifact (fp32 ONNX data/v2/emotion/models/g1_10k_fp32/model.onnx via OnnxPredictor, threads 8, batch 64) in the same run that wrote the frozen eval_probs.npy; re-prediction of 128 dev + 128 test inputs matched exactly (max abs diff 0). The model trained only on LLM-labeled pool texts, never on dev texts (dev half A informed the labeling guidance only), so dev predictions are out-of-sample. Method chosen by select_calibrator (5-fold stratified CV on the 200 dev, lowest NLL) restricted to none/temperature, refit on all 200. Restriction justified on dev: only these keep the top-1 label equal to the deployed decision; vector scaling had lower CV NLL (0.561 vs 0.615) but moved 4% of dev argmaxes and fits a per-class bias for 'surprise' from 2 dev examples; isotonic OvR was worst on NLL (0.890). Full 4-method table in dev_cv_all_methods.",
+ "heads": {
+  "answer": {
+   "method": "temperature",
+   "params": {
+    "T": 1.6399172821378765
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.13408432453870778,
+     "ece15": 0.132281779050827,
+     "ace": 0.12550639063119892,
+     "brier": 0.32505139501649194,
+     "nll": 0.7337383262365702,
+     "mean_conf": 0.9251926538348197,
+     "accuracy": 0.8
+    },
+    "temperature": {
+     "ece": 0.04295801953348777,
+     "ece15": 0.06973151202848858,
+     "ace": 0.051000288279141964,
+     "brier": 0.3013951168719148,
+     "nll": 0.6150784272787431,
+     "mean_conf": 0.8223832545032854,
+     "accuracy": 0.8
+    }
+   },
+   "dev_cv_all_methods": {
+    "none": {
+     "ece": 0.13408432453870778,
+     "ece15": 0.132281779050827,
+     "ace": 0.12550639063119892,
+     "brier": 0.32505139501649194,
+     "nll": 0.7337383262365702,
+     "mean_conf": 0.9251926538348197,
+     "accuracy": 0.8
+    },
+    "temperature": {
+     "ece": 0.04295801953348777,
+     "ece15": 0.06973151202848858,
+     "ace": 0.051000288279141964,
+     "brier": 0.3013951168719148,
+     "nll": 0.6150784272787431,
+     "mean_conf": 0.8223832545032854,
+     "accuracy": 0.8
+    },
+    "vector": {
+     "ece": 0.031068043234976677,
+     "ece15": 0.03919742653266341,
+     "ace": 0.04306389965029253,
+     "brier": 0.2771865001839211,
+     "nll": 0.5611665198540229,
+     "mean_conf": 0.8318195349015665,
+     "accuracy": 0.81
+    },
+    "isotonic": {
+     "ece": 0.06652424954961719,
+     "ece15": 0.07526758487630836,
+     "ace": 0.07261177316117266,
+     "brier": 0.28576496219245184,
+     "nll": 0.8896651950690889,
+     "mean_conf": 0.8344456765536253,
+     "accuracy": 0.82
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

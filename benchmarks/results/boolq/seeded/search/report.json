@@ -1,0 +1,98 @@
+{
+ "selected": {
+  "stage": "L",
+  "backbone": "ultrabert",
+  "method": "full",
+  "n_train": 4482,
+  "config": {
+   "backbone": "ultrabert",
+   "method": "full",
+   "lr": null,
+   "epochs": 3,
+   "batch_size": 4,
+   "max_len": 1536,
+   "warmup_frac": 0.06,
+   "weight_decay": 0.01,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.0,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 4,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "val_loss": 0.509940505027771,
+  "val_metric": 0.7550200803212851,
+  "val_metrics": {
+   "accuracy": 0.7550200803212851,
+   "precision": 0.7777777777777778,
+   "recall": 0.8525641025641025,
+   "f1": 0.8134556574923547,
+   "auroc": 0.803909911772815,
+   "auprc": 0.8480704859397175,
+   "ece": 0.03536009104795246,
+   "brier": 0.16666673719224775,
+   "nll": 0.5099405502948746,
+   "positive_rate": 0.6265060240963856
+  },
+  "test_metrics": {
+   "accuracy": 0.792,
+   "precision": 0.8047722342733189,
+   "recall": 0.8840349483717236,
+   "f1": 0.8425435276305829,
+   "auroc": 0.8511065805284276,
+   "auprc": 0.8893202250310305,
+   "ece": 0.03931520054303109,
+   "brier": 0.1461273672560942,
+   "nll": 0.4575711879136297,
+   "positive_rate": 0.6295
+  },
+  "train_s": 292.47981572151184,
+  "wall_s": 294.0338923931122,
+  "best_epoch": 1,
+  "temperature": 1.0,
+  "seed": 0,
+  "key": "L|ultrabert|full|4482|0|"
+ },
+ "final_seeds": [],
+ "n_trials": 4,
+ "gpu_seconds_total": 543.1799063682556,
+ "learning_curves": {
+  "ultrabert/full": [
+   {
+    "n": 100,
+    "val": 0.6244979919678715,
+    "test": 0.6295,
+    "train_s": 15.697566747665405
+   },
+   {
+    "n": 500,
+    "val": 0.6184738955823293,
+    "test": 0.606,
+    "train_s": 49.9342257976532
+   },
+   {
+    "n": 2000,
+    "val": 0.6947791164658634,
+    "test": 0.734,
+    "train_s": 185.06829810142517
+   },
+   {
+    "n": 4482,
+    "val": 0.7550200803212851,
+    "test": 0.792,
+    "train_s": 292.47981572151184
+   }
+  ]
+ },
+ "best_by_setting": []
+}

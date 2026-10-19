@@ -1,0 +1,14 @@
+{
+ "task": "helpsteer2",
+ "model_dirs": [
+  "/media/erfan/Data/ownyourjev/data/v2/helpsteer2/models/FINAL_r1"
+ ],
+ "onnx": "model.int8.onnx",
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "pipeline": "experiments/helpsteer2/latency_mh.py (tokenise+truncate+forward+softmax, 5 heads, one encoder)",
+ "cpu_p50_ms": 45.32350553199649,
+ "cpu_p95_ms": 47.02644298668019,
+ "n_requests": 200
+}

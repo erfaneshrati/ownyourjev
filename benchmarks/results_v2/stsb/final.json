@@ -1,0 +1,83 @@
+{
+ "task": "stsb",
+ "n_eval": 1379,
+ "headline": {
+  "metric": "spearman",
+  "head": "answer",
+  "ours": 0.8934796549409775,
+  "ours_ci95": [
+   0.8811959970512254,
+   0.904833311781832
+  ],
+  "jev_same_examples": 0.8899576628158185,
+  "beats_jev": true
+ },
+ "heads": {
+  "answer": {
+   "spearman": 0.8934796549409775,
+   "pearson": 0.8982879933906975,
+   "kendall": 0.7262920088746455,
+   "mae": 0.5051861648772753,
+   "argmax_accuracy": 0.5569253081943437,
+   "argmax_mae": 0.5444162436548223,
+   "metric": "spearman",
+   "ci95": [
+    0.8811959970512254,
+    0.904833311781832
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "spearman": 0.8899576628158185,
+   "pearson": 0.8900071140727613,
+   "kendall": 0.7187442810606668,
+   "mae": 0.5558448150833938,
+   "argmax_accuracy": 0.5018129079042785,
+   "argmax_mae": 0.6070703408266861,
+   "metric": "spearman"
+  }
+ },
+ "latency": {
+  "task": "stsb",
+  "model_dirs": [
+   "data/v2/stsb/models/final_r2"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 19.801724003627896,
+  "cpu_p95_ms": 34.50989500270225,
+  "n_requests": 300
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "Round 2. Same labels/training recipe as round 1 (4-labeler averaged two-hot soft targets: gemini-3.1-flash-lite, claude-haiku-5.5, qwen3.7-flash, deepseek-v4.1-flash, batched 10/call with SemEval guidance; gte-modernbert full FT, sentence-swap augmentation, lr 3e-5, bs 32, max_len 128) plus 7,571 NEW training pairs scored by the same 4-labeler ensemble: 6,571 re-pairings of pool sentences (gte-modernbert nearest neighbours, stratified by the round-1 student's predicted score) and 1,000 LLM-generated partner sentences at controlled similarity levels (deepseek-flash, steered by pool sentences). Fixed 4 epochs on all silver (no early stopping), 3 runs sharing the same init (init seed 0) with data-order seeds 0/1/2, uniformly weight-averaged (model soup) into one model; ONNX selective int8 (MLP Wo + head kept fp32). Dev: soup 0.9121 (deployed ONNX) vs round-1 recipe seed mean 0.8968 (6 seeds): paired bootstrap +0.0153, 95% CI [+0.0038, +0.0281]; vs round-1 deployed best-of-4 seed model +0.0019 (CI [-0.010, +0.013]). Member seeds 0.910/0.911/0.910.",
+  "heads": {
+   "answer": {
+    "probs": "benchmarks/results_v2/stsb/eval_probs.npy"
+   }
+  },
+  "dev_metrics": {
+   "spearman_deployed_onnx": 0.9121,
+   "spearman_soup_fp32": 0.9111,
+   "member_seed_mean": 0.9105,
+   "round1_recipe_seed_mean": 0.8968,
+   "round1_deployed": 0.9102,
+   "paired_bootstrap_vs_round1_recipe": {
+    "diff": 0.0153,
+    "ci95": [
+     0.0038,
+     0.0281
+    ]
+   }
+  },
+  "model_dir": "data/v2/stsb/models/final_r2",
+  "latency": "benchmarks/results_v2/stsb/latency.json",
+  "label_spend_usd": 1.539
+ },
+ "scored_at": "2026-10-19T01:31:57",
+ "rerun_reason": "round 2: +7.6k new pairs (pool re-pairings + generated) scored by 4-labeler ensemble, shared-init 3-run weight soup; dev 0.912 vs round-1 recipe seed-mean 0.897, paired bootstrap +0.015 CI [+0.004,+0.028]"
+}

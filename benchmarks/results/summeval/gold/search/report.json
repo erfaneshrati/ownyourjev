@@ -1,0 +1,85 @@
+{
+ "selected": {
+  "stage": "L",
+  "backbone": "ultrabert",
+  "method": "lora",
+  "n_train": 1138,
+  "config": {
+   "backbone": "ultrabert",
+   "method": "lora",
+   "lr": null,
+   "epochs": 5,
+   "batch_size": 4,
+   "max_len": 1536,
+   "warmup_frac": 0.06,
+   "weight_decay": 0.01,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.0,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 4,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "val_loss": 1.3921115398406982,
+  "val_metric": 0.41705594332245605,
+  "val_metrics": {
+   "spearman": 0.41705594332245605,
+   "pearson": 0.4363706485441362,
+   "kendall": 0.2998279378864243,
+   "mae": 0.8540972577575495,
+   "argmax_accuracy": 0.3888888888888889,
+   "argmax_mae": 0.9656084656084656
+  },
+  "test_metrics": {
+   "spearman": 0.3629198624874802,
+   "pearson": 0.38660545768035126,
+   "kendall": 0.25774660968935686,
+   "mae": 0.8209386023498763,
+   "argmax_accuracy": 0.4125,
+   "argmax_mae": 0.8822916666666666,
+   "group_spearman": 0.5149793927249335
+  },
+  "train_s": 243.11575031280518,
+  "wall_s": 244.64355373382568,
+  "best_epoch": 5,
+  "temperature": 1.225289225578308,
+  "seed": 0,
+  "key": "L|ultrabert|lora|1138|0|"
+ },
+ "final_seeds": [],
+ "n_trials": 3,
+ "gpu_seconds_total": 357.65822744369507,
+ "learning_curves": {
+  "ultrabert/lora": [
+   {
+    "n": 100,
+    "val": 0.029372497175011614,
+    "test": 0.11412694609959975,
+    "train_s": 45.91864252090454
+   },
+   {
+    "n": 500,
+    "val": 0.07408589028415856,
+    "test": 0.20749519464191613,
+    "train_s": 68.62383460998535
+   },
+   {
+    "n": 1138,
+    "val": 0.41705594332245605,
+    "test": 0.5149793927249335,
+    "train_s": 243.11575031280518
+   }
+  ]
+ },
+ "best_by_setting": []
+}

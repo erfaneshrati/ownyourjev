@@ -1,0 +1,37 @@
+{
+ "description": "Round 1. One gte-modernbert-base encoder (22 layers) with 5 score heads (one pass for all five attributes), input = [CLS] 'prompt <n> response <m> lines <k>' [SEP] prompt head+tail [SEP] response head+tail [SEP] truncated to 128 tokens (keeps the response). Trained 3 epochs (lr 3e-5, bs 32, ordinal-Gaussian targets sigma 0.6) on 7,338 deepseek-v4.1-flash hard labels (4,938 v1 silver, 2,400 new, v1 prompt, no seeds) + 220 gold (200 dev + 20 seeds, weight 5). Post-processing: helpfulness and correctness both output the mean of their two expected scores. ONNX int8 dynamic per-channel; mlp.Wo of layers 4/9/11/15 and the head kept fp32. Dev evidence: flash-only students 0.364/0.363 (2 seeds), +h/c blend 0.373/0.376; adding gold estimated by 5-fold CV on dev: 0.388 (blend). qwen labels (20k) and merged labels hurt the student (0.28-0.34); L18 -0.04; degraded synthetic pairs -0.035.",
+ "heads": {
+  "helpfulness": {
+   "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_helpfulness.npy"
+  },
+  "correctness": {
+   "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_correctness.npy"
+  },
+  "coherence": {
+   "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_coherence.npy"
+  },
+  "complexity": {
+   "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_complexity.npy"
+  },
+  "verbosity": {
+   "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_verbosity.npy"
+  }
+ },
+ "dev_metrics": {
+  "estimate": "5-fold CV on dev (model for each fold trained without that fold), with h/c blend",
+  "mean_spearman": 0.388,
+  "helpfulness": 0.291,
+  "correctness": 0.305,
+  "coherence": 0.21,
+  "complexity": 0.57,
+  "verbosity": 0.564,
+  "no_gold_models_dev_mean_blend": [
+   0.373,
+   0.376
+  ]
+ },
+ "latency": "benchmarks/results_v2/helpsteer2/latency.json",
+ "label_spend_usd": 1.444,
+ "model_dir": "data/v2/helpsteer2/models/FINAL_r1",
+ "code": "experiments/helpsteer2 (train_dual.py --gold all, mh.py, postproc.py, predict.py, latency_mh.py)"
+}

@@ -1,0 +1,33 @@
+{
+ "description": "Shared gte-modernbert encoder with two sigmoid heads (toxic, jailbreak), full fine-tune on the whole pool (4,862) with soft labels = mean of deepseek-v4.1-flash + qwen3.7-flash (per-example, guidance v2 + 20 seeds) [+ claude-haiku-5.5 batched for config B], plus LLM-synthetic positives/hard negatives steered by pool prompts and relabeled by the ensemble; uniform weight soup of 7 fine-tunes (3 seeds config A, 4 seeds config B); ONNX int8 with mlp/Wo kept fp32. Thresholds chosen on dev (bootstrap + window-smoothed F1 argmax) on the int8 model's dev probabilities. Chosen over soupA/soupB (tied on dev) for averaging the most seeds.",
+ "heads": {
+  "toxic": {
+   "probs": "data/v2/toxic_chat/runs/soupAB/eval_probs_toxic.npy",
+   "threshold": 0.35
+  },
+  "jailbreak": {
+   "probs": "data/v2/toxic_chat/runs/soupAB/eval_probs_jailbreak.npy",
+   "threshold": 0.6
+  }
+ },
+ "dev_metrics": {
+  "toxic": {
+   "f1_at_threshold": 0.857,
+   "smoothed_boot_f1": 0.841,
+   "cv_threshold_rule_f1": 0.833,
+   "ap": 0.871,
+   "f1_at_0.5": 0.69
+  },
+  "jailbreak": {
+   "f1_at_threshold": 0.727,
+   "cv_threshold_rule_f1": 0.554,
+   "ap": 0.824
+  },
+  "n_dev": 200,
+  "dev_toxic_pos": 16,
+  "dev_jailbreak_pos": 7
+ },
+ "latency": "benchmarks/results_v2/toxic_chat/latency.json",
+ "label_spend_usd": 1.04,
+ "model_dir": "data/v2/toxic_chat/models/soupAB"
+}

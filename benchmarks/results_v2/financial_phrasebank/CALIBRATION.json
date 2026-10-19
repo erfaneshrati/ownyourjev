@@ -1,0 +1,48 @@
+{
+ "description": "Calibrator fitted on the 200 gold dev examples using the deployed int8 ONNX model's own dev predictions (model.int8.onnx via OnnxPredictor, identical to finalize_probs.py; re-predicted, max |diff| 0.0 vs saved dev probs and vs the first 256 frozen test probs). Dev uids were dropped from training, no dev text in the train pool, so dev predictions are out-of-sample. dev_cv covers none/temperature/vector/isotonic (5-fold stratified CV); selection restricted to argmax-preserving methods (none, temperature) because vector flips 11/200 dev top labels (calibrated probs would contradict the frozen decisions) for a CV NLL gain of 0.004 (within fold-seed noise) and isotonic is far worse; lowest CV NLL among those = none.",
+ "heads": {
+  "answer": {
+   "method": "none",
+   "params": {},
+   "dev_cv": {
+    "none": {
+     "ece": 0.03992746859788898,
+     "ece15": 0.0515202483534813,
+     "ace": 0.04639122217893601,
+     "brier": 0.23951225212814278,
+     "nll": 0.41384126484903905,
+     "mean_conf": 0.8497401317954063,
+     "accuracy": 0.85
+    },
+    "temperature": {
+     "ece": 0.044863282384247236,
+     "ece15": 0.06097700285603625,
+     "ace": 0.04903375978160458,
+     "brier": 0.24074327852127544,
+     "nll": 0.41667498724117186,
+     "mean_conf": 0.8444153455430192,
+     "accuracy": 0.85
+    },
+    "vector": {
+     "ece": 0.04971892615472753,
+     "ece15": 0.06344065241230118,
+     "ace": 0.05581627197572801,
+     "brier": 0.23071708009286646,
+     "nll": 0.40944168509762624,
+     "mean_conf": 0.8512112462176552,
+     "accuracy": 0.845
+    },
+    "isotonic": {
+     "ece": 0.070104876985935,
+     "ece15": 0.07367327794118066,
+     "ace": 0.06357837408342178,
+     "brier": 0.23720313081323696,
+     "nll": 0.6502424246439744,
+     "mean_conf": 0.8662440932370769,
+     "accuracy": 0.86
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

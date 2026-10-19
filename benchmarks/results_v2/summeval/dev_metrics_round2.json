@@ -1,0 +1,31 @@
+{
+ "metric": "group_spearman per source document, mean of 4 dims; dev = 204 gold / 14 docs never trained on",
+ "deployed_int8_fold_models_mean": 0.537150933879833,
+ "deployed_int8_per_fold": [
+  0.5294,
+  0.552,
+  0.5397,
+  0.5326,
+  0.5319
+ ],
+ "per_dim": {
+  "coherence": 0.6819372265925321,
+  "consistency": 0.442652852225401,
+  "fluency": 0.4452995418449984,
+  "relevance": 0.578714114856401
+ },
+ "round1_deployed_mean": 0.500405617724354,
+ "paired_bootstrap_vs_round1": {
+  "diff": 0.036745316155479046,
+  "ci95": [
+   0.011555854295137117,
+   0.06599975656616987
+  ],
+  "p_diff_le_0": 0.0016
+ },
+ "selection_fold0_holdout_3seeds": [
+  0.538,
+  0.547,
+  0.548
+ ]
+}

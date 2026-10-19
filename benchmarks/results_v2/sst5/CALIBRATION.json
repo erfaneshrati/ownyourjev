@@ -1,0 +1,50 @@
+{
+ "description": "sst5/answer: dev probs = deployed partial-int8 ONNX (data/v2/sst5/models/final/model.int8.onnx) run with the predict_final.py path (OnnxPredictor, contiguous batches of 32) on the 200 gold dev examples; the model never trained on dev (ub_s1, gold_fold=None), so these are out-of-sample. Reproduces frozen dev_probs.npy exactly and frozen eval_probs.npy exactly (diff 0.0) on 4 eval batches with the same batching. Method chosen by ownyourjev.calibration.select_calibrator (5-fold stratified CV NLL, seed 0) over none/temperature/vector/isotonic, refit on all 200 dev examples. Gold = score rounded to nearest of 5 levels.",
+ "heads": {
+  "answer": {
+   "method": "temperature",
+   "params": {
+    "T": 1.4838468650103396
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.1377857366204262,
+     "ece15": 0.11727525264024737,
+     "ace": 0.12918966740369797,
+     "brier": 0.5563432989907277,
+     "nll": 1.0128420592516432,
+     "mean_conf": 0.704466105401516,
+     "accuracy": 0.6
+    },
+    "temperature": {
+     "ece": 0.04855017944735724,
+     "ece15": 0.05639196570371867,
+     "ace": 0.07683083631446985,
+     "brier": 0.5388052710403257,
+     "nll": 0.961869947276061,
+     "mean_conf": 0.6044535566981815,
+     "accuracy": 0.6
+    },
+    "vector": {
+     "ece": 0.046872345313530135,
+     "ece15": 0.04641703103244416,
+     "ace": 0.07142453989514592,
+     "brier": 0.5384612390855444,
+     "nll": 0.9646687364890008,
+     "mean_conf": 0.6097555332499976,
+     "accuracy": 0.615
+    },
+    "isotonic": {
+     "ece": 0.08010651257768593,
+     "ece15": 0.0833746196158441,
+     "ace": 0.11681936529241532,
+     "brier": 0.5473863473358357,
+     "nll": 1.2202075106681627,
+     "mean_conf": 0.6481881138182587,
+     "accuracy": 0.585
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

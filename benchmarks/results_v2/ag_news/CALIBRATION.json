@@ -1,0 +1,84 @@
+{
+ "description": "Dev predictions from the exact deployed artifact (data/v2/ag_news/models/v1plain_5k/model.int8.onnx via ownyourjev.export.OnnxPredictor, same batching as finalize_probs.py). The model never trained on dev or seeds (training data = v1 plain silver labels with seed/dev uids dropped; add_seeds=false). Verified: re-predicted 256 test inputs (4 batches of 64 aligned as in finalize_probs.py) match eval_probs.npy exactly (max abs diff 0.0); dev re-prediction matches dev_probs_deployed.npy to 0.00e+00. Method restricted to argmax-preserving none/temperature (uniform rule for Choice heads), chosen by 5-fold CV NLL on the 200 gold dev examples (select_calibrator), refit on all dev.",
+ "heads": {
+  "answer": {
+   "method": "temperature",
+   "params": {
+    "T": 1.5138369700413825
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.04781659871339802,
+     "ece15": 0.05517655938863757,
+     "ace": 0.04900035649538042,
+     "brier": 0.15085076800698793,
+     "nll": 0.35889515737423977,
+     "mean_conf": 0.9567979100346565,
+     "accuracy": 0.915
+    },
+    "temperature": {
+     "ece": 0.033891138627696445,
+     "ece15": 0.027578720280577194,
+     "ace": 0.03158889355046105,
+     "brier": 0.14729017342773706,
+     "nll": 0.31542389802177623,
+     "mean_conf": 0.908949078828351,
+     "accuracy": 0.915
+    }
+   },
+   "dev_raw_in_sample": {
+    "ece": 0.04781659871339802,
+    "ece15": 0.05517655938863757,
+    "ace": 0.04900035649538042,
+    "brier": 0.15085076800698793,
+    "nll": 0.35889515737423977,
+    "mean_conf": 0.9567979100346565,
+    "accuracy": 0.915
+   },
+   "n_fit": 200,
+   "dev_probs": "benchmarks/results_v2/ag_news/dev_probs_deployed_answer.npy",
+   "dev_cv_unrestricted": {
+    "none": {
+     "ece": 0.04781659871339802,
+     "ece15": 0.05517655938863757,
+     "ace": 0.04900035649538042,
+     "brier": 0.15085076800698793,
+     "nll": 0.35889515737423977,
+     "mean_conf": 0.9567979100346565,
+     "accuracy": 0.915
+    },
+    "temperature": {
+     "ece": 0.033891138627696445,
+     "ece15": 0.027578720280577194,
+     "ace": 0.03158889355046105,
+     "brier": 0.14729017342773706,
+     "nll": 0.31542389802177623,
+     "mean_conf": 0.908949078828351,
+     "accuracy": 0.915
+    },
+    "vector": {
+     "ece": 0.04152200216319018,
+     "ece15": 0.04185045473383189,
+     "ace": 0.02987927972023088,
+     "brier": 0.1436090879095029,
+     "nll": 0.30622474406237743,
+     "mean_conf": 0.9125025525399093,
+     "accuracy": 0.915
+    },
+    "isotonic": {
+     "ece": 0.062226454943208366,
+     "ece15": 0.04699925483010608,
+     "ace": 0.05938486552050249,
+     "brier": 0.16701302223124945,
+     "nll": 0.537699917946448,
+     "mean_conf": 0.926733199878386,
+     "accuracy": 0.9
+    }
+   },
+   "methods_allowed": [
+    "none",
+    "temperature"
+   ]
+  }
+ }
+}

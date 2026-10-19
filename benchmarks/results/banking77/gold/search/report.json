@@ -1,0 +1,90 @@
+{
+ "selected": {
+  "stage": "L",
+  "backbone": "ultrabert-embed",
+  "method": "frozen",
+  "n_train": 4482,
+  "config": {
+   "backbone": "ultrabert-embed",
+   "method": "frozen",
+   "lr": null,
+   "epochs": 0,
+   "batch_size": 16,
+   "max_len": 256,
+   "warmup_frac": 0.06,
+   "weight_decay": 0.01,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.0,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 1,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "val_loss": 0.26148542761802673,
+  "val_metric": 0.927710843373494,
+  "val_metrics": {
+   "accuracy": 0.927710843373494,
+   "macro_f1": 0.9276419188740768,
+   "ece": 0.018721868444877394,
+   "brier": 0.10867307407485242,
+   "mean_top_prob": 0.9111755733568985,
+   "nll": 0.26148545630610864
+  },
+  "test_metrics": {
+   "accuracy": 0.939,
+   "macro_f1": 0.9392870140933898,
+   "ece": 0.007943249404430456,
+   "brier": 0.09989856975107146,
+   "mean_top_prob": 0.9322419708967209,
+   "nll": 0.24093868400962176
+  },
+  "train_s": 29.837640285491943,
+  "wall_s": 31.585371494293213,
+  "best_epoch": 0,
+  "temperature": 0.8911188244819641,
+  "seed": 0,
+  "key": "L|ultrabert-embed|frozen|4482|0|"
+ },
+ "final_seeds": [],
+ "n_trials": 4,
+ "gpu_seconds_total": 86.9826877117157,
+ "learning_curves": {
+  "ultrabert-embed/frozen": [
+   {
+    "n": 100,
+    "val": 0.5120481927710844,
+    "test": 0.5045,
+    "train_s": 12.03609037399292
+   },
+   {
+    "n": 500,
+    "val": 0.7951807228915663,
+    "test": 0.784,
+    "train_s": 20.425543069839478
+   },
+   {
+    "n": 2000,
+    "val": 0.9096385542168675,
+    "test": 0.919,
+    "train_s": 24.683413982391357
+   },
+   {
+    "n": 4482,
+    "val": 0.927710843373494,
+    "test": 0.939,
+    "train_s": 29.837640285491943
+   }
+  ]
+ },
+ "best_by_setting": []
+}

@@ -1,0 +1,23 @@
+{
+ "description": "gte-modernbert full fine-tune (3 epochs max, lr 3e-5, bs 32, max_len 96, seed 1, early stopping on 10% held-out silver) on reused v1 deepseek-v4.1-flash labels from the v1 *seeded* prompt (20 v1 seed examples drawn from the training pool; 3,637 pool texts after dropping v2 seeds/dev uids). Served as ONNX int8 (dynamic, per-channel). Chosen on dev: label variants plain/seeded/agreement-filter x 2 seeds gave dev 0.84-0.865 (all within noise); seeded labels had the best mean (0.855). fp32 ONNX scored dev 0.86 but its CPU p95 was 57-69 ms on the shared machine, too close to the gate, so int8 (dev 0.85, p95 32 ms) was frozen.",
+ "heads": {
+  "answer": {
+   "probs": "benchmarks/results_v2/financial_phrasebank/eval_probs.npy"
+  }
+ },
+ "dev_metrics": {
+  "model_dir": "data/v2/financial_phrasebank/models/v1seeded_s1",
+  "onnx": "data/v2/financial_phrasebank/models/v1seeded_s1/model.int8.onnx",
+  "dev_accuracy": 0.85,
+  "dev_macro_f1": 0.8215467357817937,
+  "dev_A": 0.83,
+  "dev_B": 0.87,
+  "eval_shape": [
+   970,
+   3
+  ]
+ },
+ "latency": "benchmarks/results_v2/financial_phrasebank/latency.json",
+ "label_spend_usd": 0.0225,
+ "model_dir": "data/v2/financial_phrasebank/models/v1seeded_s1"
+}

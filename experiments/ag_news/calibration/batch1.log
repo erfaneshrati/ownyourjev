@@ -1,0 +1,17 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+dev 0 0s
+eval 0 0s
+eval 1000 203s
+eval 2000 315s
+eval 3000 408s
+eval 4000 489s
+eval 5000 551s
+eval 6000 582s
+eval 7000 614s
+INFO {"repeat_max_diff": 0.0, "dev_acc_b1": 0.915, "dev_acc_batched": 0.915, "dev_flips": 2, "dev_max_abs_diff": 0.521755576133728, "eval_flips_vs_frozen": 114, "eval_max_abs_diff": 0.5395482778549194}
+CAL {'method': 'temperature', 'params': {'T': 1.5747439366041582}}
+none         nll=0.3772 ece=0.0617 ace=0.0514 brier=0.1496 conf=0.955
+temperature  nll=0.3252 ece=0.0346 ace=0.0452 brier=0.1490 conf=0.905
+vector       nll=0.3144 ece=0.0482 ace=0.0362 brier=0.1440 conf=0.910
+isotonic     nll=0.4642 ece=0.0565 ace=0.0627 brier=0.1517 conf=0.918
+DONE

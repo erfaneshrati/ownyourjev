@@ -1,0 +1,82 @@
+{
+ "fold0": {
+  "int8": {
+   "coherence": 0.7043,
+   "consistency": 0.4338,
+   "fluency": 0.4653,
+   "relevance": 0.567,
+   "mean": 0.5426
+  },
+  "fp32": {
+   "coherence": 0.6933,
+   "consistency": 0.4377,
+   "fluency": 0.4649,
+   "relevance": 0.5769,
+   "mean": 0.5432
+  }
+ },
+ "fold1": {
+  "int8": {
+   "coherence": 0.6814,
+   "consistency": 0.398,
+   "fluency": 0.4445,
+   "relevance": 0.5864,
+   "mean": 0.5276
+  },
+  "fp32": {
+   "coherence": 0.6893,
+   "consistency": 0.4184,
+   "fluency": 0.4366,
+   "relevance": 0.5866,
+   "mean": 0.5327
+  }
+ },
+ "fold2": {
+  "int8": {
+   "coherence": 0.6856,
+   "consistency": 0.4285,
+   "fluency": 0.4285,
+   "relevance": 0.5689,
+   "mean": 0.5279
+  },
+  "fp32": {
+   "coherence": 0.7027,
+   "consistency": 0.4095,
+   "fluency": 0.4198,
+   "relevance": 0.5631,
+   "mean": 0.5237
+  }
+ },
+ "fold3": {
+  "int8": {
+   "coherence": 0.6909,
+   "consistency": 0.4418,
+   "fluency": 0.4606,
+   "relevance": 0.5646,
+   "mean": 0.5395
+  },
+  "fp32": {
+   "coherence": 0.6933,
+   "consistency": 0.4389,
+   "fluency": 0.4636,
+   "relevance": 0.5751,
+   "mean": 0.5427
+  }
+ },
+ "fold4": {
+  "int8": {
+   "coherence": 0.6959,
+   "consistency": 0.4265,
+   "fluency": 0.4243,
+   "relevance": 0.6021,
+   "mean": 0.5372
+  },
+  "fp32": {
+   "coherence": 0.6801,
+   "consistency": 0.4352,
+   "fluency": 0.4383,
+   "relevance": 0.611,
+   "mean": 0.5412
+  }
+ }
+}

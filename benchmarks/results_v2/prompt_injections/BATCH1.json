@@ -1,0 +1,58 @@
+{
+ "description": "Batch-1 recompute (one text per OnnxPredictor.probs call, same int8 artifacts, preprocessing, threads=8). Test: deployed final_gte_e8_dup3/model.int8.onnx on protocol.eval_inputs. Dev: out-of-fold, each of the 5 CV fold int8 models (identical recipe, dev fold held out) on its held-out fold. Calibrator refit by select_calibrator (5-fold CV NLL) on the batch-1 dev OOF probs.",
+ "heads": {
+  "answer": {
+   "probs": "data/v2/prompt_injections/eval_probs_b1.npy",
+   "dev_probs": "data/v2/prompt_injections/dev_probs_b1.npy"
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "platt",
+   "params": {
+    "a": 0.7497617892284869,
+    "b": 0.5130825722742705
+   }
+  }
+ },
+ "dev_cv": {
+  "answer": {
+   "none": {
+    "ece": 0.02844556510448452,
+    "ece15": 0.04339070051908493,
+    "ace": 0.03437882393598558,
+    "brier": 0.04010523866101602,
+    "nll": 0.15559605395625342,
+    "mean_conf": 0.9684455651044845,
+    "accuracy": 0.94
+   },
+   "temperature": {
+    "ece": 0.025264025432995586,
+    "ece15": 0.0325434783247106,
+    "ace": 0.023388318521704136,
+    "brier": 0.03889498507209848,
+    "nll": 0.1551241087633012,
+    "mean_conf": 0.9485460186596646,
+    "accuracy": 0.94
+   },
+   "platt": {
+    "ece": 0.016991919133315644,
+    "ece15": 0.03342291293815115,
+    "ace": 0.020335657466245535,
+    "brier": 0.03805055584707488,
+    "nll": 0.15300095338547684,
+    "mean_conf": 0.9513988904450439,
+    "accuracy": 0.95
+   },
+   "isotonic": {
+    "ece": 0.024476356528761754,
+    "ece15": 0.027607181240697977,
+    "ace": 0.02275912801040735,
+    "brier": 0.03813926011852749,
+    "nll": 0.2263888584880781,
+    "mean_conf": 0.9619763565287619,
+    "accuracy": 0.955
+   }
+  }
+ }
+}

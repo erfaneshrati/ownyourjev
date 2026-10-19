@@ -1,0 +1,90 @@
+{
+ "selected": {
+  "stage": "L",
+  "backbone": "ultrabert",
+  "method": "lora",
+  "n_train": 4482,
+  "config": {
+   "backbone": "ultrabert",
+   "method": "lora",
+   "lr": 0.00022898514604770395,
+   "epochs": 3,
+   "batch_size": 16,
+   "max_len": 256,
+   "warmup_frac": 0.06,
+   "weight_decay": 0.01,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.5,
+   "lora_r": 32,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 1,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "val_loss": 0.8844627141952515,
+  "val_metric": 0.9040482284269497,
+  "val_metrics": {
+   "spearman": 0.9040482284269497,
+   "pearson": 0.9173301920002667,
+   "kendall": 0.7786472977612293,
+   "mae": 0.4751806456498506,
+   "argmax_accuracy": 0.6104417670682731,
+   "argmax_mae": 0.42771084337349397
+  },
+  "test_metrics": {
+   "spearman": 0.8815983885768292,
+   "pearson": 0.8920022822364487,
+   "kendall": 0.7129759604912135,
+   "mae": 0.5264986514844929,
+   "argmax_accuracy": 0.5569253081943437,
+   "argmax_mae": 0.5517403915881073
+  },
+  "train_s": 161.4072585105896,
+  "wall_s": 162.97124314308167,
+  "best_epoch": 3,
+  "temperature": 1.0424025058746338,
+  "seed": 0,
+  "key": "L|ultrabert|lora|4482|0|"
+ },
+ "final_seeds": [],
+ "n_trials": 4,
+ "gpu_seconds_total": 324.2275836467743,
+ "learning_curves": {
+  "ultrabert/lora": [
+   {
+    "n": 100,
+    "val": 0.3440575907242363,
+    "test": 0.29155510087951575,
+    "train_s": 7.748088598251343
+   },
+   {
+    "n": 500,
+    "val": 0.8922887844381509,
+    "test": 0.8775292679071058,
+    "train_s": 48.88352847099304
+   },
+   {
+    "n": 2000,
+    "val": 0.8973169447119336,
+    "test": 0.8850451339862632,
+    "train_s": 106.18870806694031
+   },
+   {
+    "n": 4482,
+    "val": 0.9040482284269497,
+    "test": 0.8815983885768292,
+    "train_s": 161.4072585105896
+   }
+  ]
+ },
+ "best_by_setting": []
+}

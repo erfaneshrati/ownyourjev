@@ -1,0 +1,49 @@
+{
+ "description": "Dev predictions = out-of-fold int8 ONNX probabilities from the 5-fold CV over dev (i4_cv.py gte_e8 dup3, int8 via i5_final.py; data/v2/prompt_injections/oof_cv_gte_e8_dup3_int8.npy): each fold model used the identical deployed recipe (pool+synth+seeds + the other 4 dev folds x3), exported to dynamic int8 ONNX exactly like the deployed model, and predicted its held-out dev fold. Re-predicted all 200 from the fold int8 files: exact match. Calibrator chosen by select_calibrator (5-fold CV NLL) on these 200 and refit on all of them.",
+ "heads": {
+  "answer": {
+   "method": "none",
+   "params": {},
+   "dev_cv": {
+    "none": {
+     "ece": 0.016984971612691885,
+     "ece15": 0.026238685399293832,
+     "ace": 0.021653856784105325,
+     "brier": 0.03408478617814752,
+     "nll": 0.13610090908423866,
+     "mean_conf": 0.9567380373179912,
+     "accuracy": 0.95
+    },
+    "temperature": {
+     "ece": 0.00875079302625004,
+     "ece15": 0.029671406660861016,
+     "ace": 0.025581724117059168,
+     "brier": 0.035355016989330405,
+     "nll": 0.15168227357412342,
+     "mean_conf": 0.9501639961505153,
+     "accuracy": 0.95
+    },
+    "platt": {
+     "ece": 0.028298952997620974,
+     "ece15": 0.031874817804673446,
+     "ace": 0.02704792000615068,
+     "brier": 0.035609023422777365,
+     "nll": 0.15545357453401512,
+     "mean_conf": 0.9502221643856976,
+     "accuracy": 0.95
+    },
+    "isotonic": {
+     "ece": 0.027761285341178246,
+     "ece15": 0.028959030995378214,
+     "ace": 0.02616487528087652,
+     "brier": 0.03879732205218821,
+     "nll": 0.22412200862638446,
+     "mean_conf": 0.9639590309953783,
+     "accuracy": 0.945
+    }
+   },
+   "n_fit": 200,
+   "dev_probs": "benchmarks/results_v2/prompt_injections/dev_probs_deployed_answer.npy"
+  }
+ }
+}

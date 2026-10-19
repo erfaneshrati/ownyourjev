@@ -1,0 +1,86 @@
+{
+ "task": "prompt_injections",
+ "n_eval": 116,
+ "headline": {
+  "metric": "accuracy",
+  "head": "answer",
+  "ours": 0.9568965517241379,
+  "ours_ci95": [
+   0.9224137931034483,
+   0.9913793103448276
+  ],
+  "jev_same_examples": 0.7413793103448276,
+  "beats_jev": true
+ },
+ "heads": {
+  "answer": {
+   "accuracy": 0.9568965517241379,
+   "precision": 1.0,
+   "recall": 0.9166666666666666,
+   "f1": 0.9565217391304348,
+   "auroc": 0.9979166666666667,
+   "auprc": 0.9981518817204301,
+   "ece": 0.020003224498239137,
+   "brier": 0.031651392761561155,
+   "nll": 0.11161790850649317,
+   "positive_rate": 0.5172413793103449,
+   "metric": "accuracy",
+   "ci95": [
+    0.9224137931034483,
+    0.9913793103448276
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "accuracy": 0.7413793103448276,
+   "precision": 1.0,
+   "recall": 0.5,
+   "f1": 0.6666666666666666,
+   "auroc": 0.9822916666666667,
+   "auprc": 0.9806700425488696,
+   "ece": 0.16887931034482773,
+   "brier": 0.1915508620689655,
+   "nll": 0.5900288777249891,
+   "positive_rate": 0.5172413793103449,
+   "metric": "accuracy"
+  }
+ },
+ "latency": {
+  "task": "prompt_injections",
+  "model_dirs": [
+   "data/v2/prompt_injections/models/final_gte_e8_dup3"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 18.35680298972875,
+  "cpu_p95_ms": 51.89441918628288,
+  "n_requests": 100,
+  "notes": "shared machine (8 agents); other runs: p95 53.0 ms at load 32.6, 77.1 ms at load 41.4, 175 ms at load ~40 (while a 12-thread PAWS inference job of ours ran)",
+  "load_average_at_measurement": "11.9 -> 7.4 (1-min)"
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "gte-modernbert-base full fine-tune (lr 3e-5, 8 epochs, bs 16, max_len 256) on: 326 pool texts labeled by deepseek-v4.1-flash with the 20 v2 seeds + seed-derived guidelines (labeler dev acc 0.965 vs plain 0.895, seeded 0.945), 1,148 seed-steered synthetic EN/DE inputs whose intended label the same labeler confirmed, the 20 seeds, and the 200 dev gold examples x3. Dev estimate by 5-fold CV over dev with the identical recipe (dev fold held out): oof acc 0.965 torch / 0.950 int8 at 0.5 (vs 0.935 without dev in training). ONNX dynamic int8 per-channel. Threshold 0.5 (int8 oof flat 0.95 for 0.3-0.5).",
+  "heads": {
+   "answer": {
+    "probs": "data/v2/prompt_injections/eval_probs.npy",
+    "threshold": 0.5
+   }
+  },
+  "dev_metrics": {
+   "cv_oof_accuracy_int8": 0.95,
+   "cv_oof_accuracy_torch": 0.965,
+   "cv_oof_accuracy_no_dev_in_training": 0.935,
+   "labeler_dev_accuracy": 0.965,
+   "n": 200
+  },
+  "latency": "benchmarks/results_v2/prompt_injections/latency.json",
+  "label_spend_usd": 0.185
+ },
+ "scored_at": "2026-10-18T23:55:30",
+ "rerun_reason": null
+}

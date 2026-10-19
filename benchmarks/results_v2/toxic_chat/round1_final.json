@@ -1,0 +1,130 @@
+{
+ "task": "toxic_chat",
+ "n_eval": 5083,
+ "headline": {
+  "metric": "f1",
+  "head": "toxic",
+  "ours": 0.78748370273794,
+  "ours_ci95": [
+   0.7546994892366538,
+   0.8193998884551031
+  ],
+  "jev_same_examples": 0.7862068965517242,
+  "beats_jev": true
+ },
+ "heads": {
+  "toxic": {
+   "accuracy": 0.9679323234310446,
+   "precision": 0.745679012345679,
+   "recall": 0.8342541436464088,
+   "f1": 0.78748370273794,
+   "auroc": 0.9778256549729022,
+   "auprc": 0.855470220985847,
+   "ece": 0.06608611011678679,
+   "brier": 0.027615092987999426,
+   "nll": 0.13367253221392297,
+   "positive_rate": 0.07121778477277199,
+   "metric": "f1",
+   "ci95": [
+    0.7546994892366538,
+    0.8193998884551031
+   ],
+   "threshold": 0.35
+  },
+  "jailbreak": {
+   "accuracy": 0.9956718473342514,
+   "precision": 0.9367088607594937,
+   "recall": 0.8131868131868132,
+   "f1": 0.8705882352941177,
+   "auroc": 0.9748410643843335,
+   "auprc": 0.9034047731397133,
+   "ece": 0.08776749279141169,
+   "brier": 0.014038704613695037,
+   "nll": 0.10377434408595575,
+   "positive_rate": 0.017902813299232736,
+   "metric": "f1",
+   "ci95": [
+    0.8143608132572066,
+    0.9180379420558821
+   ],
+   "threshold": 0.6
+  }
+ },
+ "jev_same_examples": {
+  "toxic": {
+   "accuracy": 0.9695061971276805,
+   "precision": 0.7851239669421488,
+   "recall": 0.787292817679558,
+   "f1": 0.7862068965517242,
+   "auroc": 0.9885351216674994,
+   "auprc": 0.8918431005032984,
+   "ece": 0.0153354318315955,
+   "brier": 0.019860692504426517,
+   "nll": 0.07351288727225036,
+   "positive_rate": 0.07121778477277199,
+   "metric": "f1"
+  },
+  "jailbreak": {
+   "accuracy": 0.9868188077906748,
+   "precision": 0.5821917808219178,
+   "recall": 0.9340659340659341,
+   "f1": 0.7172995780590717,
+   "auroc": 0.9940828402366865,
+   "auprc": 0.9134231148683796,
+   "ece": 0.030767263427109854,
+   "brier": 0.012443104465866614,
+   "nll": 0.061881708820297573,
+   "positive_rate": 0.017902813299232736,
+   "metric": "f1"
+  }
+ },
+ "latency": {
+  "task": "toxic_chat",
+  "model_dirs": [
+   "data/v2/toxic_chat/models/soupAB"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 16.177224519196898,
+  "cpu_p95_ms": 61.18324849521739,
+  "n_requests": 100
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "Shared gte-modernbert encoder with two sigmoid heads (toxic, jailbreak), full fine-tune on the whole pool (4,862) with soft labels = mean of deepseek-v4.1-flash + qwen3.7-flash (per-example, guidance v2 + 20 seeds) [+ claude-haiku-5.5 batched for config B], plus LLM-synthetic positives/hard negatives steered by pool prompts and relabeled by the ensemble; uniform weight soup of 7 fine-tunes (3 seeds config A, 4 seeds config B); ONNX int8 with mlp/Wo kept fp32. Thresholds chosen on dev (bootstrap + window-smoothed F1 argmax) on the int8 model's dev probabilities. Chosen over soupA/soupB (tied on dev) for averaging the most seeds.",
+  "heads": {
+   "toxic": {
+    "probs": "data/v2/toxic_chat/runs/soupAB/eval_probs_toxic.npy",
+    "threshold": 0.35
+   },
+   "jailbreak": {
+    "probs": "data/v2/toxic_chat/runs/soupAB/eval_probs_jailbreak.npy",
+    "threshold": 0.6
+   }
+  },
+  "dev_metrics": {
+   "toxic": {
+    "f1_at_threshold": 0.857,
+    "smoothed_boot_f1": 0.841,
+    "cv_threshold_rule_f1": 0.833,
+    "ap": 0.871,
+    "f1_at_0.5": 0.69
+   },
+   "jailbreak": {
+    "f1_at_threshold": 0.727,
+    "cv_threshold_rule_f1": 0.554,
+    "ap": 0.824
+   },
+   "n_dev": 200,
+   "dev_toxic_pos": 16,
+   "dev_jailbreak_pos": 7
+  },
+  "latency": "benchmarks/results_v2/toxic_chat/latency.json",
+  "label_spend_usd": 1.04,
+  "model_dir": "data/v2/toxic_chat/models/soupAB"
+ },
+ "scored_at": "2026-10-19T01:11:37",
+ "rerun_reason": null
+}

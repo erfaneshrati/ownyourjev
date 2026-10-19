@@ -1,0 +1,12 @@
+{
+ "model_dir": "data/v2/financial_phrasebank/models/v1seeded_s1",
+ "onnx": "data/v2/financial_phrasebank/models/v1seeded_s1/model.int8.onnx",
+ "dev_accuracy": 0.85,
+ "dev_macro_f1": 0.8215467357817937,
+ "dev_A": 0.83,
+ "dev_B": 0.87,
+ "eval_shape": [
+  970,
+  3
+ ]
+}

@@ -1,0 +1,23 @@
+{
+  "questions": {
+    "team": {
+      "type": "choice",
+      "instructions": "Which team should handle this support `ticket`?",
+      "criteria": {
+        "billing": "Invoices, refunds, payment methods, subscription charges.",
+        "technical": "Bugs, errors, outages, integration or API problems.",
+        "account": "Login, password, permissions, profile and data requests.",
+        "sales": "Pricing questions, upgrades, quotes, enterprise plans."
+      }
+    },
+    "urgency": {
+      "type": "score",
+      "instructions": "How urgent is the `ticket`?",
+      "criteria": ["Not urgent: a question or minor request.", "Normal: affects the user but there is a workaround.", "High: the user is blocked.", "Critical: outage, data loss or security issue."]
+    },
+    "churn_risk": {
+      "type": "noul",
+      "instructions": "Does the `ticket` suggest the customer is likely to cancel or leave?"
+    }
+  }
+}

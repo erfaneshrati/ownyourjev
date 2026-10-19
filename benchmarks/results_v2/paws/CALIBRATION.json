@@ -1,0 +1,51 @@
+{
+ "description": "Dev predictions: deployed partial-int8 ONNX (model.int8.onnx, identical md5 to model.int8_noattn_nodown.onnx) via experiments/paws/common.onnx_probs (length-sorted batches of 32, 8 threads); bit-identical to the p4 dev probs behind FROZEN dev_metrics.accuracy_int8=0.885. Dev is out-of-sample: p2_train.labelset drops all seed and dev uids and the pseudo-labels cover pool texts only. Re-predicting test did NOT reproduce the frozen test probs to 1e-4 (mean |diff| 0.013, corr 0.997, 98.7% decision agreement): dynamic int8 activation scales depend on batch composition and the exact test batching is unrecorded. The same noise level on dev (batch-1 vs batch-32: mean |diff| 0.012) leaves the selection unchanged (platt both times, a 0.527 vs 0.526, b 0.831 vs 0.824). Method chosen by 5-fold CV NLL on the 200 dev examples, refit on all 200.",
+ "heads": {
+  "answer": {
+   "method": "platt",
+   "params": {
+    "a": 0.5269570868604336,
+    "b": 0.8312992707034331
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.058966588973998965,
+     "ece15": 0.06310839563608163,
+     "ace": 0.050172552764415755,
+     "brier": 0.09358534289990209,
+     "nll": 0.3966074910066046,
+     "mean_conf": 0.923676444888115,
+     "accuracy": 0.885
+    },
+    "temperature": {
+     "ece": 0.03362861133136876,
+     "ece15": 0.057147591167093725,
+     "ace": 0.05406080019634088,
+     "brier": 0.09428068961295005,
+     "nll": 0.3297033545421399,
+     "mean_conf": 0.856552736382188,
+     "accuracy": 0.885
+    },
+    "platt": {
+     "ece": 0.02267382814562404,
+     "ece15": 0.03744626117349488,
+     "ace": 0.03816389966440296,
+     "brier": 0.08924448959842639,
+     "nll": 0.3078927036892934,
+     "mean_conf": 0.8817114557833885,
+     "accuracy": 0.875
+    },
+    "isotonic": {
+     "ece": 0.03957659081716893,
+     "ece15": 0.033060228270571666,
+     "ace": 0.05342505904886619,
+     "brier": 0.0932776032234971,
+     "nll": 0.45388893267175684,
+     "mean_conf": 0.8989129406330753,
+     "accuracy": 0.875
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

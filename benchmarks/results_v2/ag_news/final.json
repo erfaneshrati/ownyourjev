@@ -1,0 +1,81 @@
+{
+ "task": "ag_news",
+ "n_eval": 7600,
+ "headline": {
+  "metric": "accuracy",
+  "head": "answer",
+  "ours": 0.8930263157894737,
+  "ours_ci95": [
+   0.8857828947368421,
+   0.9000032894736842
+  ],
+  "jev_same_examples": 0.885,
+  "beats_jev": true
+ },
+ "heads": {
+  "answer": {
+   "accuracy": 0.8930263157894737,
+   "macro_f1": 0.8928720875854237,
+   "ece": 0.057111359681738,
+   "brier": 0.1723765041971423,
+   "mean_top_prob": 0.9495014915929029,
+   "nll": 0.38920919069567617,
+   "metric": "accuracy",
+   "ci95": [
+    0.8857828947368421,
+    0.9000032894736842
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "accuracy": 0.885,
+   "macro_f1": 0.8844141241369241,
+   "ece": 0.07698947368421052,
+   "brier": 0.1912622763157895,
+   "mean_top_prob": 0.9616578947368422,
+   "nll": 1.3838705211228364,
+   "metric": "accuracy"
+  }
+ },
+ "latency": {
+  "task": "ag_news",
+  "model_dirs": [
+   "data/v2/ag_news/models/v1plain_5k"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 29.13833101047203,
+  "cpu_p95_ms": 50.78812916763127,
+  "n_requests": 300
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "gte-modernbert full fine-tune (3 epochs max, lr 3e-5, bs 32, max_len 128, seed 0, early stopping on 10% held-out silver) on reused v1 deepseek-v4.1-flash labels from the plain v1 prompt (4,970 pool texts after dropping v2 seeds/dev uids). ONNX int8 (dynamic, per-channel). Chosen on dev: plain labels student 0.920 (2,500 texts: 0.925, flat learning curve, so no new labels bought), v1-seeded labels student 0.900; labeler dev agreement plain 0.905 / v2-seeded 0.905 / v2-seeded soft 0.910. int8 dev 0.915.",
+  "heads": {
+   "answer": {
+    "probs": "benchmarks/results_v2/ag_news/eval_probs.npy"
+   }
+  },
+  "dev_metrics": {
+   "model_dir": "data/v2/ag_news/models/v1plain_5k",
+   "onnx": "data/v2/ag_news/models/v1plain_5k/model.int8.onnx",
+   "dev_accuracy": 0.915,
+   "dev_macro_f1": 0.9146849114301163,
+   "dev_A": 0.91,
+   "dev_B": 0.92,
+   "eval_shape": [
+    7600,
+    4
+   ]
+  },
+  "latency": "benchmarks/results_v2/ag_news/latency.json",
+  "label_spend_usd": 0.0274,
+  "model_dir": "data/v2/ag_news/models/v1plain_5k"
+ },
+ "scored_at": "2026-10-18T20:14:22",
+ "rerun_reason": null
+}

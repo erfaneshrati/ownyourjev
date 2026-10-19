@@ -1,0 +1,90 @@
+{
+ "selected": {
+  "stage": "L",
+  "backbone": "ultrabert-embed",
+  "method": "full",
+  "n_train": 3470,
+  "config": {
+   "backbone": "ultrabert-embed",
+   "method": "full",
+   "lr": null,
+   "epochs": 3,
+   "batch_size": 16,
+   "max_len": 256,
+   "warmup_frac": 0.06,
+   "weight_decay": 0.01,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.0,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 1,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "val_loss": 0.3149951100349426,
+  "val_metric": 0.8730569948186528,
+  "val_metrics": {
+   "accuracy": 0.8730569948186528,
+   "macro_f1": 0.8612045004692281,
+   "ece": 0.021558194812097697,
+   "brier": 0.18148814182207748,
+   "mean_top_prob": 0.8942048331153207,
+   "nll": 0.31499513352186526
+  },
+  "test_metrics": {
+   "accuracy": 0.822680412371134,
+   "macro_f1": 0.8119044823011335,
+   "ece": 0.049319274677443764,
+   "brier": 0.2504632701532909,
+   "mean_top_prob": 0.8699383172485017,
+   "nll": 0.4152756376487925
+  },
+  "train_s": 89.15608143806458,
+  "wall_s": 91.00372171401978,
+  "best_epoch": 1,
+  "temperature": 1.0871837139129639,
+  "seed": 0,
+  "key": "L|ultrabert-embed|full|3470|0|"
+ },
+ "final_seeds": [],
+ "n_trials": 4,
+ "gpu_seconds_total": 171.77904772758484,
+ "learning_curves": {
+  "ultrabert-embed/full": [
+   {
+    "n": 100,
+    "val": 0.7357512953367875,
+    "test": 0.6659793814432989,
+    "train_s": 7.802941560745239
+   },
+   {
+    "n": 500,
+    "val": 0.8367875647668394,
+    "test": 0.788659793814433,
+    "train_s": 23.761134147644043
+   },
+   {
+    "n": 2000,
+    "val": 0.8471502590673575,
+    "test": 0.8041237113402062,
+    "train_s": 51.05889058113098
+   },
+   {
+    "n": 3470,
+    "val": 0.8730569948186528,
+    "test": 0.822680412371134,
+    "train_s": 89.15608143806458
+   }
+  ]
+ },
+ "best_by_setting": []
+}

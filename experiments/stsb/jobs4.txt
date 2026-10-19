@@ -1,0 +1,4 @@
+F_s0 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --save --eval --seed 0
+F_s1 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --save --eval --seed 1
+F_s2 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --save --eval --seed 2
+F_s3 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --save --eval --seed 3

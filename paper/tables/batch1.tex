@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrlrlrr}
+\toprule
+Task & Batched & Batch 1 [95\% CI] & Jev & Verdict & Flips & max $|\Delta p|$ \\
+\midrule
+SMS Spam & 0.958 & \textbf{0.957} {\scriptsize[0.946, 0.968]} & 0.937 & win & 0.3\% & 0.41 \\
+PAWS & 0.884 & \textbf{0.881} {\scriptsize[0.874, 0.888]} & 0.850 & win & 1.3\% & 0.63 \\
+Prompt Injections & 0.957 & \textbf{0.966} {\scriptsize[0.931, 0.991]} & 0.741 & win & 0.9\% & 0.20 \\
+Banking77 & 0.861 & \textbf{0.871} {\scriptsize[0.859, 0.883]} & 0.797 & win & 3.7\% & 0.76 \\
+CLINC150 & 0.934 & \textbf{0.934} {\scriptsize[0.927, 0.941]} & 0.895 & win & 0.3\% & 0.28 \\
+AG News & 0.893 & \textbf{0.893} {\scriptsize[0.886, 0.900]} & 0.885 & win & 1.5\% & 0.54 \\
+Financial PhraseBank & 0.794 & \textbf{0.818} {\scriptsize[0.792, 0.842]} & 0.731 & win & 9.5\% & 0.72 \\
+SST-5 & 0.583 & 0.580 {\scriptsize[0.559, 0.600]} & 0.579 & tie & 5.1\% & 0.25 \\
+\bottomrule
+\end{tabular}
+\caption{Serving consistency of the int8 models. Dynamic int8 quantization computes activation scales over the whole input batch, so a text's probabilities depend on its batch-mates. The test predictions of these tasks had been computed in batches; here they are recomputed one request at a time, the way the model is served and its latency measured, with the same artifact. \emph{Flips}: share of test decisions that change. Every verdict is unchanged. ToxicChat and STS-B were already predicted at batch size 1; Emotion and ToxiGen run in fp32.}
+\label{tab:batch1}
+\end{table}

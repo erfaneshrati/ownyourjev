@@ -1,0 +1,21 @@
+{
+ "description": "Shared-encoder two-head student (gte-modernbert-base, CLS, one Linear(768,6): col0 toxic logit, cols1-5 toxicity softmax), fp32 ONNX. Trained 3 epochs (lr 3e-5, bs 32, max_len 64) on soft labels for 8,675 pool texts from deepseek-v4.1-flash with labeling guidance v1 (P(toxic)+5-level distribution in one call), mixed 2:1 with v1 silver hard labels (plain+seeded) where available; uniform weight soup of 3 seeds. toxic = E[toxicity]/4 >= 0.30 (threshold = max of 7-pt smoothed dev accuracy curve; E[toxicity] beat the toxic head on dev threshold-CV accuracy across 5 runs, 0.896 vs 0.877). int8 rejected (dev AUROC 0.960->0.940, Spearman 0.769->0.729).",
+ "heads": {
+  "toxic": {
+   "probs": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/toxigen/eval_probs_toxic.npy",
+   "threshold": 0.3
+  },
+  "toxicity": {
+   "probs": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/toxigen/eval_probs_toxicity.npy"
+  }
+ },
+ "dev_metrics": {
+  "toxic_acc_at_0.30": 0.89,
+  "toxic_auroc": 0.9582873267083794,
+  "toxic_acc_best_threshold": 0.905,
+  "toxicity_spearman": 0.7699179962023314,
+  "note": "dev was used for threshold and config choice, so these are optimistic"
+ },
+ "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/toxigen/latency.json",
+ "label_spend_usd": 0.7276
+}

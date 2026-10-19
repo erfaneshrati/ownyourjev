@@ -1,0 +1,30 @@
+{
+ "description": "gte-modernbert-base full fine-tune (lr 3e-5, 3 epochs, bs 32, max_len 128, early stop on 10% held-out silver), 5-fold cross-fit over eval_inputs (protocol.eval_folds): each fold model trains on the v1 seeded LLM labels (deepseek-v4.1-flash, v1 seed examples) of the other 4 folds (+20 eval texts that v1 used as its seeds, relabeled with the v2 seeds) and scores only its held-out fold. Exported to ONNX and dynamically quantised to int8 (per-channel). Threshold 0.5: dev mean F1 over the 5 int8 fold models is flat at 0.966 for 0.40-0.55; 0.60 was 0.970 (one dev example) and rejected as noise. Labeler on dev: v1 seeded F1 0.957 / v1 plain 0.909.",
+ "heads": {
+  "answer": {
+   "probs": "data/v2/sms_spam/eval_probs.npy",
+   "threshold": 0.5
+  }
+ },
+ "dev_metrics": {
+  "per_fold_dev_f1_int8_at_0.5": [
+   0.9787,
+   0.9583,
+   0.9565,
+   0.9565,
+   0.9787
+  ],
+  "mean_dev_f1_int8_at_0.5": 0.9657647240209682,
+  "per_fold_dev_f1_torch": [
+   0.9787234042553191,
+   0.9787234042553191,
+   0.9565217391304348,
+   0.9787234042553191,
+   0.9787234042553191
+  ],
+  "labeler_v1_seeded_dev_f1": 0.957,
+  "labeler_v1_plain_dev_f1": 0.909
+ },
+ "latency": "benchmarks/results_v2/sms_spam/latency.json",
+ "label_spend_usd": 0.0007
+}

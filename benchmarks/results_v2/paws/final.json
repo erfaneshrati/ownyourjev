@@ -1,0 +1,86 @@
+{
+ "task": "paws",
+ "n_eval": 8000,
+ "headline": {
+  "metric": "accuracy",
+  "head": "answer",
+  "ours": 0.8845,
+  "ours_ci95": [
+   0.877375,
+   0.891375
+  ],
+  "jev_same_examples": 0.849875,
+  "beats_jev": true
+ },
+ "heads": {
+  "answer": {
+   "accuracy": 0.8845,
+   "precision": 0.9096612296110415,
+   "recall": 0.8201357466063348,
+   "f1": 0.8625817965496728,
+   "auroc": 0.9576130157397947,
+   "auprc": 0.9421374870509431,
+   "ece": 0.04806648892536766,
+   "brier": 0.08969134207846997,
+   "nll": 0.32923370207040453,
+   "positive_rate": 0.442,
+   "metric": "accuracy",
+   "ci95": [
+    0.877375,
+    0.891375
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "accuracy": 0.849875,
+   "precision": 0.7974522292993631,
+   "recall": 0.8851809954751131,
+   "f1": 0.8390296206942769,
+   "auroc": 0.9276812222769588,
+   "auprc": 0.8941472519979927,
+   "ece": 0.020257500000000133,
+   "brier": 0.1086766,
+   "nll": 0.3482885009239952,
+   "positive_rate": 0.442,
+   "metric": "accuracy"
+  }
+ },
+ "latency": {
+  "task": "paws",
+  "model_dirs": [
+   "data/v2/paws/models/ub_e3_soft__all+pseudo-ensmore__s0"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 40.055358957033604,
+  "cpu_p95_ms": 54.44196286844089,
+  "n_requests": 100,
+  "load_average_at_measurement": "12.60 (1-min) / 26.45 (5-min)",
+  "notes": "shared machine (8 agents); other runs: p95 47.8 ms at load 18.6, 77.8 ms at load ~30, 46.1 ms (earlier model, same arch) at load ~7"
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "UltraBERT-150M full fine-tune, distilled: soft targets = 7.7k LLM labels (4.5k reused v1 seeded deepseek-v4.1-flash labels with v1 seeds + 3.2k new flash labels with the v2 seeds; prompt chosen on dev: flash+seeds 0.875 > flash plain 0.830, flash+guidelines 0.850, deepseek-v4-pro 0.835) plus pseudo-labels for the other 41k pool pairs from the average of two UltraBERT teachers trained on the 7.7k labels (dev 0.865/0.860, ensemble 0.875). Student lr 1.15e-5, 3 epochs, bs 32, max_len 128, early stop on held-out silver; dev 0.890 for both seeds (seed 0 frozen). ONNX with partial dynamic int8 (all MatMuls int8 except attention act-x-act matmuls and mlp.down_proj, which break UltraBERT int8): dev 0.885. Threshold 0.5.",
+  "heads": {
+   "answer": {
+    "probs": "data/v2/paws/eval_probs.npy",
+    "threshold": 0.5
+   }
+  },
+  "dev_metrics": {
+   "accuracy_int8": 0.885,
+   "accuracy_torch": 0.89,
+   "accuracy_torch_seed1": 0.89,
+   "labeler_flash_seeded": 0.875,
+   "n": 200
+  },
+  "latency": "benchmarks/results_v2/paws/latency.json",
+  "label_spend_usd": 0.154
+ },
+ "scored_at": "2026-10-18T23:53:52",
+ "rerun_reason": null
+}

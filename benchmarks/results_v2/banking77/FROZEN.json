@@ -1,0 +1,7 @@
+{
+ "description": "gte-modernbert full fine-tune (max_len 64, lr 3e-5, bs 32, <=5 epochs, best epoch by dev loss = 3), int8 dynamic ONNX. Trained on all 9,773 pool texts + 20 gold seeds with SOFT vote labels: deepseek-v4.1-flash and qwen3.7-flash label the whole pool with a batched prompt (50 queries/call) holding hand-written intent descriptions + decision rules + all 220 gold examples; where they disagree (840), gemini-3.1-flash-lite and deepseek-v4-pro also label and the soft target is the vote distribution. Dev (gold, but its 200 examples were in the labeling prompt, so optimistic): fp32 0.905, int8 0.895. Clean estimate (labels from a prompt with seeds + dev half A only, selected on A, scored on unseen half B): 0.83.",
+ "heads": {"answer": {"probs": "benchmarks/results_v2/banking77/eval_probs.npy", "threshold": 0.5}},
+ "dev_metrics": {"dev_acc_fp32": 0.905, "dev_acc_int8": 0.895, "clean_devB_acc_flash_labels": 0.83, "labeler_dev_cv_acc_flash": 0.84},
+ "latency": "benchmarks/results_v2/banking77/latency.json",
+ "label_spend_usd": 0.916
+}

@@ -1,0 +1,96 @@
+{
+ "task": "sms_spam",
+ "n_eval": 5354,
+ "headline": {
+  "metric": "f1",
+  "head": "answer",
+  "ours": 0.958041958041958,
+  "ours_ci95": [
+   0.9462517680339463,
+   0.9687737328055723
+  ],
+  "jev_same_examples": 0.9366197183098591,
+  "beats_jev": true
+ },
+ "heads": {
+  "answer": {
+   "accuracy": 0.9887934254762795,
+   "precision": 0.9661495063469676,
+   "recall": 0.9500693481276006,
+   "f1": 0.958041958041958,
+   "auroc": 0.9967509810971344,
+   "auprc": 0.9886883359803728,
+   "ece": 0.008986382162477496,
+   "brier": 0.009218513460703242,
+   "nll": 0.040826985318094665,
+   "positive_rate": 0.134665670526709,
+   "metric": "f1",
+   "ci95": [
+    0.9462517680339463,
+    0.9687737328055723
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "accuracy": 0.9831901382144191,
+   "precision": 0.9513590844062947,
+   "recall": 0.9223300970873787,
+   "f1": 0.9366197183098591,
+   "auroc": 0.9924481939699908,
+   "auprc": 0.9791046105788558,
+   "ece": 0.03105715353007088,
+   "brier": 0.014647627941725812,
+   "nll": 0.07208742504355442,
+   "positive_rate": 0.134665670526709,
+   "metric": "f1"
+  }
+ },
+ "latency": {
+  "task": "sms_spam",
+  "model_dirs": [
+   "data/v2/sms_spam/models/gte_full_e3/fold0"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 17.584050016012043,
+  "cpu_p95_ms": 31.679722177796055,
+  "n_requests": 100
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "gte-modernbert-base full fine-tune (lr 3e-5, 3 epochs, bs 32, max_len 128, early stop on 10% held-out silver), 5-fold cross-fit over eval_inputs (protocol.eval_folds): each fold model trains on the v1 seeded LLM labels (deepseek-v4.1-flash, v1 seed examples) of the other 4 folds (+20 eval texts that v1 used as its seeds, relabeled with the v2 seeds) and scores only its held-out fold. Exported to ONNX and dynamically quantised to int8 (per-channel). Threshold 0.5: dev mean F1 over the 5 int8 fold models is flat at 0.966 for 0.40-0.55; 0.60 was 0.970 (one dev example) and rejected as noise. Labeler on dev: v1 seeded F1 0.957 / v1 plain 0.909.",
+  "heads": {
+   "answer": {
+    "probs": "data/v2/sms_spam/eval_probs.npy",
+    "threshold": 0.5
+   }
+  },
+  "dev_metrics": {
+   "per_fold_dev_f1_int8_at_0.5": [
+    0.9787,
+    0.9583,
+    0.9565,
+    0.9565,
+    0.9787
+   ],
+   "mean_dev_f1_int8_at_0.5": 0.9657647240209682,
+   "per_fold_dev_f1_torch": [
+    0.9787234042553191,
+    0.9787234042553191,
+    0.9565217391304348,
+    0.9787234042553191,
+    0.9787234042553191
+   ],
+   "labeler_v1_seeded_dev_f1": 0.957,
+   "labeler_v1_plain_dev_f1": 0.909
+  },
+  "latency": "benchmarks/results_v2/sms_spam/latency.json",
+  "label_spend_usd": 0.0007
+ },
+ "scored_at": "2026-10-18T19:52:15",
+ "rerun_reason": null
+}

@@ -1,0 +1,74 @@
+{
+ "task": "sst5",
+ "n_eval": 2210,
+ "headline": {
+  "metric": "argmax_accuracy",
+  "head": "answer",
+  "ours": 0.5828054298642534,
+  "ours_ci95": [
+   0.561527149321267,
+   0.6031787330316741
+  ],
+  "jev_same_examples": 0.579185520361991,
+  "beats_jev": true
+ },
+ "heads": {
+  "answer": {
+   "spearman": 0.852392605647982,
+   "pearson": 0.8595204135042914,
+   "kendall": 0.7065404766924155,
+   "mae": 0.5051922820251665,
+   "argmax_accuracy": 0.5828054298642534,
+   "argmax_mae": 0.4597285067873303,
+   "metric": "argmax_accuracy",
+   "ci95": [
+    0.561527149321267,
+    0.6031787330316741
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "spearman": 0.851112539954009,
+   "pearson": 0.8594647961517273,
+   "kendall": 0.7041350085376858,
+   "mae": 0.4976244343891403,
+   "argmax_accuracy": 0.579185520361991,
+   "argmax_mae": 0.46923076923076923,
+   "metric": "argmax_accuracy"
+  }
+ },
+ "latency": {
+  "task": "sst5",
+  "model_dirs": [
+   "data/v2/sst5/models/final"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 21.37719898018986,
+  "cpu_p95_ms": 29.38600096385926,
+  "n_requests": 100
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "UltraBERT-150M (full FT, lr 2e-5, 3 epochs, bs 32, max_len 128, seed 1; early stopping/temperature on 400 held-out silver) trained on SOFT labels (per-level probability distributions) from deepseek/deepseek-v4.1-flash over the full SST-5 pool (7,924 train + 400 silver val). Labeling prompt: task spec + SST-convention guidance (experiments/sst5/guidance_v1.txt) + the 20 gold seeds as few-shot examples, distribution=True. Deployed as ONNX with partial dynamic int8 (all MatMuls quantised except MLP down_proj, attention-score MatMuls and the head, which stay fp32; full int8 collapses UltraBERT to 0.31 dev). Argmax decision, no bias calibration. Dev evidence (200 gold): labeler guidance v1 0.620 vs no-guidance 0.530 (deepseek-flash); UltraBERT students 0.600/0.615/0.610/0.610 (4 runs) vs gte-modernbert 0.54-0.585 (mean 0.56, 9 runs); deployed partial-int8 model dev acc 0.600, spearman 0.857.",
+  "heads": {
+   "answer": {
+    "probs": "benchmarks/results_v2/sst5/eval_probs.npy"
+   }
+  },
+  "dev_metrics": {
+   "argmax_accuracy": 0.6,
+   "spearman": 0.857,
+   "fp32_argmax_accuracy": 0.615,
+   "labeler_dev_accuracy": 0.62
+  },
+  "latency": "benchmarks/results_v2/sst5/latency.json",
+  "label_spend_usd": 0.94
+ },
+ "scored_at": "2026-10-18T22:31:08",
+ "rerun_reason": null
+}

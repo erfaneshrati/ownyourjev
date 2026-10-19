@@ -1,0 +1,31 @@
+{
+ "description": "Round 2 (latency fix). Same weights as round 1 (uniform soup of 7 shared-init gte-modernbert two-head fine-tunes on ds+qwen(+haiku) soft labels + synthetic data). Changes: ONNX export with eager attention (SDPA export added per-layer IsNaN/Where masking), SmoothQuant alpha 0.75 on mlp/Wo (scale folded into the gate half of Wi), then full dynamic int8 (attention activation matmuls and head fp32). Thresholds re-chosen with the round-1 rule (bootstrap + window-smoothed F1 argmax on dev) on the new int8 dev probs. A 13-model soup was tried and was not better on dev.",
+ "heads": {
+  "toxic": {
+   "probs": "data/v2/toxic_chat/runs/soupAB_sq0.75/eval_probs_toxic.npy",
+   "threshold": 0.33
+  },
+  "jailbreak": {
+   "probs": "data/v2/toxic_chat/runs/soupAB_sq0.75/eval_probs_jailbreak.npy",
+   "threshold": 0.65
+  }
+ },
+ "dev_metrics": {
+  "toxic": {
+   "f1_at_threshold": 0.857,
+   "smoothed_boot_f1": 0.831,
+   "cv_threshold_rule_f1": 0.82,
+   "ap": 0.883
+  },
+  "jailbreak": {
+   "f1_at_threshold": 0.727,
+   "cv_threshold_rule_f1": 0.502,
+   "ap": 0.831
+  },
+  "vs_round1": "paired bootstrap toxic F1 difference 0.000 [0.000, 0.000]; round-1 cv_rule 0.831"
+ },
+ "latency": "benchmarks/results_v2/toxic_chat/latency.json",
+ "label_spend_usd": 1.04,
+ "model_dir": "data/v2/toxic_chat/models/soupAB_sq0.75",
+ "round": 2
+}

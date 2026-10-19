@@ -1,0 +1,12 @@
+{
+ "task": "toxigen",
+ "model_dirs": [
+  "data/v2/toxigen/models/soup_silv05_s012"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 30.704416043590754,
+ "cpu_p95_ms": 36.87050552107394,
+ "n_requests": 100
+}

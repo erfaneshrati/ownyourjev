@@ -1,0 +1,98 @@
+{
+ "selected": {
+  "stage": "L",
+  "backbone": "ultrabert",
+  "method": "lora",
+  "n_train": 4482,
+  "config": {
+   "backbone": "ultrabert",
+   "method": "lora",
+   "lr": 0.00022898514604770395,
+   "epochs": 3,
+   "batch_size": 32,
+   "max_len": 256,
+   "warmup_frac": 0.06,
+   "weight_decay": 0.01,
+   "label_smoothing": 0.0,
+   "ordinal_sigma": 0.0,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "lora_dropout": 0.05,
+   "dropout": 0.1,
+   "pooling": null,
+   "seed": 0,
+   "patience": 2,
+   "bf16": true,
+   "grad_accum": 1,
+   "device": "auto",
+   "eval_batch_size": 64,
+   "frozen_C": null,
+   "calibrate": true,
+   "max_steps": null
+  },
+  "val_loss": 0.08291749656200409,
+  "val_metric": 0.8205128205128205,
+  "val_metrics": {
+   "accuracy": 0.9718875502008032,
+   "precision": 0.9411764705882353,
+   "recall": 0.7272727272727273,
+   "f1": 0.8205128205128205,
+   "auroc": 0.986083299959952,
+   "auprc": 0.9194497487852704,
+   "ece": 0.004665620141609864,
+   "brier": 0.02250066713627777,
+   "nll": 0.08291750326245675,
+   "positive_rate": 0.08835341365461848
+  },
+  "test_metrics": {
+   "accuracy": 0.965,
+   "precision": 0.8217054263565892,
+   "recall": 0.6928104575163399,
+   "f1": 0.75177304964539,
+   "auroc": 0.9604852950023178,
+   "auprc": 0.8192228697637812,
+   "ece": 0.008443129514545029,
+   "brier": 0.0273234888893936,
+   "nll": 0.10721095058641539,
+   "positive_rate": 0.0765
+  },
+  "train_s": 292.3986933231354,
+  "wall_s": 293.87609100341797,
+  "best_epoch": 1,
+  "temperature": 0.9507522583007812,
+  "seed": 0,
+  "key": "L|ultrabert|lora|4482|0|"
+ },
+ "final_seeds": [],
+ "n_trials": 4,
+ "gpu_seconds_total": 554.9451887607574,
+ "learning_curves": {
+  "ultrabert/lora": [
+   {
+    "n": 100,
+    "val": 0.5714285714285714,
+    "test": 0.4694835680751174,
+    "train_s": 28.462842226028442
+   },
+   {
+    "n": 500,
+    "val": 0.6268656716417911,
+    "test": 0.6475409836065574,
+    "train_s": 65.89357542991638
+   },
+   {
+    "n": 2000,
+    "val": 0.7142857142857143,
+    "test": 0.7575757575757576,
+    "train_s": 168.19007778167725
+   },
+   {
+    "n": 4482,
+    "val": 0.8205128205128205,
+    "test": 0.75177304964539,
+    "train_s": 292.3986933231354
+   }
+  ]
+ },
+ "best_by_setting": []
+}

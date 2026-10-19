@@ -1,0 +1,6 @@
+F20_s0 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl flash_more2.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --seed 0
+GF20s0_f0 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl flash_more2.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --gold_w 5 --seed 0 --gold 0/5
+GF20s0_f1 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl flash_more2.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --gold_w 5 --seed 0 --gold 1/5
+GF20s0_f2 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl flash_more2.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --gold_w 5 --seed 0 --gold 2/5
+GF20s0_f3 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl flash_more2.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --gold_w 5 --seed 0 --gold 3/5
+GF20s0_f4 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl flash_more2.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --gold_w 5 --seed 0 --gold 4/5

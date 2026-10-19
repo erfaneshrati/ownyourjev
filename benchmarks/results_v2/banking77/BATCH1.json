@@ -1,0 +1,39 @@
+{
+ "description": "Frozen votesoft int8 ONNX (OnnxPredictor threads=4), one text per call, same preprocessing; frozen eval_probs.npy came from batches of 64 (predict_eval.py). Temperature refit on batch-1 dev predictions (dev not in training texts), 5-fold CV NLL over none/temperature.",
+ "heads": {
+  "answer": {
+   "probs": "benchmarks/results_v2/banking77/eval_probs_b1.npy",
+   "dev_probs": "benchmarks/results_v2/banking77/dev_probs_b1.npy"
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "temperature",
+   "params": {
+    "T": 0.8482601024104273
+   }
+  }
+ },
+ "dev_cv_b1": {
+  "answer": {
+   "none": {
+    "ece": 0.05828762795776129,
+    "ece15": 0.07672394197434187,
+    "ace": 0.08054930817335845,
+    "brier": 0.1939811894323019,
+    "nll": 0.47468731149399607,
+    "mean_conf": 0.8447229622676968,
+    "accuracy": 0.895
+   },
+   "temperature": {
+    "ece": 0.07065018132506318,
+    "ece15": 0.07445963359196099,
+    "ace": 0.06100619254639283,
+    "brier": 0.18925215638201237,
+    "nll": 0.45702871788890187,
+    "mean_conf": 0.8931863033258659,
+    "accuracy": 0.895
+   }
+  }
+ }
+}

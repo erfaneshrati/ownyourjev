@@ -1,0 +1,1 @@
+import sqlite3,time; c=sqlite3.connect('/media/erfan/Data/ownyourjev/cache/budget.db'); print(time.strftime('%X'), c.execute("select count(*), sum(cost_usd) from calls where purpose='helpsteer2:pool_dec_qwen'").fetchone())

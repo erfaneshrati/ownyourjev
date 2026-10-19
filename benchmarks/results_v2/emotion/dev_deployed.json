@@ -1,0 +1,12 @@
+{
+ "model_dir": "data/v2/emotion/models/g1_10k_fp32",
+ "onnx": "data/v2/emotion/models/g1_10k_fp32/model.onnx",
+ "dev_accuracy": 0.8,
+ "dev_macro_f1": 0.7416755089482363,
+ "dev_A": 0.82,
+ "dev_B": 0.78,
+ "eval_shape": [
+  2000,
+  6
+ ]
+}

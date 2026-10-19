@@ -1,0 +1,58 @@
+{
+ "description": "Batch-1 (serving mode) predictions of the frozen partial-int8 UltraBERT (model.int8.onnx, OnnxPredictor, 8 threads, one text per call) for eval_inputs and dev (experiments/paws/calibration/b1_predict.py). Dev is out-of-sample (never trained on). Calibrator refit on the batch-1 dev probs by 5-fold CV NLL.",
+ "heads": {
+  "answer": {
+   "probs": "data/v2/paws/eval_probs_b1.npy",
+   "dev_probs": "benchmarks/results_v2/paws/dev_probs_b1.npy",
+   "dev_accuracy_b1": 0.9
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "platt",
+   "params": {
+    "a": 0.5260635905074467,
+    "b": 0.8241539499550068
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.06621689110994336,
+     "ece15": 0.06997257858514788,
+     "ace": 0.06660704433918001,
+     "brier": 0.09185220860346355,
+     "nll": 0.3935659703070355,
+     "mean_conf": 0.9250585126876831,
+     "accuracy": 0.9
+    },
+    "temperature": {
+     "ece": 0.05276785577078385,
+     "ece15": 0.06097929288271501,
+     "ace": 0.0667300793674126,
+     "brier": 0.0929463189652472,
+     "nll": 0.3264035147430962,
+     "mean_conf": 0.8587555220955372,
+     "accuracy": 0.9
+    },
+    "platt": {
+     "ece": 0.019674622910655224,
+     "ece15": 0.03032600310884215,
+     "ace": 0.03760857210657703,
+     "brier": 0.08740137456874958,
+     "nll": 0.30331254985800354,
+     "mean_conf": 0.8835425965945116,
+     "accuracy": 0.88
+    },
+    "isotonic": {
+     "ece": 0.041575041447166006,
+     "ece15": 0.05872096408878846,
+     "ace": 0.052611150584435724,
+     "brier": 0.08786881122010286,
+     "nll": 0.44362281768938117,
+     "mean_conf": 0.8940190703286527,
+     "accuracy": 0.87
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

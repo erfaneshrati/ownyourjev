@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{llllrlcc}
+\toprule
+Type & Task & Metric & $n_{\text{test}}$ & Ours [95\% CI] & Jev & Verdict & Test looks \\
+\midrule
+Noul & SMS Spam & F1 & 5,354 & \textbf{0.958} {\scriptsize[0.946, 0.969]} & 0.937 & win & 1 \\
+Noul & PAWS & Acc. & 8,000 & \textbf{0.884} {\scriptsize[0.877, 0.891]} & 0.850 & win & 1 \\
+Noul & Prompt Injections & Acc. & 116 & \textbf{0.957} {\scriptsize[0.922, 0.991]} & 0.741 & win & 1 \\
+Noul & ToxicChat & F1 & 5,083 & 0.787 {\scriptsize[0.755, 0.818]} & 0.786 & tie & 2 \\
+Choice & Banking77 & Acc. & 3,076 & \textbf{0.861} {\scriptsize[0.849, 0.873]} & 0.797 & win & 1 \\
+Choice & CLINC150 & Acc. & 5,500 & \textbf{0.934} {\scriptsize[0.927, 0.941]} & 0.895 & win & 1 \\
+Choice & AG News & Acc. & 7,600 & \textbf{0.893} {\scriptsize[0.886, 0.900]} & 0.885 & win & 1 \\
+Choice & Financial PhraseBank & Acc. & 970 & \textbf{0.794} {\scriptsize[0.770, 0.819]} & 0.731 & win & 1 \\
+Choice & Emotion & Acc. & 2,000 & \textbf{0.811} {\scriptsize[0.794, 0.829]} & 0.585 & win & 1 \\
+Score & STS-B & Spearman & 1,379 & 0.893 {\scriptsize[0.881, 0.905]} & 0.890 & tie & 2 \\
+Score & SST-5 & Acc. & 2,210 & 0.583 {\scriptsize[0.562, 0.603]} & 0.579 & tie & 1 \\
+Score & ToxiGen & Acc. & 940 & 0.854 {\scriptsize[0.830, 0.878]} & 0.878 & tie & 1 \\
+\bottomrule
+\end{tabular}
+\caption{Main results. Ours: a $\sim$150M-parameter encoder trained on LLM labels plus a 220-example human-label budget, served as ONNX on CPU. Jev: \texttt{jev-1.13.0} re-scored from its published per-example responses on exactly the same test examples. Verdict: \emph{win} if our 95\% bootstrap CI lies entirely above Jev, \emph{tie} if it contains Jev. \emph{Test looks} counts how often the test split was scored for the task; second looks were permitted only after a dev-gated improvement (Section~\ref{sec:protocol}). For ToxicChat the headline is the toxic head; its jailbreak head scores 0.848 vs.\ Jev 0.717. For ToxiGen the second (toxicity) head scores Spearman 0.790 vs.\ 0.840.}
+\label{tab:main}
+\end{table*}

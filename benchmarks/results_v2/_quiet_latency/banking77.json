@@ -1,0 +1,12 @@
+{
+ "task": "banking77",
+ "model_dirs": [
+  "data/v2/banking77/models/votesoft"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 11.641571472864598,
+ "cpu_p95_ms": 19.194289296865453,
+ "n_requests": 200
+}

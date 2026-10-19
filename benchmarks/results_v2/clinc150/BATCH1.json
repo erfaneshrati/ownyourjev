@@ -1,0 +1,36 @@
+{
+ "description": "Batch-size-1 predictions of the frozen deployed artifact (E_lr5_q_only_Wi/model.int8.onnx, OnnxPredictor threads=8, one text per call) followed by the deployed oos rule apply_threshold(tau=0.4), baked into the vector exactly as in the frozen eval_probs.npy (so argmax flips == deployed decision flips). Dev predictions computed identically; calibrator refit on batch-1 dev with none/temperature, 5-fold CV NLL.",
+ "heads": {
+  "answer": {
+   "probs": "data/v2/clinc150/eval_probs_b1.npy",
+   "dev_probs": "data/v2/clinc150/dev_probs_b1.npy"
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "none",
+   "params": {},
+   "dev_cv": {
+    "none": {
+     "ece": 0.0517885198816657,
+     "ece15": 0.05670600380748514,
+     "ace": 0.052556715272367015,
+     "brier": 0.0850061726436187,
+     "nll": 0.22381543255983544,
+     "mean_conf": 0.9328020325675607,
+     "accuracy": 0.965
+    },
+    "temperature": {
+     "ece": 0.05391013098054223,
+     "ece15": 0.053980158202196496,
+     "ace": 0.04713500723215367,
+     "brier": 0.07943175191490574,
+     "nll": 0.2635868682100672,
+     "mean_conf": 0.9512986780096362,
+     "accuracy": 0.965
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

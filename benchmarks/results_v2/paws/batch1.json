@@ -1,0 +1,114 @@
+{
+ "task": "paws",
+ "heads": {
+  "answer": {
+   "metric": "accuracy",
+   "batch1": 0.881125,
+   "batch1_ci95": [
+    0.874,
+    0.8885
+   ],
+   "frozen_batched": 0.8845,
+   "decision_flips": 0.012875,
+   "max_abs_prob_diff": 0.6251956224441528,
+   "calib_raw": {
+    "ece": 0.05120155154541134,
+    "ece15": 0.05120155154541138,
+    "ace": 0.05121118609979749,
+    "brier": 0.0905186376281903,
+    "nll": 0.3326010893438597,
+    "mean_conf": 0.9323265515454113,
+    "accuracy": 0.881125,
+    "reliability": [
+     {
+      "bin": 5,
+      "n": 311,
+      "conf": 0.5493062707772209,
+      "acc": 0.4662379421221865
+     },
+     {
+      "bin": 6,
+      "n": 321,
+      "conf": 0.650947787587145,
+      "acc": 0.5887850467289719
+     },
+     {
+      "bin": 7,
+      "n": 447,
+      "conf": 0.7526178690677788,
+      "acc": 0.727069351230425
+     },
+     {
+      "bin": 8,
+      "n": 644,
+      "conf": 0.856474612347828,
+      "acc": 0.7468944099378882
+     },
+     {
+      "bin": 9,
+      "n": 6277,
+      "conf": 0.9862727552191817,
+      "acc": 0.9413732674844671
+     }
+    ]
+   },
+   "calibration_method": "platt",
+   "calib_calibrated": {
+    "ece": 0.015425873211458217,
+    "ece15": 0.015425873211458037,
+    "ace": 0.017201128703216273,
+    "brier": 0.081807333973129,
+    "nll": 0.2685946565009855,
+    "mean_conf": 0.8785863149271629,
+    "accuracy": 0.8845,
+    "reliability": [
+     {
+      "bin": 5,
+      "n": 519,
+      "conf": 0.5497845188949003,
+      "acc": 0.5240847784200385
+     },
+     {
+      "bin": 6,
+      "n": 523,
+      "conf": 0.6518628070911828,
+      "acc": 0.6424474187380497
+     },
+     {
+      "bin": 7,
+      "n": 776,
+      "conf": 0.7535906432208017,
+      "acc": 0.7280927835051546
+     },
+     {
+      "bin": 8,
+      "n": 1199,
+      "conf": 0.8544876689452914,
+      "acc": 0.8690575479566305
+     },
+     {
+      "bin": 9,
+      "n": 4983,
+      "conf": 0.9618926453536853,
+      "acc": 0.9755167569737107
+     }
+    ]
+   }
+  }
+ },
+ "description": "Batch-1 (serving mode) predictions of the frozen partial-int8 UltraBERT (model.int8.onnx, OnnxPredictor, 8 threads, one text per call) for eval_inputs and dev (experiments/paws/calibration/b1_predict.py). Dev is out-of-sample (never trained on). Calibrator refit on the batch-1 dev probs by 5-fold CV NLL.",
+ "scored_at": "2026-10-19T14:07:06",
+ "rerun_reason": null,
+ "headline": {
+  "head": "answer",
+  "metric": "accuracy",
+  "batch1": 0.881125,
+  "batch1_ci95": [
+   0.874,
+   0.8885
+  ],
+  "frozen_batched": 0.8845,
+  "jev": 0.849875,
+  "verdict_batch1": "win"
+ }
+}

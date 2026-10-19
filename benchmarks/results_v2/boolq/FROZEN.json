@@ -1,0 +1,7 @@
+{
+ "description": "Round 2. UltraBERT-150M, max_len 224 left-truncated, lean int8 ONNX + SmoothQuant(0.8) as in round 1. Changes: (1) soft labels = mean vote of qwen3.7-flash + (v1 deepseek-seeded | deepseek-flash) + gemini-3.1-flash-lite tie-break on all 9.2k pool texts, soft BCE; (2) distillation: 5 soft-label seeds as a teacher ensemble label 29.7k synthetic questions they never trained on (5.97k topic-first real-style queries + 23.7k round-1 generated), target = 0.5*teacher + 0.5*LLM label; student trained on pool_soft + these; (3) final = weight soup of the 3 student seeds, Platt-recalibrated on the silver early-stopping split (no gold). Dev evidence vs round 1: seed means 0.837 (round-1 hard-label recipe, 5 seeds) -> 0.878 (soft, 5 seeds) / 0.882 (distilled, 3 seeds); frozen int8 0.885 vs 0.85 (paired bootstrap +3.5 pts, 95% CI [-0.5, 7.5], P(<=0)=0.05; AUROC 0.947 vs 0.924, P(<=0)=0.015). Threshold 0.5.",
+ "heads": {"answer": {"probs": "/media/erfan/Data/ownyourjev/data/v2/boolq/models/soup_dist3c/eval_probs_int8.npy", "threshold": 0.5}},
+ "dev_metrics": {"accuracy_int8_onnx": 0.885, "auroc_int8_onnx": 0.9466, "accuracy_fp32_onnx": 0.88, "round1_accuracy_int8_onnx": 0.85, "n_dev": 200},
+ "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/boolq/latency.json",
+ "label_spend_usd": 1.1234
+}

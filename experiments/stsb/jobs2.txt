@@ -1,0 +1,6 @@
+ens3_swap_e6 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score --swap --epochs 6
+ens3_swap_mse --labels gem31_b10_score,haiku_b10_score,qwen_b10_score --swap --mse 1.0
+gem_swap --labels gem31_b10_score --swap
+ens3_swap_seeds --labels gem31_b10_score,haiku_b10_score,qwen_b10_score --swap --add_gold seeds
+ens3_swap_lr5 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score --swap --lr 5e-5
+ens3_swap_s1 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score --swap --seed 1

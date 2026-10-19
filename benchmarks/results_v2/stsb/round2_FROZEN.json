@@ -1,0 +1,18 @@
+{
+ "description": "gte-modernbert-base full fine-tune (one model, seed 0) on the 5,529-pair pool with soft 6-level targets = average of two-hot encodings of 4 LLM labelers' real-valued 0-5 scores (gemini-3.1-flash-lite, claude-haiku-5.5, qwen3.7-flash, deepseek-v4.1-flash; batched 10 pairs/call, SemEval-STS guidance, no seeds), sentence-order swap augmentation (2x data), lr 3e-5, bs 32, max_len 128, 4 epochs with epoch chosen on a 300-pair held-out silver split (epoch 3). Deployed as ONNX with selective dynamic int8 (all MatMuls except the MLP output projections and the head). Dev evidence: labeler ensemble agrees 0.919 Spearman with dev gold (best single gemini-3.1 0.909, v1 deepseek hard 0.844); swap augmentation +0.02 (0.886 -> 0.909); seed 0 chosen among 4 seeds (dev 0.908/0.895/0.898/0.895, mean 0.899, so the selected dev number is optimistic); full int8 lost 0.007 on dev, selective int8 none (deployed ONNX dev Spearman 0.910).",
+ "heads": {
+  "answer": {
+   "probs": "benchmarks/results_v2/stsb/eval_probs.npy"
+  }
+ },
+ "dev_metrics": {
+  "spearman_deployed_onnx": 0.9102,
+  "spearman_fp32": 0.908,
+  "spearman_full_int8": 0.9009,
+  "seed_mean_fp32": 0.899,
+  "labeler_ensemble_spearman": 0.9187
+ },
+ "model_dir": "data/v2/stsb/models/final",
+ "latency": "benchmarks/results_v2/stsb/latency.json",
+ "label_spend_usd": 0.778
+}

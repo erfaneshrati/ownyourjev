@@ -1,0 +1,54 @@
+{
+ "description": "Batch-size-1 int8 ONNX predictions (deployed serving mode): same 5 fold artifacts, preprocessing, max_len 128, 8 threads, each test text scored by its own fold model (te_idx), one text per call. Dev: all 5 fold models at batch 1 (dev is in no fold's training). Calibrator refit on batch-1 dev, pooled 1000 rows, 5-fold CV grouped by dev text, lowest NLL.",
+ "heads": {
+  "answer": {
+   "probs": "data/v2/sms_spam/eval_probs_b1.npy",
+   "dev_probs": "benchmarks/results_v2/sms_spam/dev_probs_b1.npy"
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "none",
+   "params": {},
+   "dev_cv": {
+    "none": {
+     "ece": 0.005845485210418607,
+     "ece15": 0.0055451486706734375,
+     "ace": 0.0076128966212272615,
+     "brier": 0.006924990565647634,
+     "nll": 0.03675628471617594,
+     "mean_conf": 0.987505656003952,
+     "accuracy": 0.993
+    },
+    "temperature": {
+     "ece": 0.0039046420854039875,
+     "ece15": 0.005416084095064477,
+     "ace": 0.01431903019690416,
+     "brier": 0.007596263145183548,
+     "nll": 0.1043737467015255,
+     "mean_conf": 0.9926809657153133,
+     "accuracy": 0.993
+    },
+    "platt": {
+     "ece": 0.005090392146485802,
+     "ece15": 0.005691143055137963,
+     "ace": 0.009665804716492499,
+     "brier": 0.00871921638220254,
+     "nll": 0.07940586172998934,
+     "mean_conf": 0.9911929258916319,
+     "accuracy": 0.991
+    },
+    "isotonic": {
+     "ece": 0.006503044682806235,
+     "ece15": 0.007476361700000133,
+     "ace": 0.014856546685913817,
+     "brier": 0.009903326317020055,
+     "nll": 0.1317936742456706,
+     "mean_conf": 0.9931422533140865,
+     "accuracy": 0.99
+    }
+   },
+   "n_fit": 1000
+  }
+ }
+}

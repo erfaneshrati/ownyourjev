@@ -1,0 +1,138 @@
+{
+ "task": "financial_phrasebank",
+ "heads": {
+  "answer": {
+   "metric": "accuracy",
+   "batch1": 0.8175257731958763,
+   "batch1_ci95": [
+    0.7917525773195876,
+    0.8423195876288659
+   ],
+   "frozen_batched": 0.7938144329896907,
+   "decision_flips": 0.09484536082474226,
+   "max_abs_prob_diff": 0.7212908267974854,
+   "calib_raw": {
+    "ece": 0.05396475724338254,
+    "ece15": 0.05396475724338259,
+    "ace": 0.0536200762409525,
+    "brier": 0.27422369259182505,
+    "nll": 0.4569756834946752,
+    "mean_conf": 0.8478981920738811,
+    "accuracy": 0.8175257731958763,
+    "reliability": [
+     {
+      "bin": 3,
+      "n": 1,
+      "conf": 0.3908759355545044,
+      "acc": 0.0
+     },
+     {
+      "bin": 4,
+      "n": 14,
+      "conf": 0.46469602840287344,
+      "acc": 0.7142857142857143
+     },
+     {
+      "bin": 5,
+      "n": 69,
+      "conf": 0.5514778477558191,
+      "acc": 0.6666666666666666
+     },
+     {
+      "bin": 6,
+      "n": 95,
+      "conf": 0.6456938053432264,
+      "acc": 0.6
+     },
+     {
+      "bin": 7,
+      "n": 105,
+      "conf": 0.7501332708767482,
+      "acc": 0.6476190476190476
+     },
+     {
+      "bin": 8,
+      "n": 189,
+      "conf": 0.8528412038056308,
+      "acc": 0.746031746031746
+     },
+     {
+      "bin": 9,
+      "n": 497,
+      "conf": 0.958190668037,
+      "acc": 0.9476861167002012
+     }
+    ]
+   },
+   "calibration_method": "none",
+   "calib_calibrated": {
+    "ece": 0.05396475724338254,
+    "ece15": 0.05396475724338259,
+    "ace": 0.0536200762409525,
+    "brier": 0.27422369259182505,
+    "nll": 0.4569756834946752,
+    "mean_conf": 0.8478981920738811,
+    "accuracy": 0.8175257731958763,
+    "reliability": [
+     {
+      "bin": 3,
+      "n": 1,
+      "conf": 0.3908759355545044,
+      "acc": 0.0
+     },
+     {
+      "bin": 4,
+      "n": 14,
+      "conf": 0.46469602840287344,
+      "acc": 0.7142857142857143
+     },
+     {
+      "bin": 5,
+      "n": 69,
+      "conf": 0.5514778477558191,
+      "acc": 0.6666666666666666
+     },
+     {
+      "bin": 6,
+      "n": 95,
+      "conf": 0.6456938053432264,
+      "acc": 0.6
+     },
+     {
+      "bin": 7,
+      "n": 105,
+      "conf": 0.7501332708767482,
+      "acc": 0.6476190476190476
+     },
+     {
+      "bin": 8,
+      "n": 189,
+      "conf": 0.8528412038056308,
+      "acc": 0.746031746031746
+     },
+     {
+      "bin": 9,
+      "n": 497,
+      "conf": 0.958190668037,
+      "acc": 0.9476861167002012
+     }
+    ]
+   }
+  }
+ },
+ "description": "Deployed model.int8.onnx via OnnxPredictor(threads=8), max_len 96, ONE text per call (batch size 1), dev and eval_inputs; otherwise identical to finalize_probs.py. Calibrator refit on batch-1 dev (out-of-sample: dev uids never trained on) by 5-fold CV NLL over argmax-preserving none/temperature; dev_cv also lists vector/isotonic for reference.",
+ "scored_at": "2026-10-19T13:57:25",
+ "rerun_reason": null,
+ "headline": {
+  "head": "answer",
+  "metric": "accuracy",
+  "batch1": 0.8175257731958763,
+  "batch1_ci95": [
+   0.7917525773195876,
+   0.8423195876288659
+  ],
+  "frozen_batched": 0.7938144329896907,
+  "jev": 0.7309278350515463,
+  "verdict_batch1": "win"
+ }
+}

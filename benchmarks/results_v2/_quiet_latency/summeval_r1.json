@@ -1,0 +1,13 @@
+{
+ "task": "summeval",
+ "model_dirs": [
+  "../../data/v2/summeval/models/r2_f0"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "notes": "experiments/summeval/export_mh.py: same protocol as benchmarks.v2.latency (dev texts, batch 1, 4 threads); one shared encoder answers all 4 heads; timing includes rendering, tokenisation and lexical features",
+ "cpu_p50_ms": 43.77261857734993,
+ "cpu_p95_ms": 64.18401908013038,
+ "n_requests": 100
+}

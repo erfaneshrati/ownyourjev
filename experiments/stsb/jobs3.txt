@@ -1,0 +1,4 @@
+ens4_swap --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap
+ens4v1_swap --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score,v1,v1s --weights 1,1,1,1,0.5,0.5 --swap
+ens4_swap_s1 --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --seed 1
+ens4_swap_seeds --labels gem31_b10_score,haiku_b10_score,qwen_b10_score,ds_b10_score --swap --add_gold seeds

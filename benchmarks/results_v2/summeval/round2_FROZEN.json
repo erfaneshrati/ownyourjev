@@ -1,0 +1,44 @@
+{
+ "description": "Round 1. Cross-fitted (5 folds by source document) multi-head student: gte-modernbert-base truncated to its first 16 layers, input = summary + article sentences selected by lexical overlap with the summary (lead sentence first), 192 tokens, CLS+mean pooling, plus 17 cheap lexical features over the full article (n-gram novelty, lead coverage, repetition, truncation, ...), 4 heads x 5 levels, trained 6 epochs with soft-label KL on qwen3.7-flash labels of the training-fold eval texts (G-Eval-style rubric, self-consistency of 5 votes: greedy + 3 samples + CoT). Mixed int8 ONNX (GLU down-projections fp32). Fold k model scores fold k texts only. Chosen on dev (204 gold, 14 docs never trained on): deployed int8 fold models dev mean 0.500 (fp32 0.505; selection runs 3 seeds 0.5145). Synthetic summaries (LLM and programmatic) and dev gold in training all lowered dev and were not used.",
+ "heads": {
+  "coherence": {
+   "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs/coherence.npy",
+   "threshold": 0.5
+  },
+  "consistency": {
+   "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs/consistency.npy",
+   "threshold": 0.5
+  },
+  "fluency": {
+   "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs/fluency.npy",
+   "threshold": 0.5
+  },
+  "relevance": {
+   "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs/relevance.npy",
+   "threshold": 0.5
+  }
+ },
+ "dev_metrics": {
+  "metric": "group_spearman (per source document), mean of 4 dims, dev = 204 gold / 14 docs (never trained on)",
+  "deployed_int8_fold_models_mean": 0.5004,
+  "deployed_int8_per_fold": [
+   0.5259,
+   0.4964,
+   0.504,
+   0.4968,
+   0.4789
+  ],
+  "deployed_int8_per_dim_mean_over_folds": {
+   "coherence": 0.6398199999999999,
+   "consistency": 0.39074,
+   "fluency": 0.41974,
+   "relevance": 0.5513600000000001
+  },
+  "fp32_fold_models_mean": 0.50512,
+  "selection_fold0_holdout_3seeds_mean": 0.5145,
+  "teacher_qwen_x5_on_dev": 0.599,
+  "teacher_qwen_x1_on_dev": 0.557
+ },
+ "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/summeval/latency.json",
+ "label_spend_usd": 1.2365
+}

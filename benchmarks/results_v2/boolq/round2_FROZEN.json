@@ -1,0 +1,18 @@
+{
+ "description": "UltraBERT-150M (24 layers) uniform weight soup of 6 full fine-tunes (lr 1e-5, max_len 224 left-truncated so the question is kept; LLM pool labels: qwen3.7-flash on all 9.2k pool texts, some runs with v1 deepseek-seeded + gemini-3.1-flash-lite tie-break labels, some with +23.7k LLM-generated yes/no questions over pool passages). Served as lean ONNX re-implementation + SmoothQuant(alpha 0.8, MLP down_proj) + dynamic int8 weight MatMuls. Chosen on dev: UltraBERT >> gte-modernbert (dev 0.85 vs 0.77-0.835), soup reduces the large seed variance (single runs 0.82-0.85), int8 smoothquant keeps dev accuracy (0.85). Threshold 0.5 (dev-tuned thresholds did not transfer across dev halves).",
+ "heads": {
+  "answer": {
+   "probs": "/media/erfan/Data/ownyourjev/data/v2/boolq/models/soup_all6/eval_probs_int8.npy",
+   "threshold": 0.5
+  }
+ },
+ "dev_metrics": {
+  "accuracy_int8_onnx": 0.85,
+  "auroc_int8_onnx": 0.9237,
+  "accuracy_fp32_onnx": 0.84,
+  "accuracy_torch": 0.845,
+  "n_dev": 200
+ },
+ "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/boolq/latency.json",
+ "label_spend_usd": 0.5436
+}

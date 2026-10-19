@@ -1,0 +1,10 @@
+{
+ "description": "gte-modernbert full fine-tune (lr 5e-5, 4 epochs max, early stop on silver val -> epoch 3, max_len 64, bs 32, seed 0) on the whole training pool (15,030 minus an 8% stratified silver-val split = 13,818) labeled by deepseek-v4.1-flash with a batched prompt (20 utterances/request, hand-written intent descriptions + decision rules + the 20 seeds; dev agreement 0.965), plus 2,066 LLM-generated out-of-scope utterances (16 topics, kept only if the labeler also says oos). Post-hoc oos rule: predict oos when the best in-scope probability < 0.4 (chosen on dev+silver-val in-scope accuracy and oos recall plus held-out near-miss synthetic oos, weighted to the 18% public test oos share; best for both training seeds). Exported to ONNX with int8 dynamic quantisation only on the MLP input projections (mlp.Wi); predictions identical to torch fp32 on dev+val (1,412 texts).",
+ "heads": {"answer": {"probs": "data/v2/clinc150/eval_probs.npy", "threshold": 0.4}},
+ "dev_metrics": {"dev_accuracy": 0.965, "dev_in_scope_accuracy": 0.9635, "dev_oos_recall": 1.0, "dev_n_oos": 8,
+                 "dev_plus_silverval_in_scope_accuracy": 0.958, "dev_plus_silverval_oos_recall": 0.935, "dev_plus_silverval_n_oos": 31,
+                 "heldout_nearmiss_synthetic_oos_recall": 0.92, "labeler_dev_agreement": 0.965},
+ "latency": "benchmarks/results_v2/clinc150/latency.json",
+ "label_spend_usd": 0.237,
+ "model_dir": "data/v2/clinc150/models/E_lr5_q_only_Wi"
+}

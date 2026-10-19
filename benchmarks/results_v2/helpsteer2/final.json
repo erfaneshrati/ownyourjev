@@ -1,0 +1,216 @@
+{
+ "task": "helpsteer2",
+ "n_eval": 1038,
+ "headline": {
+  "metric": "spearman",
+  "head": "*mean*",
+  "ours": 0.31402574542361783,
+  "ours_ci95": [
+   NaN,
+   NaN
+  ],
+  "jev_same_examples": 0.41222151906905813,
+  "beats_jev": false
+ },
+ "heads": {
+  "helpfulness": {
+   "spearman": 0.1416100005474693,
+   "pearson": 0.18147519908091517,
+   "kendall": 0.10697543276156275,
+   "mae": 1.1193768975211877,
+   "argmax_accuracy": 0.24277456647398843,
+   "argmax_mae": 1.0895953757225434,
+   "metric": "spearman",
+   "ci95": [
+    0.07873668906601565,
+    0.20158179867676118
+   ],
+   "threshold": 0.5
+  },
+  "correctness": {
+   "spearman": 0.14628067550350426,
+   "pearson": 0.1790500893060364,
+   "kendall": 0.11103710049730763,
+   "mae": 1.1658010958193268,
+   "argmax_accuracy": 0.20327552986512523,
+   "argmax_mae": 1.1339113680154143,
+   "metric": "spearman",
+   "ci95": [
+    0.08315756323095194,
+    0.20495147572501402
+   ],
+   "threshold": 0.5
+  },
+  "coherence": {
+   "spearman": 0.20383348916235117,
+   "pearson": 0.26435213794553986,
+   "kendall": 0.1631156462619247,
+   "mae": 0.6063124216377003,
+   "argmax_accuracy": 0.6608863198458574,
+   "argmax_mae": 0.4142581888246628,
+   "metric": "spearman",
+   "ci95": [
+    0.14441739975530998,
+    0.2621389415460771
+   ],
+   "threshold": 0.5
+  },
+  "complexity": {
+   "spearman": 0.5240575125820133,
+   "pearson": 0.5439867464396082,
+   "kendall": 0.42227191644387624,
+   "mae": 0.4784447915059369,
+   "argmax_accuracy": 0.5761078998073218,
+   "argmax_mae": 0.44508670520231214,
+   "metric": "spearman",
+   "ci95": [
+    0.4797951768861549,
+    0.57066493874347
+   ],
+   "threshold": 0.5
+  },
+  "verbosity": {
+   "spearman": 0.5543470493227509,
+   "pearson": 0.6421396508517563,
+   "kendall": 0.4446388032241381,
+   "mae": 0.6127583175538258,
+   "argmax_accuracy": 0.44990366088631983,
+   "argmax_mae": 0.5838150289017341,
+   "metric": "spearman",
+   "ci95": [
+    0.5066294590107973,
+    0.5984720661814606
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "helpfulness": {
+   "spearman": 0.3996508650252162,
+   "pearson": 0.4645471276756793,
+   "kendall": 0.31234538007807056,
+   "mae": 1.1764932562620423,
+   "argmax_accuracy": 0.27552986512524086,
+   "argmax_mae": 1.1599229287090558,
+   "metric": "spearman"
+  },
+  "correctness": {
+   "spearman": 0.3693784681629147,
+   "pearson": 0.42023163937058633,
+   "kendall": 0.28685273604883377,
+   "mae": 1.184460500963391,
+   "argmax_accuracy": 0.3265895953757225,
+   "argmax_mae": 1.2408477842003853,
+   "metric": "spearman"
+  },
+  "coherence": {
+   "spearman": 0.2742086583679466,
+   "pearson": 0.4057811427057118,
+   "kendall": 0.22177029403529214,
+   "mae": 0.49114643545279385,
+   "argmax_accuracy": 0.6233140655105973,
+   "argmax_mae": 0.43545279383429675,
+   "metric": "spearman"
+  },
+  "complexity": {
+   "spearman": 0.4601832077065797,
+   "pearson": 0.47787267749627066,
+   "kendall": 0.37053914249555225,
+   "mae": 0.6705684007707129,
+   "argmax_accuracy": 0.4344894026974952,
+   "argmax_mae": 0.6416184971098265,
+   "metric": "spearman"
+  },
+  "verbosity": {
+   "spearman": 0.5576863960826335,
+   "pearson": 0.6451007458685404,
+   "kendall": 0.45332850295360994,
+   "mae": 0.5279287090558767,
+   "argmax_accuracy": 0.5626204238921002,
+   "argmax_mae": 0.48265895953757226,
+   "metric": "spearman"
+  }
+ },
+ "latency": {
+  "task": "helpsteer2",
+  "model_dirs": [
+   "/media/erfan/Data/ownyourjev/data/v2/helpsteer2/models/FINAL_r1"
+  ],
+  "onnx": "model.int8.onnx",
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "pipeline": "experiments/helpsteer2/latency_mh.py (tokenise+truncate+forward+softmax, 5 heads, one encoder)",
+  "cpu_p50_ms": 50.43122195638716,
+  "cpu_p95_ms": 59.189380070893094,
+  "n_requests": 100,
+  "note": "Shared machine (other agents training/labeling). Reported run = lowest 1-min load (5.4). All runs (p50/p95 ms): latency_run0_n300.json: 62.0/139.3 (load 8.9); latency_run1.json: 50.4/59.2 (load 5.4); latency_run2.json: 117.1/140.2 (load 7.6); latency_run3.json: 50.7/61.1 (load 13.7). Runs with p50>100 ms coincided with CPU contention bursts. Cross-check with benchmarks.v2.latency --onnx on a view of the same ONNX graph (right-truncated 128 tokens): p50 52.8 / p95 62.2 ms (latency_official_view.json). Needs re-measuring on a quiet machine.",
+  "all_runs": {
+   "latency_run0_n300.json": {
+    "p50": 62.03134352108464,
+    "p95": 139.26570884650573,
+    "n": 300,
+    "load1": 8.9
+   },
+   "latency_run1.json": {
+    "p50": 50.43122195638716,
+    "p95": 59.189380070893094,
+    "n": 100,
+    "load1": 5.4
+   },
+   "latency_run2.json": {
+    "p50": 117.06583254272118,
+    "p95": 140.1637392991688,
+    "n": 100,
+    "load1": 7.6
+   },
+   "latency_run3.json": {
+    "p50": 50.67115853307769,
+    "p95": 61.05143403401598,
+    "n": 100,
+    "load1": 13.7
+   }
+  }
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "Round 1. One gte-modernbert-base encoder (22 layers) with 5 score heads (one pass for all five attributes), input = [CLS] 'prompt <n> response <m> lines <k>' [SEP] prompt head+tail [SEP] response head+tail [SEP] truncated to 128 tokens (keeps the response). Trained 3 epochs (lr 3e-5, bs 32, ordinal-Gaussian targets sigma 0.6) on 7,338 deepseek-v4.1-flash hard labels (4,938 v1 silver, 2,400 new, v1 prompt, no seeds) + 220 gold (200 dev + 20 seeds, weight 5). Post-processing: helpfulness and correctness both output the mean of their two expected scores. ONNX int8 dynamic per-channel; mlp.Wo of layers 4/9/11/15 and the head kept fp32. Dev evidence: flash-only students 0.364/0.363 (2 seeds), +h/c blend 0.373/0.376; adding gold estimated by 5-fold CV on dev: 0.388 (blend). qwen labels (20k) and merged labels hurt the student (0.28-0.34); L18 -0.04; degraded synthetic pairs -0.035.",
+  "heads": {
+   "helpfulness": {
+    "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_helpfulness.npy"
+   },
+   "correctness": {
+    "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_correctness.npy"
+   },
+   "coherence": {
+    "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_coherence.npy"
+   },
+   "complexity": {
+    "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_complexity.npy"
+   },
+   "verbosity": {
+    "probs": "data/v2/helpsteer2/models/FINAL_r1/eval_verbosity.npy"
+   }
+  },
+  "dev_metrics": {
+   "estimate": "5-fold CV on dev (model for each fold trained without that fold), with h/c blend",
+   "mean_spearman": 0.388,
+   "helpfulness": 0.291,
+   "correctness": 0.305,
+   "coherence": 0.21,
+   "complexity": 0.57,
+   "verbosity": 0.564,
+   "no_gold_models_dev_mean_blend": [
+    0.373,
+    0.376
+   ]
+  },
+  "latency": "benchmarks/results_v2/helpsteer2/latency.json",
+  "label_spend_usd": 1.444,
+  "model_dir": "data/v2/helpsteer2/models/FINAL_r1",
+  "code": "experiments/helpsteer2 (train_dual.py --gold all, mh.py, postproc.py, predict.py, latency_mh.py)"
+ },
+ "scored_at": "2026-10-19T00:38:41",
+ "rerun_reason": null
+}

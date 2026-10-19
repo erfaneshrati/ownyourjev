@@ -1,0 +1,12 @@
+{
+ "task": "sst5",
+ "model_dirs": [
+  "data/v2/sst5/models/final"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 18.385271541774273,
+ "cpu_p95_ms": 24.815165932523083,
+ "n_requests": 200
+}

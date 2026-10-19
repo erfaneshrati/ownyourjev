@@ -1,0 +1,197 @@
+{
+ "task": "summeval",
+ "n_eval": 1376,
+ "headline": {
+  "metric": "group_spearman",
+  "head": "*mean*",
+  "ours": 0.47195376454458704,
+  "ours_ci95": [
+   NaN,
+   NaN
+  ],
+  "jev_same_examples": 0.5561586318638649,
+  "beats_jev": false
+ },
+ "heads": {
+  "coherence": {
+   "spearman": 0.5909180665024377,
+   "pearson": 0.5877922868768575,
+   "kendall": 0.43050632287482904,
+   "mae": 0.7811230960892703,
+   "argmax_accuracy": 0.33502906976744184,
+   "argmax_mae": 0.9190891472868218,
+   "group_spearman": 0.5954701094994724,
+   "metric": "group_spearman",
+   "ci95": [
+    0.5276570375585108,
+    0.6151808942422269
+   ],
+   "threshold": 0.5
+  },
+  "consistency": {
+   "spearman": 0.37881782182916174,
+   "pearson": 0.5325473526073666,
+   "kendall": 0.30103999039720597,
+   "mae": 0.8528012110287226,
+   "argmax_accuracy": 0.3183139534883721,
+   "argmax_mae": 0.7953003875968994,
+   "group_spearman": 0.4025662265945469,
+   "metric": "spearman",
+   "ci95": [
+    0.32871976552864485,
+    0.42684392213315486
+   ],
+   "threshold": 0.5
+  },
+  "fluency": {
+   "spearman": 0.4046459023152846,
+   "pearson": 0.5665929991242356,
+   "kendall": 0.31998724235470566,
+   "mae": 0.7655360359832097,
+   "argmax_accuracy": 0.29578488372093026,
+   "argmax_mae": 0.7410368217054263,
+   "group_spearman": 0.4263816391501908,
+   "metric": "spearman",
+   "ci95": [
+    0.35964710429729324,
+    0.451761122744867
+   ],
+   "threshold": 0.5
+  },
+  "relevance": {
+   "spearman": 0.5072799269321699,
+   "pearson": 0.4929068206809194,
+   "kendall": 0.371590759768227,
+   "mae": 0.5315007942913924,
+   "argmax_accuracy": 0.48255813953488375,
+   "argmax_mae": 0.6598837209302325,
+   "group_spearman": 0.46339708293413806,
+   "metric": "spearman",
+   "ci95": [
+    0.46391321837418004,
+    0.5479712750243201
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "coherence": {
+   "spearman": 0.6619605198815692,
+   "pearson": 0.6621196049511899,
+   "kendall": 0.4929205175214333,
+   "mae": 0.6111143410852713,
+   "argmax_accuracy": 0.46875,
+   "argmax_mae": 0.6962209302325582,
+   "group_spearman": 0.6456298688964646,
+   "metric": "group_spearman"
+  },
+  "consistency": {
+   "spearman": 0.5613552985053433,
+   "pearson": 0.759915863066202,
+   "kendall": 0.45770943052463886,
+   "mae": 0.45442102713178295,
+   "argmax_accuracy": 0.8401162790697675,
+   "argmax_mae": 0.28439922480620156,
+   "group_spearman": 0.5624514445502123,
+   "metric": "spearman"
+  },
+  "fluency": {
+   "spearman": 0.4823712387077146,
+   "pearson": 0.47731595706991325,
+   "kendall": 0.3824609618251238,
+   "mae": 1.789937015503876,
+   "argmax_accuracy": 0.08938953488372094,
+   "argmax_mae": 1.962936046511628,
+   "group_spearman": 0.49361108971803036,
+   "metric": "spearman"
+  },
+  "relevance": {
+   "spearman": 0.5468575305208908,
+   "pearson": 0.5739485700978721,
+   "kendall": 0.40671253709345356,
+   "mae": 0.5991545542635659,
+   "argmax_accuracy": 0.4425872093023256,
+   "argmax_mae": 0.748546511627907,
+   "group_spearman": 0.5229421242907523,
+   "metric": "spearman"
+  }
+ },
+ "latency": {
+  "task": "summeval",
+  "model_dirs": [
+   "../../data/v2/summeval/models/final_f0"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "notes": "experiments/summeval/export_mh.py: same protocol as benchmarks.v2.latency (dev texts, batch 1, 4 threads); one shared encoder answers all 4 heads; timing includes rendering, tokenisation and lexical features",
+  "cpu_p50_ms": 48.966715519782156,
+  "cpu_p95_ms": 55.15399380819872,
+  "n_requests": 100,
+  "all_runs_p95_ms": [
+   55.05922762677072,
+   55.15399380819872,
+   57.2563724243082
+  ],
+  "all_runs_p50_ms": [
+   44.69232098199427,
+   48.966715519782156,
+   45.17446493264288
+  ],
+  "machine_load_1min": [
+   5.93,
+   6.88,
+   7.06
+  ],
+  "note": "experiments/summeval/export_mh.py: same protocol as benchmarks.v2.latency (dev texts, batch 1, 4 threads); one shared encoder answers all 4 heads; timing includes rendering, tokenisation and lexical features. Reported run = median of 3 consecutive runs at 1-min load ~6-7 (shared machine; earlier runs at load 8-70 gave p95 60-410 ms). benchmarks.v2.latency cannot load this model (custom multi-head + features), so this script reproduces its protocol.",
+  "quantisation": "dynamic int8 per-channel for all weight MatMuls except the 16 GLU down-projections (fp32)"
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "Round 2. Same student/export as round 1 (16-layer gte-modernbert, 192 tokens of summary + overlap-selected article sentences, CLS+mean, 17 lexical full-article features, 4 heads, soft-label KL, 6 epochs, 5-fold cross-fit by document, mixed int8 ONNX). New: +1031 'natural' summaries of the 86 eval articles written by 3 cheap LLMs (qwen3.7-flash, gemini-2.5-flash-lite, deepseek-v4.1-flash) x 4 plain summarisation prompts at T=1.0 (not prompted to be flawed), labeled by qwen3.7-flash G1 rubric x3 votes, kept in their article's fold, and used only as targets for the consistency head (other heads masked on these rows). Dev (deployed int8 fold models, 14 never-trained docs): 0.537 vs round-1 0.500; paired bootstrap over articles diff +0.037, 95% CI [0.012, 0.066], p(diff<=0)=0.002. Selection runs (fold 0 held out, 3 seeds) 0.544 vs 0.5145. Rejected in round 2: auxiliary sentence-verification head (0.506), natural summaries for all heads (0.515).",
+  "heads": {
+   "coherence": {
+    "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs_G/coherence.npy",
+    "threshold": 0.5
+   },
+   "consistency": {
+    "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs_G/consistency.npy",
+    "threshold": 0.5
+   },
+   "fluency": {
+    "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs_G/fluency.npy",
+    "threshold": 0.5
+   },
+   "relevance": {
+    "probs": "/media/erfan/Data/ownyourjev/data/v2/summeval/final_eval_probs_G/relevance.npy",
+    "threshold": 0.5
+   }
+  },
+  "dev_metrics": {
+   "metric": "group_spearman (per source document), mean of 4 dims, dev = 204 gold / 14 docs (never trained on)",
+   "deployed_int8_fold_models_mean": 0.5004,
+   "deployed_int8_per_fold": [
+    0.5259,
+    0.4964,
+    0.504,
+    0.4968,
+    0.4789
+   ],
+   "deployed_int8_per_dim_mean_over_folds": {
+    "coherence": 0.6398199999999999,
+    "consistency": 0.39074,
+    "fluency": 0.41974,
+    "relevance": 0.5513600000000001
+   },
+   "fp32_fold_models_mean": 0.50512,
+   "selection_fold0_holdout_3seeds_mean": 0.5145,
+   "teacher_qwen_x5_on_dev": 0.599,
+   "teacher_qwen_x1_on_dev": 0.557
+  },
+  "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/summeval/latency.json",
+  "label_spend_usd": 1.6252
+ },
+ "scored_at": "2026-10-19T10:36:00",
+ "rerun_reason": "round 2: +1031 natural weak-LLM summaries (in-fold) as consistency-head targets; dev paired bootstrap over 14 articles vs round-1 frozen recipe +0.037, 95% CI [0.012, 0.066]"
+}

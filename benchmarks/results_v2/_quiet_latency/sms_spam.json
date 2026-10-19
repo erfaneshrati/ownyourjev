@@ -1,0 +1,12 @@
+{
+ "task": "sms_spam",
+ "model_dirs": [
+  "data/v2/sms_spam/models/gte_full_e3/fold0"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 13.841797015629709,
+ "cpu_p95_ms": 24.91518066381104,
+ "n_requests": 200
+}

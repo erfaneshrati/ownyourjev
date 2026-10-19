@@ -1,0 +1,68 @@
+{
+ "description": "STS-B round-2 deployed model (data/v2/stsb/models/final_r2/model.int8.onnx, OnnxPredictor threads=4, batch 1, same path as experiments/stsb/predict_eval.py). The model never trained on dev or seeds (train2.py excludes their uids; re-paired/generated pairs exclude dev/seed sentences; soup members R2_allF_s0/R2_allFi_s1/R2_allFi_s2 have add_gold empty), so dev predictions are out-of-sample. Gold level = dev gold score rounded to the nearest of 0..5. Method chosen by 5-fold CV NLL on the 200 dev pairs (select_calibrator), refit on all 200.",
+ "heads": {
+  "answer": {
+   "method": "vector",
+   "params": {
+    "T": 1.1323263203958789,
+    "bias": [
+     0.32438892560874094,
+     -0.5681936066140142,
+     -0.4001682566469671,
+     0.36177861438880465,
+     0.26840010549423193,
+     0.013792158287513833
+    ]
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.07095162287354469,
+     "ece15": 0.09487974360585216,
+     "ace": 0.1093016181886196,
+     "brier": 0.5211397478961937,
+     "nll": 0.946175028567414,
+     "mean_conf": 0.6227972765266895,
+     "accuracy": 0.595
+    },
+    "temperature": {
+     "ece": 0.06244492628164315,
+     "ece15": 0.07233889674520949,
+     "ace": 0.08589322044376191,
+     "brier": 0.5227923529600932,
+     "nll": 0.9411933653567539,
+     "mean_conf": 0.5826383067640658,
+     "accuracy": 0.595
+    },
+    "vector": {
+     "ece": 0.06292872562460823,
+     "ece15": 0.07816481938991122,
+     "ace": 0.09135441266967684,
+     "brier": 0.5175918523815876,
+     "nll": 0.9172396318777964,
+     "mean_conf": 0.5997809766660823,
+     "accuracy": 0.585
+    },
+    "isotonic": {
+     "ece": 0.08130300204459191,
+     "ece15": 0.11194434541527296,
+     "ace": 0.12106949703038282,
+     "brier": 0.5536631128672804,
+     "nll": 1.2965629656492212,
+     "mean_conf": 0.6504264422910085,
+     "accuracy": 0.585
+    }
+   },
+   "n_fit": 200,
+   "dev_expected_score_spearman": {
+    "raw": 0.9121,
+    "calibrated_refit_all": 0.9116,
+    "oof_by_method": {
+     "none": 0.9121,
+     "temperature": 0.912,
+     "vector": 0.9105,
+     "isotonic": 0.9026
+    }
+   }
+  }
+ }
+}

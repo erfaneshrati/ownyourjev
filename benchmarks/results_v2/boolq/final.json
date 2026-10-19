@@ -1,0 +1,84 @@
+{
+ "task": "boolq",
+ "n_eval": 3270,
+ "headline": {
+  "metric": "accuracy",
+  "head": "answer",
+  "ours": 0.8553516819571866,
+  "ours_ci95": [
+   0.8431192660550458,
+   0.8666666666666667
+  ],
+  "jev_same_examples": 0.9131498470948012,
+  "beats_jev": false
+ },
+ "heads": {
+  "answer": {
+   "accuracy": 0.8553516819571866,
+   "precision": 0.9008221993833505,
+   "recall": 0.8622725036891293,
+   "f1": 0.8811259110329228,
+   "auroc": 0.9264251809572133,
+   "auprc": 0.949823080671191,
+   "ece": 0.014023791777613683,
+   "brier": 0.1038756554294575,
+   "nll": 0.33792960838034775,
+   "positive_rate": 0.6217125382262997,
+   "metric": "accuracy",
+   "ci95": [
+    0.8431192660550458,
+    0.8666666666666667
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "accuracy": 0.9131498470948012,
+   "precision": 0.9524055871702017,
+   "recall": 0.9055582882439744,
+   "f1": 0.9283913262733232,
+   "auroc": 0.9682365066937169,
+   "auprc": 0.9784402830284418,
+   "ece": 0.009605504587155991,
+   "brier": 0.06645899082568807,
+   "nll": 0.2310297751812736,
+   "positive_rate": 0.6217125382262997,
+   "metric": "accuracy"
+  }
+ },
+ "latency": {
+  "task": "boolq",
+  "model_dirs": [
+   "data/v2/boolq/models/soup_dist3c"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 41.16668301867321,
+  "cpu_p95_ms": 64.26153247593899,
+  "n_requests": 200
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "Round 2. UltraBERT-150M, max_len 224 left-truncated, lean int8 ONNX + SmoothQuant(0.8) as in round 1. Changes: (1) soft labels = mean vote of qwen3.7-flash + (v1 deepseek-seeded | deepseek-flash) + gemini-3.1-flash-lite tie-break on all 9.2k pool texts, soft BCE; (2) distillation: 5 soft-label seeds as a teacher ensemble label 29.7k synthetic questions they never trained on (5.97k topic-first real-style queries + 23.7k round-1 generated), target = 0.5*teacher + 0.5*LLM label; student trained on pool_soft + these; (3) final = weight soup of the 3 student seeds, Platt-recalibrated on the silver early-stopping split (no gold). Dev evidence vs round 1: seed means 0.837 (round-1 hard-label recipe, 5 seeds) -> 0.878 (soft, 5 seeds) / 0.882 (distilled, 3 seeds); frozen int8 0.885 vs 0.85 (paired bootstrap +3.5 pts, 95% CI [-0.5, 7.5], P(<=0)=0.05; AUROC 0.947 vs 0.924, P(<=0)=0.015). Threshold 0.5.",
+  "heads": {
+   "answer": {
+    "probs": "/media/erfan/Data/ownyourjev/data/v2/boolq/models/soup_dist3c/eval_probs_int8.npy",
+    "threshold": 0.5
+   }
+  },
+  "dev_metrics": {
+   "accuracy_int8_onnx": 0.885,
+   "auroc_int8_onnx": 0.9466,
+   "accuracy_fp32_onnx": 0.88,
+   "round1_accuracy_int8_onnx": 0.85,
+   "n_dev": 200
+  },
+  "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/boolq/latency.json",
+  "label_spend_usd": 1.1234
+ },
+ "scored_at": "2026-10-19T01:01:18",
+ "rerun_reason": "round 2: soft vote labels (3 labelers) + ensemble-teacher distillation on synthetic questions + soup of 3 students; dev int8 0.885 vs 0.85 (paired bootstrap P(<=0)=0.05, AUROC P=0.015), seed means 0.837 -> 0.878/0.882"
+}

@@ -1,0 +1,81 @@
+{
+ "task": "clinc150",
+ "n_eval": 5500,
+ "headline": {
+  "metric": "accuracy",
+  "head": "answer",
+  "ours": 0.934,
+  "ours_ci95": [
+   0.9269090909090909,
+   0.9405454545454546
+  ],
+  "jev_same_examples": 0.8949090909090909,
+  "beats_jev": true
+ },
+ "heads": {
+  "answer": {
+   "accuracy": 0.934,
+   "macro_f1": 0.9396381119509345,
+   "ece": 0.12061268569935454,
+   "brier": 0.1885518821699084,
+   "mean_top_prob": 0.839038958357139,
+   "nll": 0.4870952324166347,
+   "metric": "accuracy",
+   "ci95": [
+    0.9269090909090909,
+    0.9405454545454546
+   ],
+   "threshold": 0.4
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "accuracy": 0.8949090909090909,
+   "macro_f1": 0.9019345080003537,
+   "ece": 0.023980000000000085,
+   "brier": 0.1627508181818182,
+   "mean_top_prob": 0.9085399999999999,
+   "nll": 0.7797113678942805,
+   "metric": "accuracy"
+  }
+ },
+ "latency": {
+  "task": "clinc150",
+  "model_dirs": [
+   "data/v2/clinc150/models/E_lr5_q_only_Wi"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 20.443563000299037,
+  "cpu_p95_ms": 23.75303413718939,
+  "n_requests": 300
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "gte-modernbert full fine-tune (lr 5e-5, 4 epochs max, early stop on silver val -> epoch 3, max_len 64, bs 32, seed 0) on the whole training pool (15,030 minus an 8% stratified silver-val split = 13,818) labeled by deepseek-v4.1-flash with a batched prompt (20 utterances/request, hand-written intent descriptions + decision rules + the 20 seeds; dev agreement 0.965), plus 2,066 LLM-generated out-of-scope utterances (16 topics, kept only if the labeler also says oos). Post-hoc oos rule: predict oos when the best in-scope probability < 0.4 (chosen on dev+silver-val in-scope accuracy and oos recall plus held-out near-miss synthetic oos, weighted to the 18% public test oos share; best for both training seeds). Exported to ONNX with int8 dynamic quantisation only on the MLP input projections (mlp.Wi); predictions identical to torch fp32 on dev+val (1,412 texts).",
+  "heads": {
+   "answer": {
+    "probs": "data/v2/clinc150/eval_probs.npy",
+    "threshold": 0.4
+   }
+  },
+  "dev_metrics": {
+   "dev_accuracy": 0.965,
+   "dev_in_scope_accuracy": 0.9635,
+   "dev_oos_recall": 1.0,
+   "dev_n_oos": 8,
+   "dev_plus_silverval_in_scope_accuracy": 0.958,
+   "dev_plus_silverval_oos_recall": 0.935,
+   "dev_plus_silverval_n_oos": 31,
+   "heldout_nearmiss_synthetic_oos_recall": 0.92,
+   "labeler_dev_agreement": 0.965
+  },
+  "latency": "benchmarks/results_v2/clinc150/latency.json",
+  "label_spend_usd": 0.237,
+  "model_dir": "data/v2/clinc150/models/E_lr5_q_only_Wi"
+ },
+ "scored_at": "2026-10-18T20:49:30",
+ "rerun_reason": null
+}

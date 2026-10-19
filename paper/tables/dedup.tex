@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Task & Dup.\ removed & Ours & Jev & $\Delta$ \\
+\midrule
+SMS Spam & 82/5354 & 0.957 & 0.936 & +0.022 \\
+PAWS & 0/8000 & 0.884 & 0.850 & +0.035 \\
+Prompt Injections & 0/116 & 0.957 & 0.741 & +0.216 \\
+ToxicChat & 307/5083 & 0.775 & 0.790 & -0.015 \\
+Banking77 & 25/3076 & 0.860 & 0.796 & +0.064 \\
+CLINC150 & 19/5500 & 0.934 & 0.895 & +0.039 \\
+AG News & 15/7600 & 0.893 & 0.885 & +0.008 \\
+Financial PhraseBank & 4/970 & 0.795 & 0.732 & +0.063 \\
+Emotion & 11/2000 & 0.814 & 0.587 & +0.228 \\
+STS-B & 7/1379 & 0.893 & 0.890 & +0.003 \\
+SST-5 & 2/2210 & 0.583 & 0.579 & +0.004 \\
+ToxiGen & 177/940 & 0.845 & 0.879 & -0.034 \\
+\bottomrule
+\end{tabular}
+\caption{Robustness to train/test duplication. Frozen predictions re-scored after removing test inputs that exactly match (after normalisation) any seed, dev, or training-pool text the experiment could see; Jev re-scored on the same subset. All eight wins hold; the ToxicChat and ToxiGen ties lean towards Jev.}
+\label{tab:dedup}
+\end{table}

@@ -1,0 +1,4 @@
+e1_fq_s1 --labels ../../data/v2/helpsteer2/labels/m_silver_fq.jsonl --soft --epochs 3 --seed 1 --save_preds
+e1_f_s1 --labels ../../data/v2/helpsteer2/labels/m_silver_f.jsonl --soft --epochs 3 --seed 1 --save_preds
+e1_q_s1 --labels ../../data/v2/helpsteer2/labels/m_silver_q.jsonl --soft --epochs 3 --seed 1 --save_preds
+e2_all_s1 --labels ../../data/v2/helpsteer2/labels/m_all15k.jsonl --soft --epochs 3 --seed 1 --save_preds

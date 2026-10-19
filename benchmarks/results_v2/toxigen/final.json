@@ -1,0 +1,110 @@
+{
+ "task": "toxigen",
+ "n_eval": 940,
+ "headline": {
+  "metric": "accuracy",
+  "head": "toxic",
+  "ours": 0.8542553191489362,
+  "ours_ci95": [
+   0.8297872340425532,
+   0.8776595744680851
+  ],
+  "jev_same_examples": 0.8776595744680851,
+  "beats_jev": false
+ },
+ "heads": {
+  "toxic": {
+   "accuracy": 0.8542553191489362,
+   "precision": 0.8511749347258486,
+   "recall": 0.8029556650246306,
+   "f1": 0.826362484157161,
+   "auroc": 0.9235392335934761,
+   "auprc": 0.9054331704443886,
+   "ece": 0.0903382549350933,
+   "brier": 0.15421214239937192,
+   "nll": 0.4667158659863254,
+   "positive_rate": 0.4319148936170213,
+   "metric": "accuracy",
+   "ci95": [
+    0.8297872340425532,
+    0.8776595744680851
+   ],
+   "threshold": 0.3
+  },
+  "toxicity": {
+   "spearman": 0.7899766850559441,
+   "pearson": 0.7755618363124441,
+   "kendall": 0.6133020048481119,
+   "mae": 0.8119618069045312,
+   "argmax_accuracy": 0.4031914893617021,
+   "argmax_mae": 0.9680851063829787,
+   "metric": "spearman",
+   "ci95": [
+    0.7612800415077821,
+    0.8144822568826812
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "toxic": {
+   "accuracy": 0.8776595744680851,
+   "precision": 0.9121813031161473,
+   "recall": 0.7931034482758621,
+   "f1": 0.8484848484848485,
+   "auroc": 0.9493436467961847,
+   "auprc": 0.9410127441753974,
+   "ece": 0.013851063829787237,
+   "brier": 0.08737319148936169,
+   "nll": 0.2921275429655181,
+   "positive_rate": 0.4319148936170213,
+   "metric": "accuracy"
+  },
+  "toxicity": {
+   "spearman": 0.8403125829655996,
+   "pearson": 0.8556395425083965,
+   "kendall": 0.670020756762508,
+   "mae": 0.5756524822695036,
+   "argmax_accuracy": 0.5106382978723404,
+   "argmax_mae": 0.6326241134751771,
+   "metric": "spearman"
+  }
+ },
+ "latency": {
+  "task": "toxigen",
+  "model_dirs": [
+   "data/v2/toxigen/models/soup_silv05_s012"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 30.704416043590754,
+  "cpu_p95_ms": 36.87050552107394,
+  "n_requests": 100
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "Shared-encoder two-head student (gte-modernbert-base, CLS, one Linear(768,6): col0 toxic logit, cols1-5 toxicity softmax), fp32 ONNX. Trained 3 epochs (lr 3e-5, bs 32, max_len 64) on soft labels for 8,675 pool texts from deepseek-v4.1-flash with labeling guidance v1 (P(toxic)+5-level distribution in one call), mixed 2:1 with v1 silver hard labels (plain+seeded) where available; uniform weight soup of 3 seeds. toxic = E[toxicity]/4 >= 0.30 (threshold = max of 7-pt smoothed dev accuracy curve; E[toxicity] beat the toxic head on dev threshold-CV accuracy across 5 runs, 0.896 vs 0.877). int8 rejected (dev AUROC 0.960->0.940, Spearman 0.769->0.729).",
+  "heads": {
+   "toxic": {
+    "probs": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/toxigen/eval_probs_toxic.npy",
+    "threshold": 0.3
+   },
+   "toxicity": {
+    "probs": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/toxigen/eval_probs_toxicity.npy"
+   }
+  },
+  "dev_metrics": {
+   "toxic_acc_at_0.30": 0.89,
+   "toxic_auroc": 0.9582873267083794,
+   "toxic_acc_best_threshold": 0.905,
+   "toxicity_spearman": 0.7699179962023314,
+   "note": "dev was used for threshold and config choice, so these are optimistic"
+  },
+  "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/toxigen/latency.json",
+  "label_spend_usd": 0.7276
+ },
+ "scored_at": "2026-10-18T22:04:16",
+ "rerun_reason": null
+}

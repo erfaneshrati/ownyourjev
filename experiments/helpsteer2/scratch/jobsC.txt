@@ -1,0 +1,4 @@
+d22_s0 train_dual.py --layers 22 --budget 128 --seed 0
+d18_s0 train_dual.py --layers 18 --budget 128 --seed 0
+d22_s1 train_dual.py --layers 22 --budget 128 --seed 1
+d18_s1 train_dual.py --layers 18 --budget 128 --seed 1

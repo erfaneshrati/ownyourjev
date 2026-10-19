@@ -1,0 +1,18 @@
+{
+  "_source": "Deußer, Sparrenberg, Sifa (2026). Evaluating and Benchmarking the System One Model Jev. arXiv:2609.37647. Jev pinned to jev-1.13.0, zero-shot, full evaluation splits. Code: github.com/AppliedMachineLearning-Lab/jev-benchmarking (MIT). Qwen = Qwen3.8-27B, Gemma = gemma-4-E4B-it scored on identical requests.",
+  "sms_spam": {"mode": "noul", "metric": "f1", "jev": 0.938, "ci95": [0.924, 0.950], "jev_ece": 0.033, "qwen": 0.940, "gemma": 0.902, "n": 5574, "split": "all"},
+  "paws": {"mode": "noul", "metric": "accuracy", "jev": 0.850, "ci95": [0.842, 0.857], "jev_ece": 0.040, "qwen": 0.836, "gemma": 0.741, "n": 8000, "split": "test"},
+  "boolq": {"mode": "noul", "metric": "accuracy", "jev": 0.913, "ci95": [0.904, 0.922], "jev_ece": 0.043, "qwen": 0.876, "gemma": 0.822, "n": 3270, "split": "validation"},
+  "prompt_injections": {"mode": "noul", "metric": "accuracy", "jev": 0.741, "ci95": [0.664, 0.828], "jev_ece": 0.236, "qwen": 0.767, "gemma": 0.664, "n": 116, "split": "test"},
+  "toxic_chat": {"mode": "noul", "metric": "f1", "head": "toxic", "jev": 0.786, "ci95": [0.753, 0.821], "jev_ece": 0.016, "qwen": 0.779, "gemma": 0.703, "n": 5083, "split": "test"},
+  "banking77": {"mode": "choice", "metric": "accuracy", "jev": 0.797, "ci95": [0.782, 0.812], "jev_ece": 0.087, "qwen": 0.774, "gemma": 0.670, "n": 3076, "split": "test"},
+  "clinc150": {"mode": "choice", "metric": "accuracy", "jev": 0.895, "ci95": [0.885, 0.902], "jev_ece": 0.025, "qwen": 0.888, "gemma": 0.683, "n": 5500, "split": "test"},
+  "ag_news": {"mode": "choice", "metric": "accuracy", "jev": 0.885, "ci95": [0.878, 0.891], "jev_ece": 0.077, "qwen": 0.867, "gemma": 0.862, "n": 7600, "split": "test"},
+  "financial_phrasebank": {"mode": "choice", "metric": "accuracy", "jev": 0.730, "ci95": [0.699, 0.756], "jev_ece": 0.138, "qwen": 0.677, "gemma": 0.652, "n": 970, "split": "test"},
+  "emotion": {"mode": "choice", "metric": "accuracy", "jev": 0.585, "ci95": [0.563, 0.605], "jev_ece": 0.279, "qwen": 0.571, "gemma": 0.569, "n": 2000, "split": "test"},
+  "stsb": {"mode": "score", "metric": "spearman", "jev": 0.890, "ci95": [0.879, 0.901], "jev_mae": 0.56, "qwen": 0.896, "gemma": 0.814, "n": 1379, "split": "test"},
+  "sst5": {"mode": "score", "metric": "argmax_accuracy", "jev": 0.579, "ci95": [0.560, 0.599], "jev_spearman": 0.851, "jev_mae": 0.50, "qwen": 0.857, "gemma": 0.779, "qwen_metric": "spearman", "n": 2210, "split": "test"},
+  "toxigen": {"mode": "score", "metric": "accuracy", "head": "toxic", "jev": 0.878, "ci95": [0.857, 0.898], "jev_ece": 0.046, "jev_toxicity_spearman": 0.841, "jev_mae": 0.57, "qwen": 0.832, "gemma": 0.806, "n": 940, "split": "test"},
+  "summeval": {"mode": "score", "metric": "mean_group_spearman", "jev": 0.554, "ci95": [0.523, 0.571], "qwen": 0.540, "gemma": 0.461, "n": 1600, "split": "test", "jev_per_dim": {"coherence": 0.639, "fluency": 0.495}},
+  "helpsteer2": {"mode": "score", "metric": "mean_spearman", "jev": 0.412, "ci95": [0.380, 0.444], "qwen": 0.443, "gemma": 0.385, "n": 1038, "split": "validation", "jev_per_dim": {"helpfulness": 0.399, "correctness": 0.369}}
+}

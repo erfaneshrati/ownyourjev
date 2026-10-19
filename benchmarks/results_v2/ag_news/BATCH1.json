@@ -1,0 +1,85 @@
+{
+ "description": "Frozen int8 model data/v2/ag_news/models/v1plain_5k/model.int8.onnx via OnnxPredictor(threads=8), one text per call (no padding), on protocol.dev and protocol.eval_inputs. Calibrator refit on batch-1 dev predictions (model never trained on dev), 5-fold CV NLL over argmax-preserving none/temperature, refit on all 200 dev.",
+ "heads": {
+  "answer": {
+   "probs": "benchmarks/results_v2/ag_news/eval_probs_b1.npy",
+   "dev_probs": "benchmarks/results_v2/ag_news/dev_probs_b1.npy"
+  }
+ },
+ "calibration": {
+  "answer": {
+   "method": "temperature",
+   "params": {
+    "T": 1.5747439366041582
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.06170985341072086,
+     "ece15": 0.05957210242748259,
+     "ace": 0.05135120570659637,
+     "brier": 0.14962294355884,
+     "nll": 0.3771964786977167,
+     "mean_conf": 0.9554434823989868,
+     "accuracy": 0.915
+    },
+    "temperature": {
+     "ece": 0.03455948953426352,
+     "ece15": 0.03798715580814296,
+     "ace": 0.045170086340629315,
+     "brier": 0.14901169149095408,
+     "nll": 0.32517043357632874,
+     "mean_conf": 0.9047801059411305,
+     "accuracy": 0.915
+    }
+   },
+   "dev_cv_unrestricted": {
+    "none": {
+     "ece": 0.06170985341072086,
+     "ece15": 0.05957210242748259,
+     "ace": 0.05135120570659637,
+     "brier": 0.14962294355884,
+     "nll": 0.3771964786977167,
+     "mean_conf": 0.9554434823989868,
+     "accuracy": 0.915
+    },
+    "temperature": {
+     "ece": 0.03455948953426352,
+     "ece15": 0.03798715580814296,
+     "ace": 0.045170086340629315,
+     "brier": 0.14901169149095408,
+     "nll": 0.32517043357632874,
+     "mean_conf": 0.9047801059411305,
+     "accuracy": 0.915
+    },
+    "vector": {
+     "ece": 0.04824144603172813,
+     "ece15": 0.05553071040440003,
+     "ace": 0.03619838826313929,
+     "brier": 0.14402697657014496,
+     "nll": 0.3143994105716184,
+     "mean_conf": 0.9095144210645586,
+     "accuracy": 0.915
+    },
+    "isotonic": {
+     "ece": 0.05645696724137872,
+     "ece15": 0.058832700366998544,
+     "ace": 0.0627245581117766,
+     "brier": 0.15174652760522653,
+     "nll": 0.46422355592113285,
+     "mean_conf": 0.9176014049806003,
+     "accuracy": 0.92
+    }
+   },
+   "n_fit": 200
+  }
+ },
+ "checks": {
+  "repeat_max_diff": 0.0,
+  "dev_acc_b1": 0.915,
+  "dev_acc_batched": 0.915,
+  "dev_flips": 2,
+  "dev_max_abs_diff": 0.521755576133728,
+  "eval_flips_vs_frozen": 114,
+  "eval_max_abs_diff": 0.5395482778549194
+ }
+}

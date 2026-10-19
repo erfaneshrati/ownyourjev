@@ -1,0 +1,2 @@
+R2rank03_s0 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --seed 0 --rank_w 0.3
+R2rank03_s1 train_dual.py --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen --layers 22 --budget 128 --epochs 3 --fixed_epoch 3 --seed 1 --rank_w 0.3

@@ -1,0 +1,2 @@
+F7_s0 train_dual.py --layers 22 --budget 128 --seed 0 --no_sval --flash silver_v1.jsonl flash_more.jsonl --qwen
+D_s0 train_dual.py --layers 22 --budget 128 --seed 0 --no_sval --flash silver_v1.jsonl flash_more.jsonl

@@ -1,0 +1,84 @@
+{
+ "task": "boolq",
+ "n_eval": 3270,
+ "headline": {
+  "metric": "accuracy",
+  "head": "answer",
+  "ours": 0.84434250764526,
+  "ours_ci95": [
+   0.8321100917431192,
+   0.8565749235474006
+  ],
+  "jev_same_examples": 0.9131498470948012,
+  "beats_jev": false
+ },
+ "heads": {
+  "answer": {
+   "accuracy": 0.84434250764526,
+   "precision": 0.864244741873805,
+   "recall": 0.8893261190359075,
+   "f1": 0.8766060606060606,
+   "auroc": 0.9121261513244879,
+   "auprc": 0.9400364200713278,
+   "ece": 0.037194930276739466,
+   "brier": 0.1144320747080667,
+   "nll": 0.3711819737703424,
+   "positive_rate": 0.6217125382262997,
+   "metric": "accuracy",
+   "ci95": [
+    0.8321100917431192,
+    0.8565749235474006
+   ],
+   "threshold": 0.5
+  }
+ },
+ "jev_same_examples": {
+  "answer": {
+   "accuracy": 0.9131498470948012,
+   "precision": 0.9524055871702017,
+   "recall": 0.9055582882439744,
+   "f1": 0.9283913262733232,
+   "auroc": 0.9682365066937169,
+   "auprc": 0.9784402830284418,
+   "ece": 0.009605504587155991,
+   "brier": 0.06645899082568807,
+   "nll": 0.2310297751812736,
+   "positive_rate": 0.6217125382262997,
+   "metric": "accuracy"
+  }
+ },
+ "latency": {
+  "task": "boolq",
+  "model_dirs": [
+   "data/v2/boolq/models/soup_all6"
+  ],
+  "device": "cpu",
+  "threads": 4,
+  "runtime": "onnxruntime",
+  "cpu_p50_ms": 42.71657601930201,
+  "cpu_p95_ms": 69.08936309046112,
+  "n_requests": 200
+ },
+ "latency_gate_ms": 70.0,
+ "latency_ok": true,
+ "frozen": {
+  "description": "UltraBERT-150M (24 layers) uniform weight soup of 6 full fine-tunes (lr 1e-5, max_len 224 left-truncated so the question is kept; LLM pool labels: qwen3.7-flash on all 9.2k pool texts, some runs with v1 deepseek-seeded + gemini-3.1-flash-lite tie-break labels, some with +23.7k LLM-generated yes/no questions over pool passages). Served as lean ONNX re-implementation + SmoothQuant(alpha 0.8, MLP down_proj) + dynamic int8 weight MatMuls. Chosen on dev: UltraBERT >> gte-modernbert (dev 0.85 vs 0.77-0.835), soup reduces the large seed variance (single runs 0.82-0.85), int8 smoothquant keeps dev accuracy (0.85). Threshold 0.5 (dev-tuned thresholds did not transfer across dev halves).",
+  "heads": {
+   "answer": {
+    "probs": "/media/erfan/Data/ownyourjev/data/v2/boolq/models/soup_all6/eval_probs_int8.npy",
+    "threshold": 0.5
+   }
+  },
+  "dev_metrics": {
+   "accuracy_int8_onnx": 0.85,
+   "auroc_int8_onnx": 0.9237,
+   "accuracy_fp32_onnx": 0.84,
+   "accuracy_torch": 0.845,
+   "n_dev": 200
+  },
+  "latency": "/media/erfan/Data/ownyourjev/benchmarks/results_v2/boolq/latency.json",
+  "label_spend_usd": 0.5436
+ },
+ "scored_at": "2026-10-18T22:36:07",
+ "rerun_reason": null
+}

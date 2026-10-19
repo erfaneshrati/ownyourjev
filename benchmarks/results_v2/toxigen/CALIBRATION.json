@@ -1,0 +1,103 @@
+{
+ "description": "Dev predictions from the exact deployed artifact (data/v2/toxigen/models/soup_silv05_s012/model.onnx, fp32, experiments/toxigen/mt_model.py:onnx_probs, max_len 64); dev was never trained on (pool excludes dev+seed uids, silver filtered by the same exclusion), dev only chose config and the 0.30 threshold. Verified: re-predicting 20 eval_inputs reproduces the frozen test probs exactly (max diff 0). toxic = E[toxicity]/4 (a score, not a probability); toxicity = 5-level softmax. Each head calibrated separately with select_calibrator (5-fold CV on 200 dev, lowest NLL, refit on all dev). Decisions unchanged (threshold 0.30 applies to raw probs).",
+ "heads": {
+  "toxic": {
+   "method": "platt",
+   "params": {
+    "a": 2.7816644459901587,
+    "b": 2.1786798347969243
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.07372402253589826,
+     "ece15": 0.07372402253589824,
+     "ace": 0.07778847068577306,
+     "brier": 0.10675725554546547,
+     "nll": 0.3426610680346171,
+     "mean_conf": 0.8085219813880394,
+     "accuracy": 0.83
+    },
+    "temperature": {
+     "ece": 0.06231451776619089,
+     "ece15": 0.061510109234764694,
+     "ace": 0.06860673841717829,
+     "brier": 0.10727307946159349,
+     "nll": 0.32690982630910154,
+     "mean_conf": 0.8657242813140202,
+     "accuracy": 0.83
+    },
+    "platt": {
+     "ece": 0.03277973070596949,
+     "ece15": 0.03492702927995972,
+     "ace": 0.030053361092889138,
+     "brier": 0.07765745449839635,
+     "nll": 0.2532524781767043,
+     "mean_conf": 0.8968553891483881,
+     "accuracy": 0.895
+    },
+    "isotonic": {
+     "ece": 0.048133789351527956,
+     "ece15": 0.05825074776918161,
+     "ace": 0.05353562598121793,
+     "brier": 0.0889073764351597,
+     "nll": 0.3721420843246968,
+     "mean_conf": 0.9098260997963772,
+     "accuracy": 0.885
+    }
+   },
+   "n_fit": 200
+  },
+  "toxicity": {
+   "method": "vector",
+   "params": {
+    "T": 0.640147140259572,
+    "bias": [
+     -1.3645439470494864,
+     -0.4874963049714471,
+     0.08288065249495766,
+     0.09891077686433611,
+     1.6702498042461593
+    ]
+   },
+   "dev_cv": {
+    "none": {
+     "ece": 0.08702157735824585,
+     "ece15": 0.08859609544277189,
+     "ace": 0.0900570523738861,
+     "brier": 0.5637522568126563,
+     "nll": 1.0388505654934574,
+     "mean_conf": 0.5861848163604736,
+     "accuracy": 0.53
+    },
+    "temperature": {
+     "ece": 0.05727951582167175,
+     "ece15": 0.06879451101755388,
+     "ace": 0.07735995518163086,
+     "brier": 0.5632210893993672,
+     "nll": 1.039890893371375,
+     "mean_conf": 0.5798887449164318,
+     "accuracy": 0.53
+    },
+    "vector": {
+     "ece": 0.050433551327594806,
+     "ece15": 0.05752712162179696,
+     "ace": 0.058931911709156605,
+     "brier": 0.52701694696924,
+     "nll": 0.9555821754380739,
+     "mean_conf": 0.6091330855544529,
+     "accuracy": 0.58
+    },
+    "isotonic": {
+     "ece": 0.1105381291694958,
+     "ece15": 0.10490779206873067,
+     "ace": 0.08410722099611476,
+     "brier": 0.5608257150512407,
+     "nll": 1.2506501518792266,
+     "mean_conf": 0.6087867839501488,
+     "accuracy": 0.565
+    }
+   },
+   "n_fit": 200
+  }
+ }
+}

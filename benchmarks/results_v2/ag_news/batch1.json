@@ -1,0 +1,138 @@
+{
+ "task": "ag_news",
+ "heads": {
+  "answer": {
+   "metric": "accuracy",
+   "batch1": 0.8926315789473684,
+   "batch1_ci95": [
+    0.8856546052631579,
+    0.9001315789473684
+   ],
+   "frozen_batched": 0.8930263157894737,
+   "decision_flips": 0.015,
+   "max_abs_prob_diff": 0.5395482778549194,
+   "calib_raw": {
+    "ece": 0.06025184165490303,
+    "ece15": 0.06025184165490297,
+    "ace": 0.06016949485791359,
+    "brier": 0.17281045579825782,
+    "nll": 0.3984157149327799,
+    "mean_conf": 0.952801073805282,
+    "accuracy": 0.8926315789473684,
+    "reliability": [
+     {
+      "bin": 3,
+      "n": 10,
+      "conf": 0.3687082171440125,
+      "acc": 0.4
+     },
+     {
+      "bin": 4,
+      "n": 48,
+      "conf": 0.4583298973739147,
+      "acc": 0.375
+     },
+     {
+      "bin": 5,
+      "n": 172,
+      "conf": 0.5545671679252802,
+      "acc": 0.4883720930232558
+     },
+     {
+      "bin": 6,
+      "n": 187,
+      "conf": 0.6534507959921729,
+      "acc": 0.4919786096256685
+     },
+     {
+      "bin": 7,
+      "n": 227,
+      "conf": 0.7522764528900516,
+      "acc": 0.6079295154185022
+     },
+     {
+      "bin": 8,
+      "n": 381,
+      "conf": 0.856345343308186,
+      "acc": 0.7244094488188977
+     },
+     {
+      "bin": 9,
+      "n": 6575,
+      "conf": 0.9887431271991802,
+      "acc": 0.9387072243346007
+     }
+    ]
+   },
+   "calibration_method": "temperature",
+   "calib_calibrated": {
+    "ece": 0.012426788252390946,
+    "ece15": 0.011684852487069996,
+    "ace": 0.011364993684009063,
+    "brier": 0.1653602471238366,
+    "nll": 0.3356391274465769,
+    "mean_conf": 0.9002276679431713,
+    "accuracy": 0.8926315789473684,
+    "reliability": [
+     {
+      "bin": 3,
+      "n": 33,
+      "conf": 0.3663449154910912,
+      "acc": 0.30303030303030304
+     },
+     {
+      "bin": 4,
+      "n": 124,
+      "conf": 0.46254179525896216,
+      "acc": 0.4596774193548387
+     },
+     {
+      "bin": 5,
+      "n": 283,
+      "conf": 0.5503804553302171,
+      "acc": 0.5229681978798587
+     },
+     {
+      "bin": 6,
+      "n": 335,
+      "conf": 0.6531250578777447,
+      "acc": 0.6626865671641791
+     },
+     {
+      "bin": 7,
+      "n": 441,
+      "conf": 0.7544100268615255,
+      "acc": 0.7301587301587301
+     },
+     {
+      "bin": 8,
+      "n": 898,
+      "conf": 0.8595172031580407,
+      "acc": 0.876391982182628
+     },
+     {
+      "bin": 9,
+      "n": 5486,
+      "conf": 0.9648541520261456,
+      "acc": 0.954794021144732
+     }
+    ]
+   }
+  }
+ },
+ "description": "Frozen int8 model data/v2/ag_news/models/v1plain_5k/model.int8.onnx via OnnxPredictor(threads=8), one text per call (no padding), on protocol.dev and protocol.eval_inputs. Calibrator refit on batch-1 dev predictions (model never trained on dev), 5-fold CV NLL over argmax-preserving none/temperature, refit on all 200 dev.",
+ "scored_at": "2026-10-19T14:05:59",
+ "rerun_reason": null,
+ "headline": {
+  "head": "answer",
+  "metric": "accuracy",
+  "batch1": 0.8926315789473684,
+  "batch1_ci95": [
+   0.8856546052631579,
+   0.9001315789473684
+  ],
+  "frozen_batched": 0.8930263157894737,
+  "jev": 0.885,
+  "verdict_batch1": "win"
+ }
+}

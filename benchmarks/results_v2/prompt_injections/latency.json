@@ -1,0 +1,14 @@
+{
+ "task": "prompt_injections",
+ "model_dirs": [
+  "data/v2/prompt_injections/models/final_gte_e8_dup3"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 18.35680298972875,
+ "cpu_p95_ms": 51.89441918628288,
+ "n_requests": 100,
+ "notes": "shared machine (8 agents); other runs: p95 53.0 ms at load 32.6, 77.1 ms at load 41.4, 175 ms at load ~40 (while a 12-thread PAWS inference job of ours ran)",
+ "load_average_at_measurement": "11.9 -> 7.4 (1-min)"
+}

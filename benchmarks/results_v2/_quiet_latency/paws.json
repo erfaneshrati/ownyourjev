@@ -1,0 +1,12 @@
+{
+ "task": "paws",
+ "model_dirs": [
+  "data/v2/paws/models/ub_e3_soft__all+pseudo-ensmore__s0"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 30.07810446433723,
+ "cpu_p95_ms": 39.814759040018544,
+ "n_requests": 200
+}

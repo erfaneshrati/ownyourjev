@@ -1,0 +1,114 @@
+{
+ "task": "sms_spam",
+ "heads": {
+  "answer": {
+   "metric": "f1",
+   "batch1": 0.9572529782761037,
+   "batch1_ci95": [
+    0.9456009044726906,
+    0.9678321678321679
+   ],
+   "frozen_batched": 0.958041958041958,
+   "decision_flips": 0.0028016436309301457,
+   "max_abs_prob_diff": 0.41357776522636414,
+   "calib_raw": {
+    "ece": 0.006309662903472997,
+    "ece15": 0.006646681091301855,
+    "ace": 0.004899366799467832,
+    "brier": 0.009122717435683055,
+    "nll": 0.038993162329246524,
+    "mean_conf": 0.9837072824347496,
+    "accuracy": 0.9886066492342174,
+    "reliability": [
+     {
+      "bin": 5,
+      "n": 22,
+      "conf": 0.5646776678887281,
+      "acc": 0.5454545454545454
+     },
+     {
+      "bin": 6,
+      "n": 24,
+      "conf": 0.6440460868179798,
+      "acc": 0.5833333333333334
+     },
+     {
+      "bin": 7,
+      "n": 41,
+      "conf": 0.7535450705667821,
+      "acc": 0.7073170731707317
+     },
+     {
+      "bin": 8,
+      "n": 77,
+      "conf": 0.8612642795234532,
+      "acc": 0.922077922077922
+     },
+     {
+      "bin": 9,
+      "n": 5190,
+      "conf": 0.9906890323626053,
+      "acc": 0.995568400770713
+     }
+    ]
+   },
+   "calibration_method": "none",
+   "calib_calibrated": {
+    "ece": 0.006309662903472997,
+    "ece15": 0.006646681091301855,
+    "ace": 0.004899366799467832,
+    "brier": 0.009122717435683055,
+    "nll": 0.038993162329246524,
+    "mean_conf": 0.9837072824347496,
+    "accuracy": 0.9886066492342174,
+    "reliability": [
+     {
+      "bin": 5,
+      "n": 22,
+      "conf": 0.5646776678887281,
+      "acc": 0.5454545454545454
+     },
+     {
+      "bin": 6,
+      "n": 24,
+      "conf": 0.6440460868179798,
+      "acc": 0.5833333333333334
+     },
+     {
+      "bin": 7,
+      "n": 41,
+      "conf": 0.7535450705667821,
+      "acc": 0.7073170731707317
+     },
+     {
+      "bin": 8,
+      "n": 77,
+      "conf": 0.8612642795234532,
+      "acc": 0.922077922077922
+     },
+     {
+      "bin": 9,
+      "n": 5190,
+      "conf": 0.9906890323626053,
+      "acc": 0.995568400770713
+     }
+    ]
+   }
+  }
+ },
+ "description": "Batch-size-1 int8 ONNX predictions (deployed serving mode): same 5 fold artifacts, preprocessing, max_len 128, 8 threads, each test text scored by its own fold model (te_idx), one text per call. Dev: all 5 fold models at batch 1 (dev is in no fold's training). Calibrator refit on batch-1 dev, pooled 1000 rows, 5-fold CV grouped by dev text, lowest NLL.",
+ "scored_at": "2026-10-19T14:03:34",
+ "rerun_reason": null,
+ "headline": {
+  "head": "answer",
+  "metric": "f1",
+  "batch1": 0.9572529782761037,
+  "batch1_ci95": [
+   0.9456009044726906,
+   0.9678321678321679
+  ],
+  "frozen_batched": 0.958041958041958,
+  "jev": 0.9366197183098591,
+  "verdict_batch1": "win"
+ }
+}

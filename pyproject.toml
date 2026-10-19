@@ -1,0 +1,66 @@
+[project]
+name = "ownyourjev"
+version = "0.1.0"
+description = "Train your own Jev-style decision model (Noul / Choice / Score) with LLM-labeled data and a small encoder."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Erfan Eshratifar" }]
+dependencies = [
+    "torch>=2.6",
+    "transformers>=5.20",
+    "peft>=0.21",
+    "datasets>=4.0",
+    "accelerate>=1.0",
+    "scikit-learn>=1.5",
+    "scipy>=1.13",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "pydantic>=2.8",
+    "openai>=1.60",
+    "httpx>=0.27",
+    "typer>=0.15",
+    "rich>=13.7",
+    "tiktoken>=0.8",
+    "optuna>=4.0",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "onnx>=1.17",
+    "onnxruntime>=1.20",
+    "matplotlib>=3.9",
+    "datasketch>=1.6",
+    "python-dotenv>=1.0",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "ruff>=0.6"]
+
+[project.scripts]
+ownyourjev = "ownyourjev.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ownyourjev", "benchmarks"]
+
+[tool.uv]
+index-strategy = "unsafe-best-match"
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu130" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"

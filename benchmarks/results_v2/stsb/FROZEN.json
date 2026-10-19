@@ -1,0 +1,8 @@
+{
+ "description": "Round 2. Same labels/training recipe as round 1 (4-labeler averaged two-hot soft targets: gemini-3.1-flash-lite, claude-haiku-5.5, qwen3.7-flash, deepseek-v4.1-flash, batched 10/call with SemEval guidance; gte-modernbert full FT, sentence-swap augmentation, lr 3e-5, bs 32, max_len 128) plus 7,571 NEW training pairs scored by the same 4-labeler ensemble: 6,571 re-pairings of pool sentences (gte-modernbert nearest neighbours, stratified by the round-1 student's predicted score) and 1,000 LLM-generated partner sentences at controlled similarity levels (deepseek-flash, steered by pool sentences). Fixed 4 epochs on all silver (no early stopping), 3 runs sharing the same init (init seed 0) with data-order seeds 0/1/2, uniformly weight-averaged (model soup) into one model; ONNX selective int8 (MLP Wo + head kept fp32). Dev: soup 0.9121 (deployed ONNX) vs round-1 recipe seed mean 0.8968 (6 seeds): paired bootstrap +0.0153, 95% CI [+0.0038, +0.0281]; vs round-1 deployed best-of-4 seed model +0.0019 (CI [-0.010, +0.013]). Member seeds 0.910/0.911/0.910.",
+ "heads": {"answer": {"probs": "benchmarks/results_v2/stsb/eval_probs.npy"}},
+ "dev_metrics": {"spearman_deployed_onnx": 0.9121, "spearman_soup_fp32": 0.9111, "member_seed_mean": 0.9105, "round1_recipe_seed_mean": 0.8968, "round1_deployed": 0.9102, "paired_bootstrap_vs_round1_recipe": {"diff": 0.0153, "ci95": [0.0038, 0.0281]}},
+ "model_dir": "data/v2/stsb/models/final_r2",
+ "latency": "benchmarks/results_v2/stsb/latency.json",
+ "label_spend_usd": 1.539
+}

@@ -1,0 +1,21 @@
+{
+ "metric": "group_spearman (per source document), mean of 4 dims, dev = 204 gold / 14 docs (never trained on)",
+ "deployed_int8_fold_models_mean": 0.5004,
+ "deployed_int8_per_fold": [
+  0.5259,
+  0.4964,
+  0.504,
+  0.4968,
+  0.4789
+ ],
+ "deployed_int8_per_dim_mean_over_folds": {
+  "coherence": 0.6398199999999999,
+  "consistency": 0.39074,
+  "fluency": 0.41974,
+  "relevance": 0.5513600000000001
+ },
+ "fp32_fold_models_mean": 0.50512,
+ "selection_fold0_holdout_3seeds_mean": 0.5145,
+ "teacher_qwen_x5_on_dev": 0.599,
+ "teacher_qwen_x1_on_dev": 0.557
+}

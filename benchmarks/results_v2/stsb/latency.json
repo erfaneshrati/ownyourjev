@@ -1,0 +1,12 @@
+{
+ "task": "stsb",
+ "model_dirs": [
+  "data/v2/stsb/models/final_r2"
+ ],
+ "device": "cpu",
+ "threads": 4,
+ "runtime": "onnxruntime",
+ "cpu_p50_ms": 19.801724003627896,
+ "cpu_p95_ms": 34.50989500270225,
+ "n_requests": 300
+}

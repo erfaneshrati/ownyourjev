@@ -1,0 +1,25 @@
+\begin{table}[h]
+\centering\small
+\begin{tabular}{llrrl}
+\toprule
+Time & Task & Ours & Jev & Kind \\
+\midrule
+2026-10-18 19:52 & SMS Spam & 0.9580 & 0.9366 & first scoring \\
+2026-10-18 20:00 & Financial PhraseBank & 0.7938 & 0.7309 & first scoring \\
+2026-10-18 20:14 & AG News & 0.8930 & 0.8850 & first scoring \\
+2026-10-18 20:16 & Banking77 & 0.8609 & 0.7975 & first scoring \\
+2026-10-18 20:49 & CLINC150 & 0.9340 & 0.8949 & first scoring \\
+2026-10-18 21:47 & STS-B & 0.8791 & 0.8900 & first scoring \\
+2026-10-18 22:04 & ToxiGen & 0.8543 & 0.8777 & first scoring \\
+2026-10-18 22:16 & Emotion & 0.8115 & 0.5850 & first scoring \\
+2026-10-18 22:31 & SST-5 & 0.5828 & 0.5792 & first scoring \\
+2026-10-18 23:53 & PAWS & 0.8845 & 0.8499 & first scoring \\
+2026-10-18 23:55 & Prompt Injections & 0.9569 & 0.7414 & first scoring \\
+2026-10-19 01:11 & ToxicChat & 0.7875 & 0.7862 & first scoring \\
+2026-10-19 01:31 & STS-B & 0.8935 & 0.8900 & re-score (dev-gated) \\
+2026-10-19 02:59 & ToxicChat & 0.7870 & 0.7862 & re-score (latency gate) \\
+\bottomrule
+\end{tabular}
+\caption{Every test scoring of the 12 reported tasks, from the audited log. The log also records 23 analysis-only accesses (calibration, batch-1 serving, oracle recompute, de-duplication) (Section~\ref{sec:calibration}), none of which changed a model, a threshold or a decision.}
+\label{tab:log}
+\end{table}
